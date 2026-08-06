@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="fr" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Géométrie du Plan : Droites, Segments et Angle Droit | 6ème • Smarter</title>
+  <meta name="description" content="Découvrez la géométrie du plan en 6ème. Manipulez les droites perpendiculaires et parallèles, comprenez les notations (AB), [AB], [AB) et utilisez l'équerre virtuelle.">
+  <meta name="keywords" content="géométrie, 6ème, cycle 3, droite, segment, demi-droite, perpendiculaires, parallèles, équerre, maths collège">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- KaTeX CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Smarter Shared Framework Styles & JS -->
+  <link rel="stylesheet" href="/smarter-ui/lesson.css">
+  <script src="/smarter-ui/lesson.js" defer></script>
+</head>
+<body class="min-h-screen flex flex-col justify-between pt-16">
+
+  <!-- NAVBAR HEADER -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center font-space font-bold text-white text-sm" style="background: linear-gradient(135deg, #3B82F6, #8B5CF6);">
+            AB
+          </div>
+          <div class="hidden sm:flex flex-col">
+            <span class="font-space font-bold text-slate-900 text-sm leading-none">
+              Abdennour BOUHOUNALI
+            </span>
+            <span class="font-mono text-[10px] text-blue-600 font-semibold mt-0.5">
+              Professeur de Mathématiques
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="/" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">Accueil</a>
+          <a href="/about" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">Présentation</a>
+          <a href="/courses" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-blue-600 bg-blue-50 font-semibold">Cours de maths</a>
+          <a href="/resources" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">Ressources</a>
+          <a href="/faq" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">FAQ</a>
+          <a href="/contact" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">Contact</a>
+        </div>
+
+        <!-- Gamification Widgets -->
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 font-mono text-xs font-bold">
+            <svg class="w-4 h-4 text-amber-500 fill-amber-500" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            <span id="xpCount">0</span> XP
+          </div>
+
+          <button id="soundToggle" aria-label="Activer/Désactiver le son" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-600">
+            <svg id="soundIconOn" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+          </button>
+
+          <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Progress Line -->
+    <div class="w-full h-1 bg-slate-100">
+      <div id="progressBar" class="h-full bg-gradient-to-r from-blue-500 to-purple-600 w-0 transition-all duration-300"></div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full space-y-10">
+
+    <!-- BREADCRUMB -->
+    <nav class="flex items-center gap-2 text-xs font-mono text-slate-500">
+      <a href="/" class="hover:text-blue-600">Accueil</a>
+      <span>/</span>
+      <a href="/courses" class="hover:text-blue-600">Collège (6ème)</a>
+      <span>/</span>
+      <span class="text-slate-900 font-semibold">Géométrie du Plan</span>
+    </nav>
+
+    <!-- HERO HEADER -->
+    <section class="text-center space-y-4 py-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs uppercase tracking-wider font-semibold">
+        <span>📐 Cycle 3 • 6ème • Leçon 4</span>
+        <span>•</span>
+        <span>⏱️ 25 min</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-space font-extrabold tracking-tight text-slate-900 leading-tight">
+        Géométrie du Plan : <br>
+        <span class="gradient-text">Droites, Segments et Angle Droit</span>
+      </h1>
+
+      <p class="text-slate-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+        Comment représenter l'infini d'une droite ou mesurer un segment précis ? Apprenez le langage universel des géomètres : \((AB)\), \([AB]\), \([AB)\), \(\perp\) et \(\parallel\) !
+      </p>
+    </section>
+
+    <!-- PREREQUISITES & OBJECTIVES CARD -->
+    <section class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="grid md:grid-cols-2 gap-6">
+        
+        <!-- Avant de commencer -->
+        <div class="space-y-3">
+          <h2 class="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold flex items-center gap-2">
+            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Avant de commencer (Prérequis)
+          </h2>
+          <ul class="space-y-2 text-sm text-slate-700">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Utilisation d'une règle et d'un crayon mine fine</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Notion intuitive de points alignés</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-600"></span> Reconnaissance visuelle d'un angle droit (\(90^\circ\))</li>
+          </ul>
+        </div>
+
+        <!-- Objectifs -->
+        <div class="space-y-3 border-t md:border-t-0 md:border-l border-slate-200 pt-4 md:pt-0 md:pl-6">
+          <h2 class="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold flex items-center gap-2">
+            <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Aujourd'hui, vous allez apprendre :
+          </h2>
+          <ul class="space-y-2 text-sm text-slate-700">
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> Distinguer droite \((AB)\), segment \([AB]\) et demi-droite \([AB)\).</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> Utiliser les symboles d'appartenance (\(\in\) et \(\notin\)).</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> Vérifier et tracer des perpendiculaires (\(\perp\)) et parallèles (\(\parallel\)).</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STEP 1: HOOK (LE MYSTÈRE DE L'INFINI GÉOMÉTRIQUE) -->
+    <section id="step1" class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 font-mono text-sm font-bold flex items-center justify-center">1</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Le Mystère de l'Infini</h2>
+      </div>
+
+      <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+        Si l'on relie deux points \(A\) et \(B\) avec un trait de crayon et qu'on dépasse indéfiniment des deux côtés, quelle figure géométrique obtient-on ?
+      </p>
+
+      <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center space-y-4">
+        <div class="text-xl font-mono text-blue-900 font-bold">
+          Points \(A\) et \(B\) relies et prolongés à l'infini \(\rightarrow\) ?
+        </div>
+        
+        <div class="flex flex-wrap justify-center gap-3 pt-2">
+          <button onclick="testGeoHook(1)" class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-mono text-xs sm:text-sm">
+            Un segment \([AB]\)
+          </button>
+          <button onclick="testGeoHook(2)" class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-mono text-xs sm:text-sm">
+            Une demi-droite \([AB)\)
+          </button>
+          <button onclick="solveGeoHook()" class="btn-gradient px-5 py-2 rounded-xl text-white font-medium text-xs sm:text-sm">
+            ✨ Une droite \((AB)\) (Infinie des deux côtés)
+          </button>
+        </div>
+
+        <div id="geoHookFeedback" class="hidden p-4 rounded-xl text-xs sm:text-sm font-mono text-left transition-all"></div>
+      </div>
+    </section>
+
+    <!-- STEP 2: DISCOVERY (ATELIER GÉOMÉTRIQUE 2D CANVAS INTERACTIF) -->
+    <section id="step2" class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 font-mono text-sm font-bold flex items-center justify-center">2</span>
+          <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">L'Atelier Géométrique Interactive</h2>
+        </div>
+        <span class="text-xs font-mono text-purple-700 bg-purple-50 px-3 py-1 rounded-full border border-purple-200">👉 Déplacez le point B avec le curseur</span>
+      </div>
+
+      <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+        Déplacez le point mobile \(B\) sur la grille pour observer le changement d'angle et tester l'équerre virtuelle (perpendiculaires \(\perp\)) !
+      </p>
+
+      <div class="grid lg:grid-cols-12 gap-6 items-center bg-slate-50 p-6 rounded-2xl border border-slate-200">
+        
+        <!-- Canvas Display -->
+        <div class="lg:col-span-7 bg-white p-3 rounded-2xl border border-slate-200 shadow-inner flex flex-col items-center">
+          <canvas id="geoCanvas" width="400" height="300" class="w-full max-w-[400px] h-auto bg-slate-50 border border-slate-100"></canvas>
+          <p class="text-xs text-slate-400 mt-2 font-mono">Glissez votre doigt ou la souris pour bouger le point \(B\)</p>
+        </div>
+
+        <!-- Controls & Readouts -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="bg-slate-900 text-white p-5 rounded-2xl space-y-3 font-mono shadow-md">
+            <div class="text-[11px] text-slate-400 uppercase tracking-wider">État des Droites</div>
+            
+            <div id="angleDisplay" class="text-xl font-bold text-blue-400">
+              Angle entre droites : 90°
+            </div>
+
+            <hr class="border-slate-800">
+
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between">
+                <span class="text-slate-400">Relation géométrique :</span>
+                <span id="relationDisplay" class="text-emerald-400 font-bold">\((AB) \perp (CD)\) (Perpendiculaires)</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Angle droit (\(90^\circ\)) :</span>
+                <span id="squareStatusDisplay" class="text-amber-400 font-bold">Oui (Équerre ajustée)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shortcut Buttons -->
+          <div class="flex flex-wrap gap-2">
+            <button onclick="setPerpendicularPreset()" class="px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-xs font-mono text-emerald-700 border border-emerald-200">Ajuster \(\perp\) (90°)</button>
+            <button onclick="setParallelPreset()" class="px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-xs font-mono text-blue-700 border border-blue-200">Ajuster \(\parallel\) (Parallèles)</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STEP 3: INTUITION (NOTATIONS ET SYMBOLES VISUELS) -->
+    <section id="step3" class="smarter-card-glow p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-cyan-100 text-cyan-700 font-mono text-sm font-bold flex items-center justify-center">3</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Guide Visuel des Notations</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-4">
+        
+        <div class="p-5 rounded-2xl bg-blue-50 border border-blue-200 space-y-2 text-center">
+          <div class="text-xs font-mono text-blue-700 uppercase font-bold">1. La Droite \((AB)\)</div>
+          <div class="text-2xl font-space font-bold text-blue-900">\( (AB) \)</div>
+          <p class="text-xs text-slate-600">
+            <strong>Parenthèses</strong> = Infinie des deux côtés. On ne peut pas la mesurer !
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-purple-50 border border-purple-200 space-y-2 text-center">
+          <div class="text-xs font-mono text-purple-700 uppercase font-bold">2. Le Segment \([AB]\)</div>
+          <div class="text-2xl font-space font-bold text-purple-900">\( [AB] \)</div>
+          <p class="text-xs text-slate-600">
+            <strong>Crochets</strong> = Délimité par les bornes \(A\) et \(B\). Sa longueur est notée \(AB\).
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-amber-50 border border-amber-200 space-y-2 text-center">
+          <div class="text-xs font-mono text-amber-700 uppercase font-bold">3. La Demi-droite \([AB)\)</div>
+          <div class="text-2xl font-space font-bold text-amber-900">\( [AB) \)</div>
+          <p class="text-xs text-slate-600">
+            <strong>Panaché</strong> = Fermée en \(A\) (origine) et infinie du côté de \(B\).
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Appartenance Symbol -->
+      <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs sm:text-sm">
+        <div class="space-y-1">
+          <div class="text-slate-900 font-bold">Symbole d'appartenance \(\in\) et \(\notin\) :</div>
+          <p class="text-slate-500 font-sans text-xs">\(C \in (AB)\) signifie que le point \(C\) appartient à la droite \((AB)\).</p>
+        </div>
+        <div class="bg-white px-4 py-2 rounded-xl border border-slate-200 text-blue-600 font-bold whitespace-nowrap">
+          \( C \in (AB) \quad | \quad D \notin (AB) \)
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 4: FORMALIZATION & THEOREMS -->
+    <section id="step4" class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-mono text-sm font-bold flex items-center justify-center">4</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Théorème Fondamental de 6ème</h2>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-blue-50/70 border border-blue-200 space-y-3">
+        <div class="text-xs font-mono text-blue-700 font-bold uppercase tracking-wider">Théorème des droites perpendiculaires et parallèles</div>
+        
+        <div class="text-sm sm:text-base font-space text-slate-900 leading-relaxed font-semibold">
+          Si deux droites sont <strong>perpendiculaires à une même troisième droite</strong>, alors elles sont <strong>parallèles entre elles</strong> !
+        </div>
+
+        <div class="text-xs font-mono text-blue-900 bg-white p-3 rounded-xl border border-blue-200 space-y-1">
+          <p>Données : \( (d_1) \perp (d_3) \) et \( (d_2) \perp (d_3) \)</p>
+          <p class="text-emerald-600 font-bold">Conclusion : \( (d_1) \parallel (d_2) \)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 5: PROGRESSIVE PRACTICE (LEVELS 1 TO 4) -->
+    <section id="step5" class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-mono text-sm font-bold flex items-center justify-center">5</span>
+          <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Parcours d'Entraînement Réussi (Niveaux 1 à 4)</h2>
+        </div>
+        <span class="text-xs font-mono text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Progression guidée</span>
+      </div>
+
+      <div id="quizContainer" class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-6">
+        <div class="flex items-center justify-between">
+          <span id="quizStepText" class="text-xs font-mono text-slate-500">Niveau 1 / 4 (Découverte)</span>
+          <span class="text-xs font-mono text-amber-600 font-bold">+40 XP par niveau</span>
+        </div>
+
+        <div id="quizQuestion" class="text-base font-space font-semibold text-slate-900"></div>
+
+        <div id="quizHint" class="hidden p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs font-mono text-amber-800">
+          💡 <strong>Indice :</strong> <span id="hintText"></span>
+        </div>
+
+        <div id="quizOptions" class="grid sm:grid-cols-2 gap-3"></div>
+        <div id="quizFeedback" class="hidden p-4 rounded-xl text-xs sm:text-sm font-mono"></div>
+
+        <div class="flex justify-between items-center pt-2">
+          <button onclick="toggleHint()" class="text-xs font-mono text-slate-500 hover:text-amber-600 underline">💡 Indice</button>
+          <button id="nextQuizBtn" onclick="nextQuizQuestion()" class="hidden btn-gradient px-4 py-2 rounded-xl text-xs font-medium text-white">Niveau suivant ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 6: REAL WORLD APPLICATIONS & OPTIONAL EXTENSIONS -->
+    <section id="step6" class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 font-mono text-sm font-bold flex items-center justify-center">6</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Applications & Extensions Scientifiques</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        
+        <!-- Did you know -->
+        <div class="p-5 rounded-2xl bg-amber-50/70 border border-amber-200 space-y-2">
+          <div class="flex items-center gap-2 text-amber-900 font-bold text-xs uppercase font-mono">
+            <span>🧠 Le Saviez-vous ? (Histoire)</span>
+          </div>
+          <p class="text-xs text-slate-700 leading-relaxed">
+            Le mot <strong>Géométrie</strong> vient du grec ancien : <em>Gê</em> (la Terre) et <em>Metron</em> (la mesure). Les Égyptiens l'ont inventée pour re-tracer les limites des champs après chaque crue du Nil !
+          </p>
+        </div>
+
+        <!-- Exam Tip -->
+        <div class="p-5 rounded-2xl bg-blue-50/70 border border-blue-200 space-y-2">
+          <div class="flex items-center gap-2 text-blue-900 font-bold text-xs uppercase font-mono">
+            <span>🎯 Astuce Examen</span>
+          </div>
+          <p class="text-xs text-slate-700 leading-relaxed">
+            Ne confondez jamais <strong>\([AB]\)</strong> (la figure, le segment) et <strong>\(AB\)</strong> (la longueur, un nombre en cm sans crochet !). Écrire \([AB] = 5\text{ cm}\) est une erreur d'écriture !
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STEP 7: MISCONCEPTIONS -->
+    <section id="step7" class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-rose-100 text-rose-700 font-mono text-sm font-bold flex items-center justify-center">7</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Le Piège de la Feuille Trop Petite !</h2>
+      </div>
+
+      <div class="bg-rose-50/60 p-5 rounded-2xl border border-rose-200 space-y-3">
+        <div class="flex items-center gap-2 text-rose-700 font-bold text-sm">
+          <span>❌ Erreur classique : "Si deux droites ne se croisent pas sur mon cahier, elles sont parallèles !"</span>
+        </div>
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Comme les droites sont <strong>infinies</strong>, elles peuvent très bien se croiser plus loin en dehors de la feuille !
+        </p>
+        <div class="text-xs font-mono text-emerald-800 bg-emerald-50 p-3 rounded-xl border border-emerald-200">
+          ✅ Règle : Vérifiez toujours l'écartement avec une équerre ou utilisez la propriété géométrique pour le prouver !
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 8: FINAL MISSION & COMPLETION -->
+    <section id="step8" class="smarter-card-glow p-6 sm:p-8 text-center space-y-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 font-mono text-xs">
+        🏆 Mission Ultime : L'Architecte Géomètre
+      </div>
+
+      <h2 class="text-2xl font-space font-extrabold text-slate-900">Le Défi des Déductions</h2>
+      <p class="text-slate-600 max-w-xl mx-auto text-sm">
+        Si \( (d_1) \perp (d_3) \) et que \( (d_2) \perp (d_3) \), quelle est la relation entre \( (d_1) \) et \( (d_2) \) ?
+      </p>
+
+      <div id="finalChallengeBox" class="bg-slate-50 p-6 rounded-2xl border border-slate-200 max-w-lg mx-auto space-y-4 text-left">
+        <div class="space-y-2 font-mono text-xs sm:text-sm">
+          <label class="flex items-center gap-3 p-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 cursor-pointer">
+            <input type="radio" name="finalOption" value="perpendiculaires" class="accent-blue-600">
+            <span>\( (d_1) \perp (d_2) \) (Perpendiculaires)</span>
+          </label>
+
+          <label class="flex items-center gap-3 p-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 cursor-pointer">
+            <input type="radio" name="finalOption" value="paralleles" class="accent-blue-600">
+            <span>\( (d_1) \parallel (d_2) \) (Parallèles)</span>
+          </label>
+
+          <label class="flex items-center gap-3 p-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 cursor-pointer">
+            <input type="radio" name="finalOption" value="secantes" class="accent-blue-600">
+            <span>Sécantes non perpendiculaires</span>
+          </label>
+        </div>
+
+        <button onclick="submitFinalChallenge()" class="w-full btn-gradient py-3 rounded-xl font-bold text-white shadow-md text-sm">
+          Valider ma réponse !
+        </button>
+
+        <div id="finalFeedback" class="hidden p-3 rounded-xl text-xs font-mono"></div>
+      </div>
+
+      <!-- Completion Screen with 5 Stars -->
+      <div id="celebrationCard" class="hidden bg-emerald-50 p-8 rounded-3xl border border-emerald-200 max-w-lg mx-auto space-y-4 text-center">
+        <div class="text-amber-400 text-3xl tracking-widest font-bold">★★★★★</div>
+        <h3 class="text-2xl font-space font-bold text-emerald-900">Leçon Complétée !</h3>
+        <p class="text-sm text-emerald-800">
+          Félicitations ! Vous avez gagné <span class="font-bold font-mono">+160 XP</span> et maîtrisé la géométrie du plan.
+        </p>
+        <div class="inline-block px-4 py-2 rounded-2xl bg-emerald-100 text-emerald-800 font-mono text-xs border border-emerald-300 font-bold">
+          Badge Gagné : 📐 L'Architecte Géomètre
+        </div>
+      </div>
+    </section>
+
+    <!-- LESSON SUMMARY -->
+    <section class="smarter-card p-6 sm:p-8 space-y-4">
+      <h2 class="text-lg font-space font-bold text-slate-900 flex items-center gap-2">
+        <span class="text-blue-600">📌</span> Aujourd'hui, vous avez appris :
+      </h2>
+
+      <ul class="space-y-2 text-sm text-slate-700">
+        <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> \((AB)\) est une droite infinie, \([AB]\) est un segment mesurable, \([AB)\) est une demi-droite.</li>
+        <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Deux droites perpendiculaires \((d_1) \perp (d_2)\) forment un angle droit de \(90^\circ\).</li>
+        <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Deux droites perpendiculaires à une même troisième sont parallèles entre elles.</li>
+      </ul>
+    </section>
+
+    <!-- NEXT LESSON -->
+    <section class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 sm:p-8 rounded-3xl border border-blue-200 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2 text-center md:text-left">
+        <div class="text-xs font-mono text-blue-600 uppercase font-bold">Leçon Suivante (Module 1 - 6ème)</div>
+        <h3 class="text-xl font-space font-bold text-slate-900">Aires et Périmètres</h3>
+        <p class="text-xs text-slate-600">Ne confondez plus jamais le contour (périmètre en cm) et la surface (aire en cm²).</p>
+      </div>
+
+      <a href="../aires-perimetres/index.html" class="btn-gradient px-6 py-3 rounded-xl font-semibold text-white text-sm whitespace-nowrap flex items-center gap-2">
+        Continuer
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 mt-12">
+    <div class="max-w-7xl mx-auto px-4 space-y-2">
+      <p>© 2026 Abdennour BOUHOUNALI — Professeur de Mathématiques. Tous droits réservés.</p>
+      <p class="font-mono text-[10px] text-slate-400">Plateforme d'apprentissage interactive et autonome</p>
+    </div>
+  </footer>
+
+  <!-- KaTeX JS -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <!-- LESSON INTERACTION SCRIPT -->
+  <script>
+    function testGeoHook(choice) {
+      playTone(400, 'sine', 0.1);
+      const fb = document.getElementById('geoHookFeedback');
+      fb.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800');
+      fb.classList.add('bg-rose-50', 'border', 'border-rose-200', 'text-rose-800');
+      fb.innerHTML = `❌ <strong>Pas tout à fait :</strong> Si l'on dépasse indéfiniment des deux côtés, ce n'est pas limité !`;
+      renderMathInElement(fb);
+    }
+
+    function solveGeoHook() {
+      playSuccessSound();
+      addXP(50);
+      const fb = document.getElementById('geoHookFeedback');
+      fb.classList.remove('hidden', 'bg-rose-50', 'text-rose-800');
+      fb.classList.add('bg-emerald-50', 'border', 'border-emerald-200', 'text-emerald-800');
+      fb.innerHTML = `✨ <strong>Exact !</strong> Une droite est illimitée des deux côtés et se note <strong>\\( (AB) \\)</strong> ! (+50 XP)`;
+      renderMathInElement(fb);
+    }
+
+    // Geometry Canvas 2D
+    const canvas = document.getElementById('geoCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let ptB = { x: 200, y: 100 };
+    let isDragging = false;
+
+    function drawGeoScene() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Grid
+      ctx.strokeStyle = '#F1F5F9';
+      ctx.lineWidth = 1;
+      for (let x = 0; x < canvas.width; x += 20) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+      }
+      for (let y = 0; y < canvas.height; y += 20) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+      }
+
+      // Fixed Horizontal Line (CD)
+      ctx.strokeStyle = '#475569';
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(20, 200); ctx.lineTo(380, 200); ctx.stroke();
+      ctx.fillStyle = '#64748B'; ctx.font = '11px JetBrains Mono';
+      ctx.fillText('(CD)', 360, 190);
+
+      // Point A fixed at (200, 200)
+      const ptA = { x: 200, y: 200 };
+
+      // Rotating Line (AB) through A and B
+      ctx.strokeStyle = '#2563EB';
+      ctx.lineWidth = 2.5;
+
+      const dx = ptB.x - ptA.x;
+      const dy = ptB.y - ptA.y;
+      
+      ctx.beginPath();
+      ctx.moveTo(ptA.x - dx * 3, ptA.y - dy * 3);
+      ctx.lineTo(ptA.x + dx * 3, ptA.y + dy * 3);
+      ctx.stroke();
+
+      ctx.fillStyle = '#2563EB'; ctx.font = '11px JetBrains Mono';
+      ctx.fillText('(AB)', ptB.x + 10, ptB.y - 10);
+
+      // Points A and B dots
+      ctx.fillStyle = '#3B82F6';
+      ctx.beginPath(); ctx.arc(ptA.x, ptA.y, 6, 0, Math.PI * 2); ctx.fill();
+      ctx.fillText('A', ptA.x - 15, ptA.y + 15);
+
+      ctx.fillStyle = '#8B5CF6';
+      ctx.beginPath(); ctx.arc(ptB.x, ptB.y, 6, 0, Math.PI * 2); ctx.fill();
+      ctx.fillText('B', ptB.x + 10, ptB.y + 10);
+
+      // Calculate angle with horizontal line
+      const angleRad = Math.atan2(dy, dx);
+      let angleDeg = Math.abs(Math.round((angleRad * 180 / Math.PI)));
+      if (angleDeg > 90) angleDeg = 180 - angleDeg;
+
+      // Update Displays
+      document.getElementById('angleDisplay').textContent = `Angle entre droites : ${angleDeg}°`;
+      
+      const relDisp = document.getElementById('relationDisplay');
+      const sqDisp = document.getElementById('squareStatusDisplay');
+
+      if (Math.abs(angleDeg - 90) < 3) {
+        relDisp.innerHTML = `\\( (AB) \\perp (CD) \\) (Perpendiculaires)`;
+        relDisp.className = 'text-emerald-600 font-bold';
+        sqDisp.textContent = 'Oui (Équerre ajustée 90°)';
+        sqDisp.className = 'text-emerald-600 font-bold';
+
+        // Draw Square angle indicator
+        ctx.strokeStyle = '#10B981';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(200, 185, 15, 15);
+      } else if (angleDeg < 3) {
+        relDisp.innerHTML = `\\( (AB) \\parallel (CD) \\) (Parallèles)`;
+        relDisp.className = 'text-blue-600 font-bold';
+        sqDisp.textContent = 'Non (Droites parallèles)';
+        sqDisp.className = 'text-blue-600 font-bold';
+      } else {
+        relDisp.textContent = `Droites sécantes à ${angleDeg}°`;
+        relDisp.className = 'text-amber-600 font-bold';
+        sqDisp.textContent = 'Non';
+        sqDisp.className = 'text-slate-400 font-bold';
+      }
+      renderMathInElement(relDisp);
+    }
+
+    function handlePointer(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+      ptB.x = Math.min(380, Math.max(20, clientX - rect.left));
+      ptB.y = Math.min(180, Math.max(20, clientY - rect.top));
+
+      drawGeoScene();
+    }
+
+    canvas.addEventListener('mousedown', (e) => { isDragging = true; handlePointer(e); });
+    window.addEventListener('mousemove', (e) => { if (isDragging) handlePointer(e); });
+    window.addEventListener('mouseup', () => { isDragging = false; });
+    canvas.addEventListener('touchstart', (e) => { isDragging = true; handlePointer(e); }, {passive: true});
+    window.addEventListener('touchmove', (e) => { if (isDragging) handlePointer(e); }, {passive: true});
+    window.addEventListener('touchend', () => { isDragging = false; });
+
+    function setPerpendicularPreset() {
+      ptB = { x: 200, y: 80 };
+      drawGeoScene();
+      addXP(10);
+    }
+
+    function setParallelPreset() {
+      ptB = { x: 350, y: 120 };
+      drawGeoScene();
+      addXP(10);
+    }
+
+    // 4-Level Quiz Data
+    const quizData = [
+      {
+        question: "Quelle notation désigne le **segment** délimité par les points A et B (mesurable en cm) ?",
+        options: ["\\( (AB) \\)", "\\( [AB] \\)", "\\( [AB) \\)", "\\( AB \\)"],
+        correct: 1,
+        hint: "Un segment a des bornes fermées, on utilise les crochets : \\( [AB] \\) !"
+      },
+      {
+        question: "Si le point C est situé entre A et B sur le segment \\( [AB] \\), quelle égalité de longueur est vraie ?",
+        options: ["\\( AB = AC + CB \\)", "\\( AC = AB + CB \\)", "\\( CB = AB + AC \\)", "\\( AB = AC \\times CB \\)"],
+        correct: 0,
+        hint: "La somme des morceaux donne le tout : \\( AC + CB = AB \\)."
+      },
+      {
+        question: "Que signifie le symbole \\( \\perp \\) dans la notation \\( (d_1) \\perp (d_2) \\) ?",
+        options: ["Droites parallèles", "Droites perpendiculaires (angle droit de 90°)", "Droites confondues", "Points alignés"],
+        correct: 1,
+        hint: "Le symbole \\( \\perp \\) représente un T renversé formant un angle droit !"
+      },
+      {
+        question: "Si \\( (d_1) \\perp (d_3) \\) et \\( (d_2) \\perp (d_3) \\), que peut-on déduire pour \\( (d_1) \\) et \\( (d_2) \\) ?",
+        options: ["\\( (d_1) \\parallel (d_2) \\) (Elles sont parallèles)", "\\( (d_1) \\perp (d_2) \\)", "Elles sont sécantes non perpendiculaires", "On ne peut pas conclure"],
+        correct: 0,
+        hint: "Deux droites perpendiculaires à une même troisième sont parallèles entre elles !"
+      }
+    ];
+
+    let currentQuizIndex = 0;
+    function renderQuiz() {
+      const q = quizData[currentQuizIndex];
+      document.getElementById('quizStepText').textContent = `Niveau ${currentQuizIndex + 1} / ${quizData.length}`;
+      document.getElementById('quizQuestion').innerHTML = q.question;
+      const optContainer = document.getElementById('quizOptions');
+      optContainer.innerHTML = '';
+      document.getElementById('hintText').textContent = q.hint;
+      document.getElementById('quizHint').classList.add('hidden');
+      document.getElementById('quizFeedback').classList.add('hidden');
+      document.getElementById('nextQuizBtn').classList.add('hidden');
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'p-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs sm:text-sm font-mono text-left transition-all';
+        btn.innerHTML = opt;
+        btn.onclick = () => checkQuizAnswer(idx);
+        optContainer.appendChild(btn);
+      });
+      renderMathInElement(document.getElementById('quizContainer'));
+    }
+
+    function checkQuizAnswer(selectedIdx) {
+      const q = quizData[currentQuizIndex];
+      const fb = document.getElementById('quizFeedback');
+      fb.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'bg-rose-50', 'text-rose-800');
+
+      if (selectedIdx === q.correct) {
+        playSuccessSound();
+        addXP(40);
+        fb.classList.add('bg-emerald-50', 'border', 'border-emerald-200', 'text-emerald-800');
+        fb.innerHTML = `🎉 <strong>Niveau validé !</strong> +40 XP gagnés.`;
+        document.getElementById('nextQuizBtn').classList.remove('hidden');
+      } else {
+        playErrorSound();
+        fb.classList.add('bg-rose-50', 'border', 'border-rose-200', 'text-rose-800');
+        fb.innerHTML = `❌ <strong>Pas tout à fait.</strong> Réessayez ou lisez l'indice !`;
+      }
+      renderMathInElement(fb);
+    }
+
+    function toggleHint() {
+      playTone(450, 'sine', 0.08);
+      document.getElementById('quizHint').classList.toggle('hidden');
+      renderMathInElement(document.getElementById('quizHint'));
+    }
+
+    function nextQuizQuestion() {
+      currentQuizIndex = (currentQuizIndex + 1) % quizData.length;
+      renderQuiz();
+    }
+
+    function submitFinalChallenge() {
+      const selected = document.querySelector('input[name="finalOption"]:checked');
+      const fb = document.getElementById('finalFeedback');
+      fb.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'bg-rose-50', 'text-rose-800');
+
+      if (!selected) {
+        fb.classList.add('bg-amber-50', 'text-amber-800');
+        fb.textContent = "Veuillez sélectionner une option.";
+        return;
+      }
+
+      if (selected.value === "paralleles") {
+        playSuccessSound();
+        addXP(160);
+        triggerConfetti();
+        markLessonCompleted('COL-6E-004');
+        document.getElementById('finalChallengeBox').classList.add('hidden');
+        document.getElementById('celebrationCard').classList.remove('hidden');
+      } else {
+        playErrorSound();
+        fb.classList.add('bg-rose-50', 'border', 'border-rose-200', 'text-rose-800');
+        fb.innerHTML = `❌ <strong>Erreur :</strong> Théorème : Deux droites perpendiculaires à une même troisième sont parallèles entre elles : \\( (d_1) \\parallel (d_2) \\).`;
+        renderMathInElement(fb);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      drawGeoScene();
+      renderQuiz();
+    });
+  </script>
+</body>
+</html>

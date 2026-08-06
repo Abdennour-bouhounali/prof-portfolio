@@ -1,0 +1,54 @@
+{
+  "id": "nombres-complexes-intro",
+  "title": "Les Nombres Complexes : Une nouvelle dimension",
+  "slug": "nombres-complexes",
+  "level": "Lycée",
+  "grade": "Terminale Spé / Expertes",
+  "chapter": "Nombres Complexes",
+  "subchapter": "Forme algébrique et plan complexe",
+  "estimated_duration": 25,
+  "difficulty": 2,
+  "reading_time": 8,
+  "interaction_count": 5,
+  "exercise_count": 6,
+  "animation_count": 4,
+  "tags": [
+    "nombres complexes",
+    "imaginaire",
+    "i carré -1",
+    "plan d'argand-gauss",
+    "module",
+    "argument",
+    "terminale"
+  ],
+  "keywords": [
+    "nombres complexes",
+    "nombre i",
+    "forme algébrique",
+    "plan complexe",
+    "partie réelle",
+    "partie imaginaire",
+    "module",
+    "argument"
+  ],
+  "learning_objectives": [
+    "Comprendre la nécessité d'inventer le nombre i tel que i² = -1",
+    "Placer un nombre complexe z = a + ib dans le plan d'Argand-Gauss",
+    "Identifier la partie réelle Re(z) et la partie imaginaire Im(z)",
+    "Calculer le module |z| et l'argument arg(z) d'un nombre complexe",
+    "Réaliser des opérations algébriques de base et éviter les pièges fréquents"
+  ],
+  "prerequisites": [
+    "Résolution d'équations du second degré dans R",
+    "Repérage cartésien (abscisses et ordonnées)",
+    "Théorème de Pythagore et trigonométrie de base"
+  ],
+  "next_lessons": [
+    {
+      "slug": "nombres-complexes-forme-trigonometrique",
+      "title": "Forme trigonométrique et formule d'Euler"
+    }
+  ],
+  "thumbnail": "thumbnail.webp",
+  "version": "1.0"
+}

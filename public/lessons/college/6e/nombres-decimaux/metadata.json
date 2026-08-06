@@ -1,0 +1,31 @@
+{
+  "id": "COL-6E-001",
+  "title": "Les Nombres Décimaux : Au-delà des Entiers",
+  "order": 1,
+  "cycle": "Cycle 3",
+  "grade": "6e",
+  "chapter": "Nombres et calculs",
+  "subchapter": "Les nombres décimaux",
+  "difficulty": 1,
+  "estimated_duration": 20,
+  "estimated_points": 120,
+  "exercise_count": 5,
+  "interaction_count": 6,
+  "animation_count": 4,
+  "prerequisites": [
+    "Compter et ordonner les nombres entiers",
+    "Système décimal et valeur de position (unités, dizaines, centaines)",
+    "Addition et soustraction simples"
+  ],
+  "learning_objectives": [
+    "Comprendre pourquoi les nombres décimaux sont nécessaires",
+    "Identifier la partie entière et la partie décimale (dixièmes, centièmes, millièmes)",
+    "Placer et repérer des nombres décimaux sur une droite graduée interactive",
+    "Comparer et ordonner des nombres décimaux sans se faire piéger par le nombre de chiffres"
+  ],
+  "next": ["comparer-decimaux"],
+  "previous": null,
+  "tags": ["décimaux", "virgule", "dizièmes", "centièmes", "droite graduée", "6ème", "cycle 3"],
+  "thumbnail": "thumbnail.webp",
+  "version": "1.0"
+}

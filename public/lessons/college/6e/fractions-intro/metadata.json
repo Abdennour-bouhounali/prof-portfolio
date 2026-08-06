@@ -1,0 +1,31 @@
+{
+  "id": "COL-6E-002",
+  "title": "Les Fractions : L'Art du Partage",
+  "order": 2,
+  "cycle": "Cycle 3",
+  "grade": "6e",
+  "chapter": "Nombres et calculs",
+  "subchapter": "Les fractions",
+  "difficulty": 1,
+  "estimated_duration": 25,
+  "estimated_points": 140,
+  "exercise_count": 5,
+  "interaction_count": 6,
+  "animation_count": 4,
+  "prerequisites": [
+    "Compter et ordonner les nombres entiers",
+    "Notion de partage équitable",
+    "Multiplication et division de base"
+  ],
+  "learning_objectives": [
+    "Comprendre la notion de fraction comme partage de l'unité",
+    "Distinguer clairement le rôle du numérateur et du dénominateur",
+    "Représenter graphiquement une fraction sur un disque (pizza)",
+    "Reconnaître des fractions égales (ex: 1/2 = 2/4 = 5/10)"
+  ],
+  "previous": ["nombres-decimaux"],
+  "next": ["proportionnalite-6e"],
+  "tags": ["fractions", "numérateur", "dénominateur", "partage", "pizza", "6ème", "cycle 3"],
+  "thumbnail": "thumbnail.webp",
+  "version": "1.0"
+}

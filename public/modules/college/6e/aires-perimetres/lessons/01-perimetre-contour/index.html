@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01. Le Périmètre : Le Contour | Smarter</title>
+  <meta name="description" content="Micro-leçon 1 du module Aires et Périmètres : Comprendre et sommer le contour.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="stylesheet" href="/smarter-ui/lesson.css">
+  <script src="/smarter-ui/lesson.js" defer></script>
+</head>
+<body class="min-h-screen flex flex-col justify-between pt-16 bg-slate-50">
+
+  <!-- NAVBAR HEADER -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="../../index.html" class="flex items-center gap-2 text-xs font-mono text-slate-600 hover:text-blue-600 font-bold">
+          ← Vue du Module
+        </a>
+
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-mono text-emerald-600 font-bold">Leçon 1 / 6</span>
+          <div class="w-24 h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div class="h-full bg-emerald-500 w-1/6"></div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 font-mono text-xs font-bold">
+          <span id="xpCount">0</span> XP
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-3xl mx-auto px-4 py-8 flex-1 w-full space-y-8">
+
+    <!-- HERO TITLE -->
+    <section class="space-y-2 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 font-mono text-xs font-semibold">
+        ⏱️ 5 min • Micro-Leçon 1
+      </div>
+      <h1 class="text-3xl font-space font-extrabold text-slate-900">
+        Le Périmètre : Le Contour
+      </h1>
+    </section>
+
+    <!-- 1. HOOK -->
+    <section class="smarter-card p-6 space-y-4">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-mono text-sm font-bold flex items-center justify-center">1</span>
+        <h2 class="text-xl font-space font-bold text-slate-900">Faire le tour du jardin</h2>
+      </div>
+      <p class="text-slate-600 text-sm leading-relaxed">
+        Imaginez que vous deviez poser une clôture autour d'un terrain rectangulaire. La longueur totale de grillage nécessaire correspond exactement au <strong>périmètre</strong> !
+      </p>
+    </section>
+
+    <!-- 2. INTERACTIVE EXPLORER -->
+    <section class="smarter-card p-6 space-y-4">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 font-mono text-sm font-bold flex items-center justify-center">2</span>
+        <h2 class="text-xl font-space font-bold text-slate-900">Calculateur de Contour en Temps Réel</h2>
+      </div>
+
+      <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-4 text-center">
+        <div class="grid sm:grid-cols-2 gap-4 text-xs font-mono">
+          <div>
+            <span class="font-bold text-slate-700">Longueur \(L\) : </span>
+            <span id="lenVal" class="text-blue-600 font-bold">6 cm</span>
+            <input id="lenSlider" type="range" min="2" max="10" value="6" class="w-full accent-blue-600 mt-1 cursor-pointer">
+          </div>
+          <div>
+            <span class="font-bold text-slate-700">Largeur \(l\) : </span>
+            <span id="widVal" class="text-purple-600 font-bold">4 cm</span>
+            <input id="widSlider" type="range" min="1" max="8" value="4" class="w-full accent-purple-600 mt-1 cursor-pointer">
+          </div>
+        </div>
+
+        <div id="perimReadout" class="bg-white p-4 rounded-xl border border-slate-200 font-mono text-base font-bold text-emerald-800">
+          \( P = 6 + 4 + 6 + 4 = 20 \text{ cm} \)
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. FORMAL EXPLANATION -->
+    <section class="smarter-card p-6 space-y-4">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-mono text-sm font-bold flex items-center justify-center">3</span>
+        <h2 class="text-xl font-space font-bold text-slate-900">Définition & Unités</h2>
+      </div>
+
+      <div class="bg-indigo-50 p-4 rounded-xl text-xs text-indigo-900 space-y-2 border border-indigo-200 font-mono">
+        <p>• Le <strong>périmètre</strong> d'une figure est la longueur de son contour.</p>
+        <p>• Il s'exprime en unités de longueur simple : \(\text{m}\), \(\text{cm}\), \(\text{mm}\).</p>
+      </div>
+    </section>
+
+    <!-- 4. GUIDED PRACTICE QUIZ -->
+    <section class="smarter-card p-6 space-y-4">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-mono text-sm font-bold flex items-center justify-center">4</span>
+        <h2 class="text-xl font-space font-bold text-slate-900">Vérifiez votre compréhension</h2>
+      </div>
+
+      <p class="text-sm text-slate-700">Quel est le périmètre d'un carré de côté <strong>\(5\text{ cm}\)</strong> ?</p>
+
+      <div class="grid sm:grid-cols-3 gap-3">
+        <button onclick="checkMicroP(1)" class="p-3 rounded-xl border border-slate-200 hover:bg-slate-100 font-mono text-xs">10 cm</button>
+        <button onclick="checkMicroP(2)" class="p-3 rounded-xl border border-slate-200 hover:bg-slate-100 font-mono text-xs">20 cm (5 + 5 + 5 + 5)</button>
+        <button onclick="checkMicroP(3)" class="p-3 rounded-xl border border-slate-200 hover:bg-slate-100 font-mono text-xs">25 cm²</button>
+      </div>
+
+      <div id="microFeedbackP" class="hidden p-3 rounded-xl text-xs font-mono"></div>
+    </section>
+
+    <!-- NAVIGATION BAR AT BOTTOM -->
+    <div class="flex justify-between items-center pt-4">
+      <a href="../../index.html" class="px-4 py-2 rounded-xl bg-slate-200 text-slate-700 font-mono text-xs font-bold">
+        ← Sommaire
+      </a>
+
+      <a href="../02-aire-surface/index.html" onclick="markLessonCompleted('MOD-6E-005-L1')" class="btn-gradient px-6 py-2.5 rounded-xl text-white font-mono text-xs font-bold shadow-md">
+        Leçon 2 : L'Aire ➔
+      </a>
+    </div>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <script>
+    const lenSlider = document.getElementById('lenSlider');
+    const widSlider = document.getElementById('widSlider');
+
+    function updatePerimeter() {
+      const L = parseInt(lenSlider.value);
+      const l = parseInt(widSlider.value);
+      document.getElementById('lenVal').textContent = `${L} cm`;
+      document.getElementById('widVal').textContent = `${l} cm`;
+
+      const p = 2 * (L + l);
+      const readout = document.getElementById('perimReadout');
+      readout.innerHTML = `\\( P = ${L} + ${l} + ${L} + ${l} = ${p} \\text{ cm} \\)`;
+      renderMathInElement(readout);
+    }
+
+    lenSlider.addEventListener('input', updatePerimeter);
+    widSlider.addEventListener('input', updatePerimeter);
+
+    function checkMicroP(ans) {
+      const fb = document.getElementById('microFeedbackP');
+      fb.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'bg-rose-50', 'text-rose-800');
+      if(ans === 2) {
+        playSuccessSound();
+        addXP(50);
+        fb.classList.add('bg-emerald-50', 'border', 'border-emerald-200', 'text-emerald-800');
+        fb.innerHTML = `🎉 <strong>Exact !</strong> Un carré a 4 côtés égaux : \\( 4 \\times 5 = 20 \\text{ cm} \\) ! (+50 XP)`;
+      } else {
+        playErrorSound();
+        fb.classList.add('bg-rose-50', 'border', 'border-rose-200', 'text-rose-800');
+        fb.innerHTML = `❌ <strong>Rappel :</strong> Sommer la longueur des 4 côtés du carré.`;
+      }
+      renderMathInElement(fb);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updatePerimeter();
+      renderMathInElement(document.body);
+    });
+  </script>
+</body>
+</html>

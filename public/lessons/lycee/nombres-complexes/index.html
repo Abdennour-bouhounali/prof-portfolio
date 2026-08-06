@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="fr" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Nombres Complexes : Une nouvelle dimension | Abdennour BOUHOUNALI</title>
+  <meta name="description" content="Découvrez les nombres complexes de manière intuitive et interactive. Comprenez l'origine de i, visualisez le plan d'Argand-Gauss, calculez le module et l'argument sans effort.">
+  <meta name="keywords" content="nombres complexes, nombre i, forme algébrique, plan d'argand-gauss, module, argument, maths expertes, terminale">
+  <meta property="og:title" content="Les Nombres Complexes : Une nouvelle dimension | Smarter">
+  <meta property="og:description" content="Une leçon mathématique interactive et visuelle pour maîtriser les nombres complexes.">
+  <meta property="og:type" content="article">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- KaTeX CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  
+  <!-- Modern Tailwind CDN for standalone delivery -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            space: ['Space Grotesk', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              blue: '#3B82F6',
+              purple: '#8B5CF6',
+              dark: '#0F172A',
+              light: '#FAFAFA'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Light Theme Styling Matching Site (Home, About...) */
+    :root {
+      --bg-light: #FAFAFA;
+      --card-bg: #FFFFFF;
+      --card-border: #E2E8F0;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      background-image: radial-gradient(circle at 50% 0%, #EFF6FF 0%, #FAFAFA 70%);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .font-space { font-family: 'Space Grotesk', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* Glassmorphic Light Cards */
+    .light-card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border: 1px solid #E2E8F0;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+      border-radius: 1.25rem;
+    }
+
+    .light-card-glow {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      box-shadow: 0 12px 35px rgba(59, 130, 246, 0.08);
+      border-radius: 1.25rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #2563EB, #7C3AED, #0284C7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(139, 92, 246, 0.4);
+    }
+
+    /* Canvas styling */
+    #complexPlaneCanvas {
+      touch-action: none;
+      cursor: crosshair;
+      border-radius: 1rem;
+    }
+
+    /* Confetti Particle */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      pointer-events: none;
+      z-index: 100;
+      animation: confettiFall 2.5s ease-out forwards;
+    }
+    @keyframes confettiFall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #F1F5F9; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #3B82F6, #8B5CF6); border-radius: 4px; }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between pt-16">
+
+  <!-- NAVBAR HEADER (Matching Site Layout) -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo & Teacher Info -->
+        <a href="/" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center font-space font-bold text-white text-sm" style="background: linear-gradient(135deg, #3B82F6, #8B5CF6);">
+            AB
+          </div>
+          <div class="hidden sm:flex flex-col">
+            <span class="font-space font-bold text-slate-900 text-sm leading-none">
+              Abdennour BOUHOUNALI
+            </span>
+            <span class="font-mono text-[10px] text-blue-600 font-semibold mt-0.5">
+              Professeur de Mathématiques
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Main Links -->
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="/" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all">Accueil</a>
+          <a href="/about" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all">Présentation</a>
+          <a href="/courses" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-blue-600 bg-blue-50 font-semibold transition-all">Cours de maths</a>
+          <a href="/resources" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all">Ressources</a>
+          <a href="/faq" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all">FAQ</a>
+          <a href="/contact" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all">Contact</a>
+        </div>
+
+        <!-- Gamification XP & Sound Toggle -->
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 font-mono text-xs font-bold shadow-xs">
+            <svg class="w-4 h-4 text-amber-500 fill-amber-500" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            <span id="xpCount">0</span> XP
+          </div>
+
+          <button id="soundToggle" aria-label="Activer/Désactiver le son" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-600 transition-colors">
+            <svg id="soundIconOn" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+          </button>
+
+          <!-- Mobile Menu Toggle Button -->
+          <button id="mobileNavBtn" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Lesson Progress Line -->
+    <div class="w-full h-1 bg-slate-100">
+      <div id="progressBar" class="h-full bg-gradient-to-r from-blue-500 to-purple-600 w-0 transition-all duration-300"></div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-gray-200 px-4 py-4 space-y-2">
+      <a href="/" class="block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-50">Accueil</a>
+      <a href="/about" class="block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-50">Présentation</a>
+      <a href="/courses" class="block px-3 py-2 rounded-lg font-medium text-blue-600 bg-blue-50">Cours de maths</a>
+      <a href="/resources" class="block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-50">Ressources</a>
+      <a href="/faq" class="block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-50">FAQ</a>
+      <a href="/contact" class="block px-3 py-2 rounded-lg font-medium text-slate-700 hover:bg-slate-50">Contact</a>
+    </div>
+  </nav>
+
+  <!-- MAIN LESSON CONTENT -->
+  <main class="max-w-4xl mx-auto px-4 py-10 flex-1 w-full space-y-10">
+
+    <!-- BREADCRUMB NAVIGATION -->
+    <nav class="flex items-center gap-2 text-xs font-mono text-slate-500">
+      <a href="/" class="hover:text-blue-600 transition-colors">Accueil</a>
+      <span>/</span>
+      <a href="/courses" class="hover:text-blue-600 transition-colors">Lycée</a>
+      <span>/</span>
+      <span class="text-slate-900 font-semibold">Nombres Complexes</span>
+    </nav>
+
+    <!-- HERO HEADER -->
+    <section class="text-center space-y-4 py-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs uppercase tracking-wider font-semibold">
+        <span>📖 Lycée • Terminale Spécialité</span>
+        <span>•</span>
+        <span>⏱️ 25 min</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-space font-extrabold tracking-tight text-slate-900 leading-tight">
+        Les Nombres Complexes : <br>
+        <span class="gradient-text">Une nouvelle dimension</span>
+      </h1>
+
+      <p class="text-slate-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+        Découvrez l'histoire passionnante et l'intuition géométrique derrière le nombre imaginaire \( i \) tel que \( i^2 = -1 \).
+      </p>
+    </section>
+
+    <!-- PREREQUISITES & OBJECTIVES CARD -->
+    <section class="light-card p-6 sm:p-8 space-y-6">
+      <div class="grid md:grid-cols-2 gap-6">
+        
+        <!-- Prérequis -->
+        <div class="space-y-3">
+          <h2 class="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold flex items-center gap-2">
+            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Prérequis recommandés
+          </h2>
+          <ul class="space-y-2 text-sm text-slate-700">
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+              Équations dans \(\mathbb{R}\)
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span>
+              Repérage cartésien (abscisses et ordonnées)
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 rounded-full bg-cyan-600"></span>
+              Théorème de Pythagore & trigonométrie
+            </li>
+          </ul>
+        </div>
+
+        <!-- Objectifs -->
+        <div class="space-y-3 border-t md:border-t-0 md:border-l border-slate-200 pt-4 md:pt-0 md:pl-6">
+          <h2 class="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold flex items-center gap-2">
+            <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            À la fin de cette leçon...
+          </h2>
+          <ul class="space-y-2 text-sm text-slate-700">
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-600 font-bold">✓</span>
+              Vous comprendrez pourquoi \( i^2 = -1 \).
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-600 font-bold">✓</span>
+              Vous saurez placer \( z = a + ib \) dans le plan de Gauss.
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-emerald-600 font-bold">✓</span>
+              Vous saurez calculer le module \( |z| \) et l'argument.
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STEP 1: HOOK (LE DÉFI IMPOSSIBLE) -->
+    <section id="step1" class="light-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 font-mono text-sm font-bold flex items-center justify-center">1</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Le Défi Impossible</h2>
+      </div>
+
+      <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+        Pendant des siècles, une équation réputée "impossible" arrêtait les mathématiciens. Essayez de la résoudre :
+      </p>
+
+      <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center space-y-4">
+        <div class="text-xl sm:text-2xl font-mono text-blue-900 font-bold">
+          \[ x^2 + 1 = 0 \implies x^2 = -1 \]
+        </div>
+        <p class="text-xs sm:text-sm text-slate-500">Quel nombre réel \( x \), multiplié par lui-même, peut donner un résultat négatif ?</p>
+        
+        <div class="flex flex-wrap justify-center gap-3 pt-2">
+          <button onclick="testEquationValue(1)" class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-mono text-xs sm:text-sm transition-all">
+            Tester \( x = 1 \)
+          </button>
+          <button onclick="testEquationValue(-1)" class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-mono text-xs sm:text-sm transition-all">
+            Tester \( x = -1 \)
+          </button>
+          <button onclick="solveImpossibleEquation()" class="btn-gradient px-5 py-2 rounded-xl text-white font-medium text-xs sm:text-sm shadow-md">
+            ✨ Inventer une solution !
+          </button>
+        </div>
+
+        <div id="equationFeedback" class="hidden p-4 rounded-xl text-xs sm:text-sm font-mono text-left transition-all"></div>
+      </div>
+    </section>
+
+    <!-- STEP 2: DISCOVERY (ROTATION GÉOMÉTRIQUE DE 90°) -->
+    <section id="step2" class="light-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 font-mono text-sm font-bold flex items-center justify-center">2</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">L'Intuition : Une Rotation de 90°</h2>
+      </div>
+
+      <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+        Visualisez la multiplication par \( i \) comme une <strong>rotation de 90° dans le sens anti-horaire</strong> !
+      </p>
+
+      <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-6">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <h3 class="font-space font-bold text-base text-slate-900">Le Carrousel des Puissances de \( i \)</h3>
+            <p class="text-xs text-slate-500">Cliquez pour effectuer un quart de tour (+90°).</p>
+          </div>
+          <button onclick="rotateQuarterTurn()" class="btn-gradient px-4 py-2 rounded-xl font-medium text-xs sm:text-sm text-white flex items-center gap-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            Multiplier par \( i \) (+90°)
+          </button>
+        </div>
+
+        <div class="relative w-full max-w-xs mx-auto aspect-square bg-white rounded-2xl border border-slate-200 shadow-sm flex items-center justify-center p-4">
+          <svg id="rotationSvg" viewBox="-120 -120 240 240" class="w-full h-full">
+            <line x1="-100" y1="0" x2="100" y2="0" stroke="#CBD5E1" stroke-width="2"/>
+            <line x1="0" y1="-100" x2="0" y2="100" stroke="#CBD5E1" stroke-width="2"/>
+            
+            <text x="102" y="4" fill="#64748B" font-size="10" font-family="JetBrains Mono">Re (1)</text>
+            <text x="-4" y="-105" fill="#7C3AED" font-size="10" font-family="JetBrains Mono" text-anchor="middle">Im (i)</text>
+
+            <circle cx="0" cy="0" r="70" stroke="#E2E8F0" stroke-width="2" fill="none" stroke-dasharray="4 4"/>
+
+            <circle cx="70" cy="0" r="5" fill="#3B82F6"/>
+            <text x="80" y="14" fill="#3B82F6" font-size="11" font-weight="bold">1</text>
+
+            <circle cx="0" cy="-70" r="5" fill="#8B5CF6"/>
+            <text x="10" y="-70" fill="#8B5CF6" font-size="11" font-weight="bold">i</text>
+
+            <circle cx="-70" cy="0" r="5" fill="#EF4444"/>
+            <text x="-82" y="14" fill="#EF4444" font-size="11" font-weight="bold">-1</text>
+
+            <circle cx="0" cy="70" r="5" fill="#EAB308"/>
+            <text x="10" y="74" fill="#EAB308" font-size="11" font-weight="bold">-i</text>
+
+            <line id="rotatingVector" x1="0" y1="0" x2="70" y2="0" stroke="#2563EB" stroke-width="4" stroke-linecap="round"/>
+            <circle id="vectorHead" cx="70" cy="0" r="6" fill="#2563EB"/>
+          </svg>
+        </div>
+
+        <div id="rotationExplanation" class="bg-white p-4 rounded-xl text-center text-xs sm:text-sm font-mono text-blue-900 border border-slate-200">
+          Position actuelle : \( 1 \). Effectuez une rotation !
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3: INTUITION (LE PLAN COMPLEXE D'ARGAND-GAUSS) -->
+    <section id="step3" class="light-card-glow p-6 sm:p-8 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-4">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-cyan-100 text-cyan-700 font-mono text-sm font-bold flex items-center justify-center">3</span>
+          <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Explorez le Plan Complexe (Argand-Gauss)</h2>
+        </div>
+        <span class="text-xs font-mono text-blue-700 bg-blue-50 px-3 py-1 rounded-full border border-blue-200">👉 Déplacez le point Z</span>
+      </div>
+
+      <p class="text-slate-600 leading-relaxed text-sm">
+        Tout nombre complexe \( z = a + ib \) est représenté par un point unique dans un plan 2D.
+      </p>
+
+      <div class="grid lg:grid-cols-12 gap-6 items-start">
+        
+        <!-- Canvas -->
+        <div class="lg:col-span-7 bg-white p-3 rounded-2xl border border-slate-200 shadow-inner flex flex-col items-center">
+          <canvas id="complexPlaneCanvas" width="400" height="400" class="w-full max-w-[400px] h-auto bg-slate-50 border border-slate-100"></canvas>
+          <p class="text-xs text-slate-400 mt-2 font-mono">Glissez pour déplacer le point \( z \)</p>
+        </div>
+
+        <!-- Readout & Controls -->
+        <div class="lg:col-span-5 space-y-4">
+          
+          <div class="bg-slate-900 text-white p-5 rounded-2xl space-y-3 font-mono shadow-md">
+            <div class="text-[11px] text-slate-400 uppercase tracking-wider">Nombre Complexe \( z \)</div>
+            
+            <div class="text-xl sm:text-2xl font-bold text-blue-400" id="zAlgebraicDisplay">
+              \( z = 3 + 4i \)
+            </div>
+
+            <hr class="border-slate-800">
+
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between">
+                <span class="text-slate-400">Partie réelle \(\text{Re}(z)\) :</span>
+                <span id="reDisplay" class="text-blue-300 font-bold">3</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Partie imaginaire \(\text{Im}(z)\) :</span>
+                <span id="imDisplay" class="text-purple-300 font-bold">4</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Module \( |z| = \sqrt{a^2+b^2} \) :</span>
+                <span id="modDisplay" class="text-cyan-300 font-bold">5.00</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-400">Argument \(\theta = \arg(z)\) :</span>
+                <span id="argDisplay" class="text-amber-300 font-bold">53.1° (0.93 rad)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sliders -->
+          <div class="space-y-3 bg-white p-4 rounded-xl border border-slate-200">
+            <div>
+              <div class="flex justify-between text-xs font-mono text-slate-700 mb-1">
+                <span>Partie réelle \( a \)</span>
+                <span id="aSliderVal">3</span>
+              </div>
+              <input id="aSlider" type="range" min="-5" max="5" step="0.5" value="3" class="w-full accent-blue-600 cursor-pointer">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-mono text-slate-700 mb-1">
+                <span>Partie imaginaire \( b \)</span>
+                <span id="bSliderVal">4</span>
+              </div>
+              <input id="bSlider" type="range" min="-5" max="5" step="0.5" value="4" class="w-full accent-purple-600 cursor-pointer">
+            </div>
+          </div>
+
+          <!-- Presets -->
+          <div class="flex flex-wrap gap-2">
+            <button onclick="setComplexPreset(3, 4)" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-xs font-mono text-slate-700 border border-slate-200">\( (3, 4) \)</button>
+            <button onclick="setComplexPreset(-2, 3)" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-xs font-mono text-slate-700 border border-slate-200">\( (-2, 3) \)</button>
+            <button onclick="setComplexPreset(0, 4)" class="px-3 py-1.5 rounded-lg bg-purple-50 hover:bg-purple-100 text-xs font-mono text-purple-700 border border-purple-200">Pur imaginaire \( 4i \)</button>
+            <button onclick="setComplexPreset(4, 0)" class="px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-xs font-mono text-blue-700 border border-blue-200">Réel pur \( 4 \)</button>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STEP 4: FORMALIZATION -->
+    <section id="step4" class="light-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-mono text-sm font-bold flex items-center justify-center">4</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Formalisation Mathématique</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+          <div class="text-xs font-mono text-blue-600 uppercase font-bold">Forme Algébrique</div>
+          <div class="text-xl font-space font-bold text-slate-900">\[ z = a + i b \]</div>
+          <p class="text-xs text-slate-500">Où \( a, b \in \mathbb{R} \).</p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+          <div class="text-xs font-mono text-purple-600 uppercase font-bold">Partie Réelle & Imaginaire</div>
+          <div class="text-sm font-mono text-slate-800">
+            \[ \text{Re}(z) = a \quad | \quad \text{Im}(z) = b \]
+          </div>
+          <p class="text-xs text-amber-700 font-medium bg-amber-50 p-2 rounded-lg border border-amber-200">⚠️ La partie imaginaire est le réel \( b \), sans le \( i \).</p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+          <div class="text-xs font-mono text-cyan-600 uppercase font-bold">Module (Distance)</div>
+          <div class="text-lg font-space font-bold text-slate-900">\[ |z| = \sqrt{a^2 + b^2} \]</div>
+          <p class="text-xs text-slate-500">Longueur du segment \([Oz]\) par le théorème de Pythagore.</p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+          <div class="text-xs font-mono text-pink-600 uppercase font-bold">Conjugué Complexe</div>
+          <div class="text-lg font-space font-bold text-slate-900">\[ \bar{z} = a - i b \]</div>
+          <p class="text-xs text-slate-500">Symétrique par rapport à l'axe réel.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STEP 5: GUIDED PRACTICE QUIZ -->
+    <section id="step5" class="light-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-mono text-sm font-bold flex items-center justify-center">5</span>
+          <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Entraînement Guidé</h2>
+        </div>
+        <span class="text-xs font-mono text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Correction immédiate</span>
+      </div>
+
+      <div id="quizContainer" class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-6">
+        
+        <div class="flex items-center justify-between">
+          <span id="quizStepText" class="text-xs font-mono text-slate-500">Question 1 / 3</span>
+          <span id="quizScoreText" class="text-xs font-mono text-amber-600 font-bold">+50 XP par réponse</span>
+        </div>
+
+        <div id="quizQuestion" class="text-base sm:text-lg font-space font-semibold text-slate-900"></div>
+
+        <div id="quizHint" class="hidden p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs font-mono text-amber-800">
+          💡 <strong>Indice :</strong> <span id="hintText"></span>
+        </div>
+
+        <div id="quizOptions" class="grid sm:grid-cols-2 gap-3"></div>
+
+        <div id="quizFeedback" class="hidden p-4 rounded-xl text-xs sm:text-sm font-mono transition-all"></div>
+
+        <div class="flex justify-between items-center pt-2">
+          <button id="hintBtn" onclick="toggleHint()" class="text-xs font-mono text-slate-500 hover:text-amber-600 underline">
+            💡 Besoin d'un indice ?
+          </button>
+          <button id="nextQuizBtn" onclick="nextQuizQuestion()" class="hidden btn-gradient px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-white">
+            Question suivante ➔
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STEP 6: COMMON MISTAKES -->
+    <section id="step6" class="light-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-rose-100 text-rose-700 font-mono text-sm font-bold flex items-center justify-center">6</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Les Pièges Classiques au Bac</h2>
+      </div>
+
+      <div class="space-y-4">
+        
+        <div class="bg-rose-50/50 p-4 rounded-xl border border-rose-200 space-y-2">
+          <div class="flex items-center gap-2 text-rose-700 font-bold text-sm">
+            <span>❌ Piège n°1 : Inclure le \( i \) dans la partie imaginaire</span>
+          </div>
+          <p class="text-xs text-slate-600">
+            Pour \( z = 4 + 5i \), dire que \(\text{Im}(z) = 5i\) est <strong>FAUX</strong>.
+          </p>
+          <div class="text-xs font-mono text-emerald-800 bg-emerald-50 p-2 rounded-lg border border-emerald-200">
+            ✅ Règle : La partie imaginaire est un nombre RÉEL. Donc \(\text{Im}(z) = 5\).
+          </div>
+        </div>
+
+        <div class="bg-rose-50/50 p-4 rounded-xl border border-rose-200 space-y-2">
+          <div class="flex items-center gap-2 text-rose-700 font-bold text-sm">
+            <span>❌ Piège n°2 : Écrire \( i = \sqrt{-1} \) dans une démonstration</span>
+          </div>
+          <p class="text-xs text-slate-600">
+            La fonction racine carrée \(\sqrt{x}\) n'est définie que sur \([0, +\infty[\).
+          </p>
+          <div class="text-xs font-mono text-emerald-800 bg-emerald-50 p-2 rounded-lg border border-emerald-200">
+            ✅ Règle : Définissez le nombre \( i \) par la propriété fondamentale : \( i^2 = -1 \).
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STEP 7: FINAL CHALLENGE -->
+    <section id="step7" class="light-card-glow p-6 sm:p-8 text-center space-y-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 font-mono text-xs">
+        🏆 Mission Ultime
+      </div>
+
+      <h2 class="text-2xl sm:text-3xl font-space font-extrabold text-slate-900">Le Décodeur Complexe</h2>
+      <p class="text-slate-600 max-w-xl mx-auto text-sm">
+        Résolvez cette énigme finale pour obtenir votre badge de maîtrise !
+      </p>
+
+      <div id="finalChallengeBox" class="bg-slate-50 p-6 rounded-2xl border border-slate-200 max-w-lg mx-auto space-y-4 text-left">
+        <div class="text-sm font-space text-slate-900 font-semibold">
+          Soit le nombre complexe \( z = -1 + i\sqrt{3} \).<br>
+          Quel est le module \( |z| \) de ce nombre ?
+        </div>
+
+        <div class="space-y-2 font-mono text-xs sm:text-sm">
+          <label class="flex items-center gap-3 p-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 cursor-pointer">
+            <input type="radio" name="finalOption" value="1" class="accent-blue-600">
+            <span>\( |z| = 1 \)</span>
+          </label>
+
+          <label class="flex items-center gap-3 p-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 cursor-pointer">
+            <input type="radio" name="finalOption" value="2" class="accent-blue-600">
+            <span>\( |z| = 2 \)</span>
+          </label>
+
+          <label class="flex items-center gap-3 p-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 cursor-pointer">
+            <input type="radio" name="finalOption" value="4" class="accent-blue-600">
+            <span>\( |z| = 4 \)</span>
+          </label>
+        </div>
+
+        <button onclick="submitFinalChallenge()" class="w-full btn-gradient py-3 rounded-xl font-bold text-white shadow-md text-sm">
+          Valider ma réponse !
+        </button>
+
+        <div id="finalFeedback" class="hidden p-3 rounded-xl text-xs font-mono"></div>
+      </div>
+
+      <div id="celebrationCard" class="hidden bg-emerald-50 p-8 rounded-3xl border border-emerald-200 max-w-lg mx-auto space-y-4 text-center">
+        <div class="text-5xl animate-bounce">🎓</div>
+        <h3 class="text-2xl font-space font-bold text-emerald-900">Félicitations !</h3>
+        <p class="text-sm text-emerald-800">
+          Vous avez maîtrisé cette leçon et gagné <span class="font-bold font-mono">+200 XP</span> !
+        </p>
+        <div class="inline-block px-4 py-2 rounded-2xl bg-emerald-100 text-emerald-800 font-mono text-xs border border-emerald-300 font-bold">
+          Badge Débloqué : 🔮 Maître de la Dimension i
+        </div>
+      </div>
+    </section>
+
+    <!-- LESSON SUMMARY -->
+    <section class="light-card p-6 sm:p-8 space-y-4">
+      <h2 class="text-lg font-space font-bold text-slate-900 flex items-center gap-2">
+        <span class="text-blue-600">📌</span> Aujourd'hui, vous avez appris :
+      </h2>
+
+      <ul class="space-y-2 text-sm text-slate-700">
+        <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Le nombre \( i \) est tel que \( i^2 = -1 \).</li>
+        <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Forme algébrique : \( z = a + ib \) avec \( \text{Re}(z)=a \) et \( \text{Im}(z)=b \).</li>
+        <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Multiplier par \( i \) effectue une rotation de 90° dans le plan complexe.</li>
+        <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Module : \( |z| = \sqrt{a^2+b^2} \).</li>
+      </ul>
+    </section>
+
+    <!-- NEXT LESSON FOOTER CALLOUT -->
+    <section class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 sm:p-8 rounded-3xl border border-blue-200 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2 text-center md:text-left">
+        <div class="text-xs font-mono text-blue-600 uppercase font-bold">Leçon Suivante</div>
+        <h3 class="text-xl font-space font-bold text-slate-900">Forme Trigonométrique et Formule d'Euler</h3>
+        <p class="text-xs text-slate-600">Passez aux coordonnées polaires \( z = r e^{i\theta} \).</p>
+      </div>
+
+      <a href="../nombres-complexes-forme-trigonometrique/index.html" class="btn-gradient px-6 py-3 rounded-xl font-semibold text-white text-sm whitespace-nowrap flex items-center gap-2">
+        Continuer
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER (Matching Site Footer) -->
+  <footer class="border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 mt-12">
+    <div class="max-w-7xl mx-auto px-4 space-y-2">
+      <p>© 2026 Abdennour BOUHOUNALI — Professeur de Mathématiques. Tous droits réservés.</p>
+      <p class="font-mono text-[10px] text-slate-400">Plateforme d'apprentissage interactive et autonome</p>
+    </div>
+  </footer>
+
+  <!-- KaTeX JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <!-- INTERACTIVE LOGIC -->
+  <script>
+    let currentXP = 0;
+    let soundEnabled = true;
+    let currentRotationAngle = 0;
+
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    
+    function playTone(freq, type = 'sine', duration = 0.15) {
+      if (!soundEnabled) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function playSuccessSound() {
+      playTone(523.25, 'triangle', 0.1);
+      setTimeout(() => playTone(659.25, 'triangle', 0.1), 100);
+      setTimeout(() => playTone(783.99, 'triangle', 0.25), 200);
+    }
+
+    function playErrorSound() {
+      playTone(220, 'sawtooth', 0.2);
+    }
+
+    function addXP(amount) {
+      currentXP += amount;
+      document.getElementById('xpCount').textContent = currentXP;
+      updateProgressBar();
+    }
+
+    function updateProgressBar() {
+      const totalScrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const currentScroll = window.scrollY;
+      const scrollPercent = Math.min(100, Math.round((currentScroll / (totalScrollable || 1)) * 100));
+      const xpBonusPercent = Math.min(40, Math.round(currentXP / 5));
+      const finalPercent = Math.min(100, Math.max(scrollPercent, xpBonusPercent));
+
+      document.getElementById('progressBar').style.width = finalPercent + '%';
+    }
+
+    window.addEventListener('scroll', updateProgressBar);
+
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    }
+
+    // Step 1
+    function testEquationValue(val) {
+      playTone(400, 'sine', 0.1);
+      const fb = document.getElementById('equationFeedback');
+      fb.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800');
+      fb.classList.add('bg-rose-50', 'border', 'border-rose-200', 'text-rose-800');
+      const res = val * val;
+      fb.innerHTML = `❌ <strong>Échec :</strong> Pour \( x = ${val} \), \( x^2 = ${res} \neq -1 \). Un carré réel est toujours positif !`;
+      renderMathInElement(fb);
+    }
+
+    function solveImpossibleEquation() {
+      playSuccessSound();
+      addXP(50);
+      const fb = document.getElementById('equationFeedback');
+      fb.classList.remove('hidden', 'bg-rose-50', 'text-rose-800');
+      fb.classList.add('bg-emerald-50', 'border', 'border-emerald-200', 'text-emerald-800');
+      fb.innerHTML = `✨ <strong>L'invention géniale :</strong> On invente un nombre imaginaire <strong>\( i \)</strong> tel que <strong>\( i^2 = -1 \)</strong> ! (+50 XP)`;
+      renderMathInElement(fb);
+    }
+
+    // Step 2
+    function rotateQuarterTurn() {
+      playTone(600, 'sine', 0.1);
+      currentRotationAngle = (currentRotationAngle - 90) % 360;
+      
+      const vec = document.getElementById('rotatingVector');
+      const head = document.getElementById('vectorHead');
+      
+      const rad = (currentRotationAngle * Math.PI) / 180;
+      const x = 70 * Math.cos(rad);
+      const y = 70 * Math.sin(rad);
+
+      vec.setAttribute('x2', x);
+      vec.setAttribute('y2', y);
+      head.setAttribute('cx', x);
+      head.setAttribute('cy', y);
+
+      const posMap = {
+        0: { text: "1", math: "1 \\cdot i = i" },
+        "-90": { text: "i", math: "i \\cdot i = i^2 = -1" },
+        "-180": { text: "-1", math: "-1 \\cdot i = -i" },
+        "-270": { text: "-i", math: "-i \\cdot i = 1" }
+      };
+
+      const key = (currentRotationAngle % 360).toString();
+      const info = posMap[key] || posMap["0"];
+
+      const exp = document.getElementById('rotationExplanation');
+      exp.innerHTML = `🔄 Position : <strong>${info.text}</strong> | Opération : \( ${info.math} \)`;
+      renderMathInElement(exp);
+      addXP(10);
+    }
+
+    // Step 3 Argand Canvas
+    const canvas = document.getElementById('complexPlaneCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    let zA = 3;
+    let zB = 4;
+    const scale = 30;
+    const originX = canvas.width / 2;
+    const originY = canvas.height / 2;
+
+    function drawArgandPlane() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.strokeStyle = '#E2E8F0';
+      ctx.lineWidth = 1;
+      for (let x = 0; x <= canvas.width; x += scale) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+      }
+      for (let y = 0; y <= canvas.height; y += scale) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+      }
+
+      ctx.strokeStyle = '#94A3B8';
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(0, originY); ctx.lineTo(canvas.width, originY); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(originX, 0); ctx.lineTo(originX, canvas.height); ctx.stroke();
+
+      ctx.fillStyle = '#64748B';
+      ctx.font = '11px JetBrains Mono';
+      ctx.fillText('Re', canvas.width - 25, originY - 8);
+      ctx.fillText('Im', originX + 8, 18);
+
+      const targetX = originX + zA * scale;
+      const targetY = originY - zB * scale;
+
+      ctx.setLineDash([4, 4]);
+      ctx.strokeStyle = '#3B82F6';
+      ctx.beginPath(); ctx.moveTo(targetX, originY); ctx.lineTo(targetX, targetY); ctx.stroke();
+      
+      ctx.strokeStyle = '#8B5CF6';
+      ctx.beginPath(); ctx.moveTo(originX, targetY); ctx.lineTo(targetX, targetY); ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.strokeStyle = '#0284C7';
+      ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(originX, originY); ctx.lineTo(targetX, targetY); ctx.stroke();
+
+      ctx.fillStyle = '#2563EB';
+      ctx.beginPath(); ctx.arc(targetX, targetY, 7, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = '#FFFFFF';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      ctx.fillStyle = '#0F172A';
+      ctx.font = 'bold 13px Space Grotesk';
+      ctx.fillText(`z (${zA}, ${zB}i)`, targetX + 10, targetY - 10);
+    }
+
+    function updateComplexFromState() {
+      drawArgandPlane();
+
+      document.getElementById('aSliderVal').textContent = zA;
+      document.getElementById('bSliderVal').textContent = zB;
+      document.getElementById('aSlider').value = zA;
+      document.getElementById('bSlider').value = zB;
+
+      const sign = zB >= 0 ? '+' : '-';
+      const absB = Math.abs(zB);
+      const bStr = absB === 1 ? 'i' : `${absB}i`;
+      const zStr = zB === 0 ? `${zA}` : zA === 0 ? (zB === 1 ? 'i' : zB === -1 ? '-i' : `${zB}i`) : `${zA} ${sign} ${bStr}`;
+
+      const zDisp = document.getElementById('zAlgebraicDisplay');
+      zDisp.innerHTML = `\( z = ${zStr} \)`;
+      
+      document.getElementById('reDisplay').textContent = zA;
+      document.getElementById('imDisplay').textContent = zB;
+
+      const mod = Math.sqrt(zA * zA + zB * zB);
+      document.getElementById('modDisplay').textContent = mod.toFixed(2);
+
+      const rad = Math.atan2(zB, zA);
+      const deg = Math.round((rad * 180 / Math.PI + 360) % 360);
+      document.getElementById('argDisplay').textContent = `${deg}° (${rad.toFixed(2)} rad)`;
+
+      renderMathInElement(zDisp);
+    }
+
+    function setComplexPreset(a, b) {
+      zA = a; zB = b;
+      playTone(500, 'sine', 0.08);
+      updateComplexFromState();
+      addXP(5);
+    }
+
+    let isDragging = false;
+    function handlePointer(e) {
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+      let a = (clientX - rect.left - originX) / scale;
+      let b = -(clientY - rect.top - originY) / scale;
+
+      zA = Math.min(5, Math.max(-5, Math.round(a * 2) / 2));
+      zB = Math.min(5, Math.max(-5, Math.round(b * 2) / 2));
+
+      updateComplexFromState();
+    }
+
+    canvas.addEventListener('mousedown', (e) => { isDragging = true; handlePointer(e); });
+    window.addEventListener('mousemove', (e) => { if (isDragging) handlePointer(e); });
+    window.addEventListener('mouseup', () => { isDragging = false; });
+    canvas.addEventListener('touchstart', (e) => { isDragging = true; handlePointer(e); }, {passive: true});
+    window.addEventListener('touchmove', (e) => { if (isDragging) handlePointer(e); }, {passive: true});
+    window.addEventListener('touchend', () => { isDragging = false; });
+
+    document.getElementById('aSlider').addEventListener('input', (e) => { zA = parseFloat(e.target.value); updateComplexFromState(); });
+    document.getElementById('bSlider').addEventListener('input', (e) => { zB = parseFloat(e.target.value); updateComplexFromState(); });
+
+    // Step 5 Quiz
+    const quizData = [
+      {
+        question: "Pour le nombre complexe \\( z = 4 - 3i \\), quelle est sa partie imaginaire \\( \\text{Im}(z) \\) ?",
+        options: ["-3", "-3i", "4", "3"],
+        correct: 0,
+        hint: "La partie imaginaire est le coefficient réel devant le i, sans le i !"
+      },
+      {
+        question: "Quel est le résultat de \\( (2 + 3i) + (1 - 5i) \\) ?",
+        options: ["\\( 3 - 2i \\)", "\\( 3 + 8i \\)", "\\( 2 - 15i \\)", "\\( 3 - 5i \\)"],
+        correct: 0,
+        hint: "Additionnez (2 + 1) et (3 - 5)."
+      },
+      {
+        question: "Calculer le module \\( |z| \\) de \\( z = 3 + 4i \\).",
+        options: ["5", "7", "25", "1"],
+        correct: 0,
+        hint: "\\( |z| = \\sqrt{3^2 + 4^2} \\)."
+      }
+    ];
+
+    let currentQuizIndex = 0;
+
+    function renderQuiz() {
+      const q = quizData[currentQuizIndex];
+      document.getElementById('quizStepText').textContent = `Question ${currentQuizIndex + 1} / ${quizData.length}`;
+      document.getElementById('quizQuestion').innerHTML = q.question;
+      
+      const optContainer = document.getElementById('quizOptions');
+      optContainer.innerHTML = '';
+
+      document.getElementById('hintText').textContent = q.hint;
+      document.getElementById('quizHint').classList.add('hidden');
+      document.getElementById('quizFeedback').classList.add('hidden');
+      document.getElementById('nextQuizBtn').classList.add('hidden');
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'p-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs sm:text-sm font-mono text-left transition-all';
+        btn.innerHTML = opt;
+        btn.onclick = () => checkQuizAnswer(idx);
+        optContainer.appendChild(btn);
+      });
+
+      renderMathInElement(document.getElementById('quizContainer'));
+    }
+
+    function checkQuizAnswer(selectedIdx) {
+      const q = quizData[currentQuizIndex];
+      const fb = document.getElementById('quizFeedback');
+      fb.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'bg-rose-50', 'text-rose-800');
+
+      if (selectedIdx === q.correct) {
+        playSuccessSound();
+        addXP(50);
+        fb.classList.add('bg-emerald-50', 'border', 'border-emerald-200', 'text-emerald-800');
+        fb.innerHTML = `🎉 <strong>Excellente réponse !</strong> +50 XP gagnés.`;
+        document.getElementById('nextQuizBtn').classList.remove('hidden');
+      } else {
+        playErrorSound();
+        fb.classList.add('bg-rose-50', 'border', 'border-rose-200', 'text-rose-800');
+        fb.innerHTML = `❌ <strong>Pas tout à fait.</strong> Réessayez ou lisez l'indice !`;
+      }
+      renderMathInElement(fb);
+    }
+
+    function toggleHint() {
+      playTone(450, 'sine', 0.08);
+      document.getElementById('quizHint').classList.toggle('hidden');
+      renderMathInElement(document.getElementById('quizHint'));
+    }
+
+    function nextQuizQuestion() {
+      currentQuizIndex = (currentQuizIndex + 1) % quizData.length;
+      renderQuiz();
+    }
+
+    // Step 7 Final Challenge
+    function submitFinalChallenge() {
+      const selected = document.querySelector('input[name="finalOption"]:checked');
+      const fb = document.getElementById('finalFeedback');
+      fb.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'bg-rose-50', 'text-rose-800');
+
+      if (!selected) {
+        fb.classList.add('bg-amber-50', 'text-amber-800');
+        fb.textContent = "Veuillez sélectionner une option.";
+        return;
+      }
+
+      if (selected.value === "2") {
+        playSuccessSound();
+        addXP(200);
+        triggerConfetti();
+        document.getElementById('finalChallengeBox').classList.add('hidden');
+        document.getElementById('celebrationCard').classList.remove('hidden');
+      } else {
+        playErrorSound();
+        fb.classList.add('bg-rose-50', 'border', 'border-rose-200', 'text-rose-800');
+        fb.innerHTML = `❌ <strong>Erreur :</strong> \( |z| = \\sqrt{(-1)^2 + (\\sqrt{3})^2} = \\sqrt{4} = 2 \).`;
+        renderMathInElement(fb);
+      }
+    }
+
+    function triggerConfetti() {
+      for (let i = 0; i < 40; i++) {
+        const c = document.createElement('div');
+        c.className = 'confetti';
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.backgroundColor = ['#3B82F6', '#8B5CF6', '#0284C7', '#F59E0B', '#10B981'][Math.floor(Math.random() * 5)];
+        c.style.animationDelay = Math.random() * 0.5 + 's';
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 2500);
+      }
+    }
+
+    document.getElementById('soundToggle').addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      document.getElementById('soundIconOn').style.opacity = soundEnabled ? '1' : '0.3';
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '\\[', right: '\\]', display: true},
+          {left: '\\(', right: '\\)', display: false}
+        ]
+      });
+
+      updateComplexFromState();
+      renderQuiz();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="fr" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Nombres Décimaux : Au-delà des Entiers | 6ème • Smarter</title>
+  <meta name="description" content="Découvrez les nombres décimaux en 6ème. Manipulez la droite graduée zoomable, identifiez les dixièmes et centièmes, et évitez les pièges classiques.">
+  <meta name="keywords" content="nombres décimaux, 6ème, cycle 3, dixièmes, centièmes, millièmes, droite graduée, maths collège">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- KaTeX CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Smarter Shared Framework Styles & JS -->
+  <link rel="stylesheet" href="/smarter-ui/lesson.css">
+  <script src="/smarter-ui/lesson.js" defer></script>
+</head>
+<body class="min-h-screen flex flex-col justify-between pt-16">
+
+  <!-- NAVBAR HEADER -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center font-space font-bold text-white text-sm" style="background: linear-gradient(135deg, #3B82F6, #8B5CF6);">
+            AB
+          </div>
+          <div class="hidden sm:flex flex-col">
+            <span class="font-space font-bold text-slate-900 text-sm leading-none">
+              Abdennour BOUHOUNALI
+            </span>
+            <span class="font-mono text-[10px] text-blue-600 font-semibold mt-0.5">
+              Professeur de Mathématiques
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="/" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">Accueil</a>
+          <a href="/about" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">Présentation</a>
+          <a href="/courses" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-blue-600 bg-blue-50 font-semibold">Cours de maths</a>
+          <a href="/resources" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">Ressources</a>
+          <a href="/faq" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">FAQ</a>
+          <a href="/contact" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">Contact</a>
+        </div>
+
+        <!-- Gamification Widgets -->
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 font-mono text-xs font-bold">
+            <svg class="w-4 h-4 text-amber-500 fill-amber-500" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            <span id="xpCount">0</span> XP
+          </div>
+
+          <button id="soundToggle" aria-label="Activer/Désactiver le son" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-600">
+            <svg id="soundIconOn" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+          </button>
+
+          <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Progress Line -->
+    <div class="w-full h-1 bg-slate-100">
+      <div id="progressBar" class="h-full bg-gradient-to-r from-blue-500 to-purple-600 w-0 transition-all duration-300"></div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full space-y-10">
+
+    <!-- BREADCRUMB -->
+    <nav class="flex items-center gap-2 text-xs font-mono text-slate-500">
+      <a href="/" class="hover:text-blue-600">Accueil</a>
+      <span>/</span>
+      <a href="/courses" class="hover:text-blue-600">Collège (6ème)</a>
+      <span>/</span>
+      <span class="text-slate-900 font-semibold">Les Nombres Décimaux</span>
+    </nav>
+
+    <!-- HERO HEADER -->
+    <section class="text-center space-y-4 py-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs uppercase tracking-wider font-semibold">
+        <span>📘 Cycle 3 • 6ème</span>
+        <span>•</span>
+        <span>⏱️ 20 min</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-space font-extrabold tracking-tight text-slate-900 leading-tight">
+        Les Nombres Décimaux : <br>
+        <span class="gradient-text">Au-delà des Entiers</span>
+      </h1>
+
+      <p class="text-slate-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+        Comment mesurer ce qui se trouve entre deux nombres entiers ? Explorez la virgule et la droite graduée grâce aux dixièmes et centièmes !
+      </p>
+    </section>
+
+    <!-- PREREQUISITES & OBJECTIVES CARD -->
+    <section class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="grid md:grid-cols-2 gap-6">
+        
+        <!-- Avant de commencer -->
+        <div class="space-y-3">
+          <h2 class="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold flex items-center gap-2">
+            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Avant de commencer (Prérequis)
+          </h2>
+          <ul class="space-y-2 text-sm text-slate-700">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Nombres entiers ($0, 1, 2, 3...$)</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Rang des chiffres (unités, dizaines, centaines)</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-600"></span> Additions simples</li>
+          </ul>
+        </div>
+
+        <!-- Objectifs -->
+        <div class="space-y-3 border-t md:border-t-0 md:border-l border-slate-200 pt-4 md:pt-0 md:pl-6">
+          <h2 class="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold flex items-center gap-2">
+            <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Aujourd'hui, vous allez apprendre :
+          </h2>
+          <ul class="space-y-2 text-sm text-slate-700">
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> La nécessité des nombres à virgule.</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> Identifier partie entière et partie décimale.</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> Repérer un décimal sur une droite graduée.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STEP 1: HOOK -->
+    <section id="step1" class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 font-mono text-sm font-bold flex items-center justify-center">1</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Le Problème du Partage</h2>
+      </div>
+
+      <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+        Imaginez que vous deviez partager équitablement <strong>1 euro</strong> entre 2 amis. Combien chacun reçoit-il ?
+      </p>
+
+      <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center space-y-4">
+        <div class="text-xl font-mono text-blue-900 font-bold">
+          \( 1 \text{ €} \div 2 = \text{?} \)
+        </div>
+        <p class="text-xs sm:text-sm text-slate-500">Peut-on exprimer cette somme avec un seul nombre entier ?</p>
+        
+        <div class="flex flex-wrap justify-center gap-3 pt-2">
+          <button onclick="testHookAnswer(0)" class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-mono text-xs sm:text-sm">
+            0 € (Rien)
+          </button>
+          <button onclick="testHookAnswer(1)" class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-mono text-xs sm:text-sm">
+            1 € (Tout)
+          </button>
+          <button onclick="solveHook()" class="btn-gradient px-5 py-2 rounded-xl text-white font-medium text-xs sm:text-sm">
+            ✨ Utiliser la virgule (0.50 €)
+          </button>
+        </div>
+
+        <div id="hookFeedback" class="hidden p-4 rounded-xl text-xs sm:text-sm font-mono text-left transition-all"></div>
+      </div>
+    </section>
+
+    <!-- STEP 2: DISCOVERY (DROITE GRADUÉE ZOOMABLE) -->
+    <section id="step2" class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 font-mono text-sm font-bold flex items-center justify-center">2</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">La Droite Graduée Interactive</h2>
+      </div>
+
+      <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+        Déplacez le curseur ci-dessous pour zoomer entre les entiers 3 et 4 et découvrir les <strong>dixièmes</strong> (\(0.1\)) et <strong>centièmes</strong> (\(0.01\)) !
+      </p>
+
+      <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-6">
+        
+        <!-- Slider -->
+        <div class="space-y-2">
+          <div class="flex justify-between text-xs font-mono text-slate-700 font-bold">
+            <span>Position sur la droite :</span>
+            <span id="sliderValDisplay" class="text-blue-600 text-base">3.40</span>
+          </div>
+          <input id="lineSlider" type="range" min="3.00" max="4.00" step="0.05" value="3.40" class="w-full accent-blue-600 cursor-pointer">
+        </div>
+
+        <!-- Visual Number Line Canvas -->
+        <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-col items-center">
+          <canvas id="numberLineCanvas" width="500" height="100" class="w-full max-w-[500px] h-auto bg-slate-50 border border-slate-100 rounded-lg"></canvas>
+          <p class="text-[11px] text-slate-400 mt-2 font-mono">Chaque grand trait vaut 1 dixième (\(0.1\)), chaque petit trait vaut 1 centième (\(0.01\)).</p>
+        </div>
+
+        <div id="sliderExplanation" class="bg-white p-4 rounded-xl text-center text-xs sm:text-sm font-mono text-blue-900 border border-slate-200">
+          \( 3.40 = 3 + \frac{4}{10} \) (3 unités et 4 dixièmes)
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STEP 3: INTUITION (LE DÉCOMPOSEUR DE RANG) -->
+    <section id="step3" class="smarter-card-glow p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-cyan-100 text-cyan-700 font-mono text-sm font-bold flex items-center justify-center">3</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Le Tableau de Numération Décimale</h2>
+      </div>
+
+      <p class="text-slate-600 leading-relaxed text-sm">
+        Entrez un nombre décimal pour voir comment ses chiffres se répartissent de part et d'autre de la virgule :
+      </p>
+
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-6">
+        
+        <!-- Input -->
+        <div class="flex items-center justify-center gap-3">
+          <label class="text-xs font-mono font-bold text-slate-700">Entrez un nombre :</label>
+          <input id="numInput" type="number" step="0.001" value="14.35" class="px-3 py-1.5 rounded-xl border border-slate-300 font-mono text-sm text-slate-900 w-32 focus:ring-2 focus:ring-blue-500">
+          <button onclick="decomposeNumber()" class="btn-gradient px-3 py-1.5 rounded-xl text-xs font-medium">Décomposer</button>
+        </div>
+
+        <!-- Decomposer Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-center font-mono text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700">
+                <th colspan="2" class="p-2 border border-slate-200 bg-blue-50 text-blue-800">Partie Entière</th>
+                <th class="p-2 border border-slate-200 bg-amber-100 text-amber-900">,</th>
+                <th colspan="3" class="p-2 border border-slate-200 bg-purple-50 text-purple-800">Partie Décimale</th>
+              </tr>
+              <tr class="bg-slate-50 text-slate-500">
+                <th class="p-2 border border-slate-200">Dizaines</th>
+                <th class="p-2 border border-slate-200">Unités</th>
+                <th class="p-2 border border-slate-200 text-amber-600 font-bold">Virgule</th>
+                <th class="p-2 border border-slate-200">Dixièmes (\(\frac{1}{10}\))</th>
+                <th class="p-2 border border-slate-200">Centièmes (\(\frac{1}{100}\))</th>
+                <th class="p-2 border border-slate-200">Millièmes (\(\frac{1}{1000}\))</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-sm font-bold text-slate-900 bg-white">
+                <td id="tDiz" class="p-3 border border-slate-200 text-blue-600">1</td>
+                <td id="tUni" class="p-3 border border-slate-200 text-blue-600">4</td>
+                <td class="p-3 border border-slate-200 text-amber-500 text-lg">,</td>
+                <td id="tDix" class="p-3 border border-slate-200 text-purple-600">3</td>
+                <td id="tCent" class="p-3 border border-slate-200 text-purple-600">5</td>
+                <td id="tMil" class="p-3 border border-slate-200 text-purple-600">0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="decomposeResult" class="bg-slate-50 p-4 rounded-xl text-center text-xs font-mono text-slate-800">
+          \( 14.35 = 14 + \frac{3}{10} + \frac{5}{100} \)
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STEP 4: FORMALIZATION -->
+    <section id="step4" class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-mono text-sm font-bold flex items-center justify-center">4</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Définitions Mathématiques</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+          <div class="text-xs font-mono text-blue-600 uppercase font-bold">Un nombre décimal</div>
+          <p class="text-xs text-slate-700 leading-relaxed">
+            Un nombre qui s'écrit avec un nombre fini de chiffres après la virgule. Il possède une <strong>partie entière</strong> et une <strong>partie décimale</strong>.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+          <div class="text-xs font-mono text-purple-600 uppercase font-bold">Fractions décimales</div>
+          <div class="text-xs font-mono text-slate-800 space-y-1">
+            <p>1 dixième = \( \frac{1}{10} = 0,1 \)</p>
+            <p>1 centième = \( \frac{1}{100} = 0,01 \)</p>
+            <p>1 millième = \( \frac{1}{1000} = 0,001 \)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 5: GUIDED PRACTICE QUIZ -->
+    <section id="step5" class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-mono text-sm font-bold flex items-center justify-center">5</span>
+          <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Quiz d'Entraînement</h2>
+        </div>
+        <span class="text-xs font-mono text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Correction immédiate</span>
+      </div>
+
+      <div id="quizContainer" class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-6">
+        <div class="flex items-center justify-between">
+          <span id="quizStepText" class="text-xs font-mono text-slate-500">Question 1 / 3</span>
+          <span class="text-xs font-mono text-amber-600 font-bold">+40 XP par réponse</span>
+        </div>
+
+        <div id="quizQuestion" class="text-base font-space font-semibold text-slate-900"></div>
+
+        <div id="quizHint" class="hidden p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs font-mono text-amber-800">
+          💡 <strong>Indice :</strong> <span id="hintText"></span>
+        </div>
+
+        <div id="quizOptions" class="grid sm:grid-cols-2 gap-3"></div>
+        <div id="quizFeedback" class="hidden p-4 rounded-xl text-xs sm:text-sm font-mono"></div>
+
+        <div class="flex justify-between items-center pt-2">
+          <button onclick="toggleHint()" class="text-xs font-mono text-slate-500 hover:text-amber-600 underline">💡 Indice</button>
+          <button id="nextQuizBtn" onclick="nextQuizQuestion()" class="hidden btn-gradient px-4 py-2 rounded-xl text-xs font-medium text-white">Suivant ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 6: MISCONCEPTIONS -->
+    <section id="step6" class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-rose-100 text-rose-700 font-mono text-sm font-bold flex items-center justify-center">6</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Le Piège de la Longueur !</h2>
+      </div>
+
+      <div class="bg-rose-50/60 p-5 rounded-2xl border border-rose-200 space-y-3">
+        <div class="flex items-center gap-2 text-rose-700 font-bold text-sm">
+          <span>❌ Erreur fréquente : "3.38 est plus grand que 3.4 car 38 > 4"</span>
+        </div>
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Un nombre décimal plus long n'est pas forcément plus grand !
+        </p>
+        <div class="text-xs font-mono text-emerald-800 bg-emerald-50 p-3 rounded-xl border border-emerald-200">
+          ✅ Astuce : Rajoutez des zéros inutiles pour avoir le même nombre de chiffres après la virgule !<br>
+          \( 3,4 = 3,40 \). Or \( 3,40 > 3,38 \) (40 centièmes est plus grand que 38 centièmes).
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 7: FINAL MISSION & COMPLETION -->
+    <section id="step7" class="smarter-card-glow p-6 sm:p-8 text-center space-y-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 font-mono text-xs">
+        🏆 Mission Ultime : Le Code Décimal
+      </div>
+
+      <h2 class="text-2xl font-space font-extrabold text-slate-900">Le Code Mystère</h2>
+      <p class="text-slate-600 max-w-xl mx-auto text-sm">
+        Quel est le nombre décimal composé de <strong>5 unités</strong>, <strong>3 dixièmes</strong> et <strong>8 centièmes</strong> ?
+      </p>
+
+      <div id="finalChallengeBox" class="bg-slate-50 p-6 rounded-2xl border border-slate-200 max-w-lg mx-auto space-y-4 text-left">
+        <div class="space-y-2 font-mono text-xs sm:text-sm">
+          <label class="flex items-center gap-3 p-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 cursor-pointer">
+            <input type="radio" name="finalOption" value="53.8" class="accent-blue-600">
+            <span>\( 53,8 \)</span>
+          </label>
+
+          <label class="flex items-center gap-3 p-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 cursor-pointer">
+            <input type="radio" name="finalOption" value="5.38" class="accent-blue-600">
+            <span>\( 5,38 \)</span>
+          </label>
+
+          <label class="flex items-center gap-3 p-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 cursor-pointer">
+            <input type="radio" name="finalOption" value="5.83" class="accent-blue-600">
+            <span>\( 5,83 \)</span>
+          </label>
+        </div>
+
+        <button onclick="submitFinalChallenge()" class="w-full btn-gradient py-3 rounded-xl font-bold text-white shadow-md text-sm">
+          Valider ma réponse !
+        </button>
+
+        <div id="finalFeedback" class="hidden p-3 rounded-xl text-xs font-mono"></div>
+      </div>
+
+      <!-- Completion Screen with 5 Stars -->
+      <div id="celebrationCard" class="hidden bg-emerald-50 p-8 rounded-3xl border border-emerald-200 max-w-lg mx-auto space-y-4 text-center">
+        <div class="text-amber-400 text-3xl tracking-widest font-bold">★★★★★</div>
+        <h3 class="text-2xl font-space font-bold text-emerald-900">Leçon Complétée !</h3>
+        <p class="text-sm text-emerald-800">
+          Bravo ! Vous avez gagné <span class="font-bold font-mono">+120 XP</span> et validé votre première leçon de 6ème.
+        </p>
+        <div class="inline-block px-4 py-2 rounded-2xl bg-emerald-100 text-emerald-800 font-mono text-xs border border-emerald-300 font-bold">
+          Badge Gagné : 🎖️ Explorateur des Décimaux
+        </div>
+      </div>
+    </section>
+
+    <!-- LESSON SUMMARY -->
+    <section class="smarter-card p-6 sm:p-8 space-y-4">
+      <h2 class="text-lg font-space font-bold text-slate-900 flex items-center gap-2">
+        <span class="text-blue-600">📌</span> Aujourd'hui, vous avez appris :
+      </h2>
+
+      <ul class="space-y-2 text-sm text-slate-700">
+        <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Les décimaux permettent d'exprimer des nombres entre deux entiers.</li>
+        <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Un dixième vaut \(0.1 = \frac{1}{10}\) et un centième vaut \(0.01 = \frac{1}{100}\).</li>
+        <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Pour comparer des décimaux, alignez le nombre de chiffres grâce aux zéros inutiles.</li>
+      </ul>
+    </section>
+
+    <!-- NEXT LESSON -->
+    <section class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 sm:p-8 rounded-3xl border border-blue-200 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2 text-center md:text-left">
+        <div class="text-xs font-mono text-blue-600 uppercase font-bold">Leçon Suivante (Module 1 - 6ème)</div>
+        <h3 class="text-xl font-space font-bold text-slate-900">Comparer et Ordonner les Décimaux</h3>
+        <p class="text-xs text-slate-600">Apprenez à ranger des listes de nombres décimaux dans l'ordre croissant et décroissant.</p>
+      </div>
+
+      <a href="../comparer-decimaux/index.html" class="btn-gradient px-6 py-3 rounded-xl font-semibold text-white text-sm whitespace-nowrap flex items-center gap-2">
+        Continuer
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 mt-12">
+    <div class="max-w-7xl mx-auto px-4 space-y-2">
+      <p>© 2026 Abdennour BOUHOUNALI — Professeur de Mathématiques. Tous droits réservés.</p>
+      <p class="font-mono text-[10px] text-slate-400">Plateforme d'apprentissage interactive et autonome</p>
+    </div>
+  </footer>
+
+  <!-- KaTeX JS -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <!-- LESSON SPECIFIC INTERACTION SCRIPT -->
+  <script>
+    function testHookAnswer(val) {
+      playTone(400, 'sine', 0.1);
+      const fb = document.getElementById('hookFeedback');
+      fb.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800');
+      fb.classList.add('bg-rose-50', 'border', 'border-rose-200', 'text-rose-800');
+      fb.innerHTML = `❌ <strong>Échec :</strong> ${val} € n'est pas équitable pour partager 1 € à deux !`;
+      renderMathInElement(fb);
+    }
+
+    function solveHook() {
+      playSuccessSound();
+      addXP(40);
+      const fb = document.getElementById('hookFeedback');
+      fb.classList.remove('hidden', 'bg-rose-50', 'text-rose-800');
+      fb.classList.add('bg-emerald-50', 'border', 'border-emerald-200', 'text-emerald-800');
+      fb.innerHTML = `✨ <strong>Bravo !</strong> Chacun reçoit <strong>0,50 €</strong> (50 centimes). On utilise la virgule pour désigner une partie d'unité ! (+40 XP)`;
+      renderMathInElement(fb);
+    }
+
+    // Step 2 Canvas
+    const canvas = document.getElementById('numberLineCanvas');
+    const ctx = canvas.getContext('2d');
+    const slider = document.getElementById('lineSlider');
+
+    function drawNumberLine(val) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.strokeStyle = '#94A3B8';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(30, 50);
+      ctx.lineTo(470, 50);
+      ctx.stroke();
+
+      // Main ticks 3 and 4
+      ctx.font = 'bold 14px Space Grotesk';
+      ctx.fillStyle = '#0F172A';
+      ctx.fillText('3.0', 30, 80);
+      ctx.fillText('4.0', 450, 80);
+
+      // Sub-ticks
+      for (let i = 0; i <= 10; i++) {
+        const x = 30 + i * (420 / 10);
+        ctx.strokeStyle = '#CBD5E1';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath(); ctx.moveTo(x, 40); ctx.lineTo(x, 60); ctx.stroke();
+      }
+
+      // Pointer for current value
+      const pct = (val - 3.0) / 1.0;
+      const posX = 30 + pct * 420;
+
+      ctx.fillStyle = '#3B82F6';
+      ctx.beginPath(); ctx.arc(posX, 50, 8, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = '#FFFFFF'; ctx.lineWidth = 2; ctx.stroke();
+
+      ctx.fillStyle = '#2563EB';
+      ctx.font = 'bold 12px JetBrains Mono';
+      ctx.fillText(val.toFixed(2), posX - 15, 30);
+    }
+
+    slider.addEventListener('input', (e) => {
+      const v = parseFloat(e.target.value);
+      document.getElementById('sliderValDisplay').textContent = v.toFixed(2);
+      drawNumberLine(v);
+      const exp = document.getElementById('sliderExplanation');
+      exp.innerHTML = `\( ${v.toFixed(2)} = ${Math.floor(v)} + \\frac{${Math.round((v % 1)*100)}}{100} \)`;
+      renderMathInElement(exp);
+    });
+
+    // Step 3 Decomposer
+    function decomposeNumber() {
+      playTone(500, 'sine', 0.08);
+      const val = parseFloat(document.getElementById('numInput').value) || 0;
+      const intPart = Math.floor(val);
+      const diz = Math.floor((intPart % 100) / 10);
+      const uni = intPart % 10;
+
+      const decPart = Math.round((val - intPart) * 1000);
+      const dix = Math.floor(decPart / 100);
+      const cent = Math.floor((decPart % 100) / 10);
+      const mil = decPart % 10;
+
+      document.getElementById('tDiz').textContent = diz;
+      document.getElementById('tUni').textContent = uni;
+      document.getElementById('tDix').textContent = dix;
+      document.getElementById('tCent').textContent = cent;
+      document.getElementById('tMil').textContent = mil;
+
+      const res = document.getElementById('decomposeResult');
+      res.innerHTML = `\( ${val} = ${intPart} + \\frac{${dix}}{10} + \\frac{${cent}}{100} + \\frac{${mil}}{1000} \)`;
+      renderMathInElement(res);
+      addXP(10);
+    }
+
+    // Step 5 Quiz
+    const quizData = [
+      {
+        question: "Dans le nombre décimal \\( 4,75 \\), quel est le chiffre des dixièmes ?",
+        options: ["4", "7", "5", "0"],
+        correct: 1,
+        hint: "Le chiffre des dixièmes est le premier chiffre situé juste après la virgule !"
+      },
+      {
+        question: "Que vaut la somme \\( 3 + \\frac{4}{10} + \\frac{5}{100} \\) ?",
+        options: ["3,45", "3,54", "34,5", "0,345"],
+        correct: 0,
+        hint: "3 est la partie entière, 4 est au rang des dixièmes, 5 au rang des centièmes."
+      },
+      {
+        question: "Parmi ces nombres, lequel est le plus grand : \\( 3,4 \\) ou \\( 3,38 \\) ?",
+        options: ["\\( 3,4 \\)", "\\( 3,38 \\)", "Ils sont égaux", "On ne peut pas savoir"],
+        correct: 0,
+        hint: "Rajoutez un zéro inutile : \\( 3,4 = 3,40 \\). Comparez 40 centièmes et 38 centièmes !"
+      }
+    ];
+
+    let currentQuizIndex = 0;
+    function renderQuiz() {
+      const q = quizData[currentQuizIndex];
+      document.getElementById('quizStepText').textContent = `Question ${currentQuizIndex + 1} / ${quizData.length}`;
+      document.getElementById('quizQuestion').innerHTML = q.question;
+      const optContainer = document.getElementById('quizOptions');
+      optContainer.innerHTML = '';
+      document.getElementById('hintText').textContent = q.hint;
+      document.getElementById('quizHint').classList.add('hidden');
+      document.getElementById('quizFeedback').classList.add('hidden');
+      document.getElementById('nextQuizBtn').classList.add('hidden');
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'p-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs sm:text-sm font-mono text-left transition-all';
+        btn.innerHTML = opt;
+        btn.onclick = () => checkQuizAnswer(idx);
+        optContainer.appendChild(btn);
+      });
+      renderMathInElement(document.getElementById('quizContainer'));
+    }
+
+    function checkQuizAnswer(selectedIdx) {
+      const q = quizData[currentQuizIndex];
+      const fb = document.getElementById('quizFeedback');
+      fb.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'bg-rose-50', 'text-rose-800');
+
+      if (selectedIdx === q.correct) {
+        playSuccessSound();
+        addXP(40);
+        fb.classList.add('bg-emerald-50', 'border', 'border-emerald-200', 'text-emerald-800');
+        fb.innerHTML = `🎉 <strong>Excellente réponse !</strong> +40 XP gagnés.`;
+        document.getElementById('nextQuizBtn').classList.remove('hidden');
+      } else {
+        playErrorSound();
+        fb.classList.add('bg-rose-50', 'border', 'border-rose-200', 'text-rose-800');
+        fb.innerHTML = `❌ <strong>Pas tout à fait.</strong> Réessayez ou lisez l'indice !`;
+      }
+      renderMathInElement(fb);
+    }
+
+    function toggleHint() {
+      playTone(450, 'sine', 0.08);
+      document.getElementById('quizHint').classList.toggle('hidden');
+      renderMathInElement(document.getElementById('quizHint'));
+    }
+
+    function nextQuizQuestion() {
+      currentQuizIndex = (currentQuizIndex + 1) % quizData.length;
+      renderQuiz();
+    }
+
+    // Step 7 Final Challenge
+    function submitFinalChallenge() {
+      const selected = document.querySelector('input[name="finalOption"]:checked');
+      const fb = document.getElementById('finalFeedback');
+      fb.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'bg-rose-50', 'text-rose-800');
+
+      if (!selected) {
+        fb.classList.add('bg-amber-50', 'text-amber-800');
+        fb.textContent = "Veuillez sélectionner une option.";
+        return;
+      }
+
+      if (selected.value === "5.38") {
+        playSuccessSound();
+        addXP(120);
+        triggerConfetti();
+        markLessonCompleted('COL-6E-001');
+        document.getElementById('finalChallengeBox').classList.add('hidden');
+        document.getElementById('celebrationCard').classList.remove('hidden');
+      } else {
+        playErrorSound();
+        fb.classList.add('bg-rose-50', 'border', 'border-rose-200', 'text-rose-800');
+        fb.innerHTML = `❌ <strong>Erreur :</strong> 5 unités = partie entière (5), 3 dixièmes = 0,3, 8 centièmes = 0,08. Donc 5 + 0,3 + 0,08 = 5,38.`;
+        renderMathInElement(fb);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      drawNumberLine(3.40);
+      renderQuiz();
+    });
+  </script>
+</body>
+</html>

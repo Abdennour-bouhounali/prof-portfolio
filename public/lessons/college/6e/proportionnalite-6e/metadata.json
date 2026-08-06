@@ -1,0 +1,31 @@
+{
+  "id": "COL-6E-003",
+  "title": "La Proportionnalité : Recettes et Échelles",
+  "order": 3,
+  "cycle": "Cycle 3",
+  "grade": "6e",
+  "chapter": "Nombres et calculs",
+  "subchapter": "Organisation et gestion de données",
+  "difficulty": 2,
+  "estimated_duration": 25,
+  "estimated_points": 150,
+  "exercise_count": 5,
+  "interaction_count": 6,
+  "animation_count": 4,
+  "prerequisites": [
+    "Multiplications et divisions de base",
+    "Notion de fraction et décimaux",
+    "Lecture de tableaux simples"
+  ],
+  "learning_objectives": [
+    "Reconnaître une situation de proportionnalité dans la vie quotidienne",
+    "Remplir et compléter un tableau de proportionnalité",
+    "Calculer et utiliser le coefficient de proportionnalité",
+    "Appliquer la méthode du passage par l'unité et calculer des pourcentages simples (50%, 25%, 10%)"
+  ],
+  "previous": ["fractions-intro"],
+  "next": ["geometrie-base"],
+  "tags": ["proportionnalité", "tableau", "coefficient", "recette", "pourcentages", "passage par l'unité", "6ème", "cycle 3"],
+  "thumbnail": "thumbnail.webp",
+  "version": "1.0"
+}

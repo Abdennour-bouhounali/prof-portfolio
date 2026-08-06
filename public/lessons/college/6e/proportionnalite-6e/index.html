@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="fr" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Proportionnalité : Recettes et Échelles | 6ème • Smarter</title>
+  <meta name="description" content="Découvrez la proportionnalité en 6ème. Manipulez le calculateur de recette, comprenez le coefficient de proportionnalité et le passage par l'unité.">
+  <meta name="keywords" content="proportionnalité, 6ème, cycle 3, tableau de proportionnalité, coefficient, passage par l'unité, pourcentages, maths collège">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- KaTeX CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Smarter Shared Framework Styles & JS -->
+  <link rel="stylesheet" href="/smarter-ui/lesson.css">
+  <script src="/smarter-ui/lesson.js" defer></script>
+</head>
+<body class="min-h-screen flex flex-col justify-between pt-16">
+
+  <!-- NAVBAR HEADER -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo -->
+        <a href="/" class="flex items-center gap-2.5 group">
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center font-space font-bold text-white text-sm" style="background: linear-gradient(135deg, #3B82F6, #8B5CF6);">
+            AB
+          </div>
+          <div class="hidden sm:flex flex-col">
+            <span class="font-space font-bold text-slate-900 text-sm leading-none">
+              Abdennour BOUHOUNALI
+            </span>
+            <span class="font-mono text-[10px] text-blue-600 font-semibold mt-0.5">
+              Professeur de Mathématiques
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="/" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">Accueil</a>
+          <a href="/about" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">Présentation</a>
+          <a href="/courses" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-blue-600 bg-blue-50 font-semibold">Cours de maths</a>
+          <a href="/resources" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">Ressources</a>
+          <a href="/faq" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">FAQ</a>
+          <a href="/contact" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">Contact</a>
+        </div>
+
+        <!-- Gamification Widgets -->
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 font-mono text-xs font-bold">
+            <svg class="w-4 h-4 text-amber-500 fill-amber-500" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            <span id="xpCount">0</span> XP
+          </div>
+
+          <button id="soundToggle" aria-label="Activer/Désactiver le son" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-600">
+            <svg id="soundIconOn" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+          </button>
+
+          <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Progress Line -->
+    <div class="w-full h-1 bg-slate-100">
+      <div id="progressBar" class="h-full bg-gradient-to-r from-blue-500 to-purple-600 w-0 transition-all duration-300"></div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full space-y-10">
+
+    <!-- BREADCRUMB -->
+    <nav class="flex items-center gap-2 text-xs font-mono text-slate-500">
+      <a href="/" class="hover:text-blue-600">Accueil</a>
+      <span>/</span>
+      <a href="/courses" class="hover:text-blue-600">Collège (6ème)</a>
+      <span>/</span>
+      <span class="text-slate-900 font-semibold">La Proportionnalité</span>
+    </nav>
+
+    <!-- HERO HEADER -->
+    <section class="text-center space-y-4 py-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs uppercase tracking-wider font-semibold">
+        <span>📊 Cycle 3 • 6ème • Leçon 3</span>
+        <span>•</span>
+        <span>⏱️ 25 min</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-space font-extrabold tracking-tight text-slate-900 leading-tight">
+        La Proportionnalité : <br>
+        <span class="gradient-text">Recettes, Échelles et Pourcentages</span>
+      </h1>
+
+      <p class="text-slate-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+        Comment adapter une recette de cuisine pour 10 personnes ou calculer le prix de 5 croissants ? Maîtrisez le coefficient et le passage par l'unité !
+      </p>
+    </section>
+
+    <!-- PREREQUISITES & OBJECTIVES CARD -->
+    <section class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="grid md:grid-cols-2 gap-6">
+        
+        <!-- Avant de commencer -->
+        <div class="space-y-3">
+          <h2 class="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold flex items-center gap-2">
+            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Avant de commencer (Prérequis)
+          </h2>
+          <ul class="space-y-2 text-sm text-slate-700">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Multiplications et divisions usuelles</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-600"></span> Écritures décimales et fractions</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-600"></span> Lecture de tableaux simples</li>
+          </ul>
+        </div>
+
+        <!-- Objectifs -->
+        <div class="space-y-3 border-t md:border-t-0 md:border-l border-slate-200 pt-4 md:pt-0 md:pl-6">
+          <h2 class="text-xs font-mono uppercase tracking-wider text-slate-500 font-bold flex items-center gap-2">
+            <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Aujourd'hui, vous allez apprendre :
+          </h2>
+          <ul class="space-y-2 text-sm text-slate-700">
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> Identifier si deux grandeurs sont proportionnelles.</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> Calculer le coefficient de proportionnalité.</li>
+            <li class="flex items-start gap-2"><span class="text-emerald-600 font-bold">✓</span> Utiliser la méthode du passage par l'unité et les pourcentages (50%, 25%, 10%).</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STEP 1: HOOK (LA RECETTE DE GÂTEAU) -->
+    <section id="step1" class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 font-mono text-sm font-bold flex items-center justify-center">1</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Le Défi de la Recette</h2>
+      </div>
+
+      <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+        Une recette de crêpes prévue pour <strong>4 personnes</strong> nécessite <strong>200 g de farine</strong>. Combien de farine faut-il prévoir si vous invitez <strong>8 personnes</strong> ?
+      </p>
+
+      <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 text-center space-y-4">
+        <div class="text-xl font-mono text-blue-900 font-bold">
+          4 personnes \(\rightarrow\) 200 g &nbsp;|&nbsp; 8 personnes \(\rightarrow\) ? g
+        </div>
+        
+        <div class="flex flex-wrap justify-center gap-3 pt-2">
+          <button onclick="testRecipeHook(250)" class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-mono text-xs sm:text-sm">
+            250 g
+          </button>
+          <button onclick="testRecipeHook(300)" class="px-4 py-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 font-mono text-xs sm:text-sm">
+            300 g
+          </button>
+          <button onclick="solveRecipeHook()" class="btn-gradient px-5 py-2 rounded-xl text-white font-medium text-xs sm:text-sm">
+            ✨ 400 g (On double les personnes, on double la farine !)
+          </button>
+        </div>
+
+        <div id="recipeHookFeedback" class="hidden p-4 rounded-xl text-xs sm:text-sm font-mono text-left transition-all"></div>
+      </div>
+    </section>
+
+    <!-- STEP 2: DISCOVERY (CALCULATEUR DE RECETTE INTERACTIF) -->
+    <section id="step2" class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-purple-100 text-purple-700 font-mono text-sm font-bold flex items-center justify-center">2</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Le Adaptateur de Recette en Temps Réel</h2>
+      </div>
+
+      <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+        Faites glisser le nombre d'invités de 1 à 12 pour voir les ingrédients de la recette s'adapter instantanément en proportion !
+      </p>
+
+      <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-6">
+        
+        <!-- Slider -->
+        <div class="space-y-2 bg-white p-4 rounded-xl border border-slate-200">
+          <div class="flex justify-between text-xs font-mono text-slate-700 font-bold">
+            <span>Nombre d'invités :</span>
+            <span id="guestsDisplay" class="text-blue-600 text-lg">4 personnes</span>
+          </div>
+          <input id="guestSlider" type="range" min="1" max="12" value="4" class="w-full accent-blue-600 cursor-pointer">
+        </div>
+
+        <!-- Recipe Ingredients Table Grid -->
+        <div class="grid sm:grid-cols-4 gap-3 text-center">
+          
+          <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-1">
+            <span class="text-2xl">🌾</span>
+            <div class="text-xs text-slate-500 font-mono">Farine</div>
+            <div id="farineVal" class="text-base font-bold font-mono text-blue-600">200 g</div>
+            <div class="text-[10px] text-slate-400 font-mono">50 g / pers</div>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-1">
+            <span class="text-2xl">🥛</span>
+            <div class="text-xs text-slate-500 font-mono">Lait</div>
+            <div id="laitVal" class="text-base font-bold font-mono text-purple-600">50 cL</div>
+            <div class="text-[10px] text-slate-400 font-mono">12.5 cL / pers</div>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-1">
+            <span class="text-2xl">🥚</span>
+            <div class="text-xs text-slate-500 font-mono">Œufs</div>
+            <div id="oeufsVal" class="text-base font-bold font-mono text-amber-600">4 œufs</div>
+            <div class="text-[10px] text-slate-400 font-mono">1 œuf / pers</div>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-slate-200 space-y-1">
+            <span class="text-2xl">🧈</span>
+            <div class="text-xs text-slate-500 font-mono">Beurre</div>
+            <div id="beurreVal" class="text-base font-bold font-mono text-emerald-600">50 g</div>
+            <div class="text-[10px] text-slate-400 font-mono">12.5 g / pers</div>
+          </div>
+
+        </div>
+
+        <div id="recipeExplanation" class="bg-white p-4 rounded-xl text-center text-xs font-mono text-slate-800 border border-slate-200">
+          Chaque ingrédient est multiplié par le nombre de personnes ! C'est une situation de proportionnalité parfaite.
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STEP 3: INTUITION (LE TABLEAU & LE COEFFICIENT) -->
+    <section id="step3" class="smarter-card-glow p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-cyan-100 text-cyan-700 font-mono text-sm font-bold flex items-center justify-center">3</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Le Tableau de Proportionnalité</h2>
+      </div>
+
+      <p class="text-slate-600 leading-relaxed text-sm">
+        Pour passer de la 1ère ligne à la 2ème ligne d'un tableau de proportionnalité, on multiplie toujours par le même nombre appelé le <strong>coefficient de proportionnalité</strong> (\(k\)).
+      </p>
+
+      <!-- Table Visualizer -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 space-y-4">
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-center font-mono text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700">
+                <th class="p-3 border border-slate-200 text-left">Nombre de croissants</th>
+                <th class="p-3 border border-slate-200">1</th>
+                <th class="p-3 border border-slate-200">3</th>
+                <th class="p-3 border border-slate-200">5</th>
+                <th class="p-3 border border-slate-200">10</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-sm font-bold text-blue-900 bg-white">
+                <td class="p-3 border border-slate-200 text-left font-sans text-xs text-slate-600 font-normal">Prix en euros (€)</td>
+                <td class="p-3 border border-slate-200 text-blue-600">1,20 €</td>
+                <td class="p-3 border border-slate-200 text-blue-600">3,60 €</td>
+                <td class="p-3 border border-slate-200 text-blue-600">6,00 €</td>
+                <td class="p-3 border border-slate-200 text-blue-600">12,00 €</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bg-blue-50 p-4 rounded-xl text-center text-xs font-mono text-blue-900 border border-blue-200">
+          \( \text{Coefficient } k = \frac{1,20}{1} = 1,20 \text{ € / croissant} \).<br>
+          Pour trouver le prix de 5 croissants : \( 5 \times 1,20 = 6,00 \text{ €} \).
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STEP 4: FORMALIZATION (PASSAGE PAR L'UNITÉ & POURCENTAGES) -->
+    <section id="step4" class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-mono text-sm font-bold flex items-center justify-center">4</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Méthodes : Passage par l'Unité & Pourcentages</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-4">
+        
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+          <div class="text-xs font-mono text-blue-600 uppercase font-bold">1. Le Passage par l'Unité</div>
+          <p class="text-xs text-slate-700 leading-relaxed">
+            Si 3 stylos coûtent 6 €, cherchons d'abord le prix de <strong>1 seul stylo</strong> :
+          </p>
+          <div class="text-xs font-mono text-blue-900 font-bold bg-white p-2 rounded-lg border border-slate-200">
+            \( 6 \div 3 = 2 \text{ € pour 1 stylo} \)<br>
+            Puis pour 7 stylos : \( 7 \times 2 = 14 \text{ €} \).
+          </div>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
+          <div class="text-xs font-mono text-purple-600 uppercase font-bold">2. Pourcentages Simples</div>
+          <p class="text-xs text-slate-700 leading-relaxed">
+            Un pourcentage est une fraction dont le dénominateur est 100 :
+          </p>
+          <div class="text-xs font-mono text-purple-900 font-bold bg-white p-2 rounded-lg border border-slate-200 space-y-1">
+            <p>\( 50\% = \frac{50}{100} = \text{diviser par 2} \)</p>
+            <p>\( 25\% = \frac{25}{100} = \text{diviser par 4} \)</p>
+            <p>\( 10\% = \frac{10}{100} = \text{diviser par 10} \)</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- STEP 5: GUIDED PRACTICE QUIZ -->
+    <section id="step5" class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-mono text-sm font-bold flex items-center justify-center">5</span>
+          <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Quiz d'Entraînement</h2>
+        </div>
+        <span class="text-xs font-mono text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">Correction instantanée</span>
+      </div>
+
+      <div id="quizContainer" class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-6">
+        <div class="flex items-center justify-between">
+          <span id="quizStepText" class="text-xs font-mono text-slate-500">Question 1 / 3</span>
+          <span class="text-xs font-mono text-amber-600 font-bold">+50 XP par réponse</span>
+        </div>
+
+        <div id="quizQuestion" class="text-base font-space font-semibold text-slate-900"></div>
+
+        <div id="quizHint" class="hidden p-3 rounded-xl bg-amber-50 border border-amber-200 text-xs font-mono text-amber-800">
+          💡 <strong>Indice :</strong> <span id="hintText"></span>
+        </div>
+
+        <div id="quizOptions" class="grid sm:grid-cols-2 gap-3"></div>
+        <div id="quizFeedback" class="hidden p-4 rounded-xl text-xs sm:text-sm font-mono"></div>
+
+        <div class="flex justify-between items-center pt-2">
+          <button onclick="toggleHint()" class="text-xs font-mono text-slate-500 hover:text-amber-600 underline">💡 Indice</button>
+          <button id="nextQuizBtn" onclick="nextQuizQuestion()" class="hidden btn-gradient px-4 py-2 rounded-xl text-xs font-medium text-white">Suivant ➔</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 6: MISCONCEPTIONS -->
+    <section id="step6" class="smarter-card p-6 sm:p-8 space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-rose-100 text-rose-700 font-mono text-sm font-bold flex items-center justify-center">6</span>
+        <h2 class="text-xl sm:text-2xl font-space font-bold text-slate-900">Le Piège de la Croissance !</h2>
+      </div>
+
+      <div class="bg-rose-50/60 p-5 rounded-2xl border border-rose-200 space-y-3">
+        <div class="flex items-center gap-2 text-rose-700 font-bold text-sm">
+          <span>❌ Piège classique : "À 10 ans je mesurais 1,30 m, donc à 20 ans je mesurerai 2,60 m !"</span>
+        </div>
+        <p class="text-xs text-slate-600 leading-relaxed">
+          Toutes les grandeurs de la vie ne sont pas proportionnelles ! L'âge et la taille d'une personne ne sont <strong>pas</strong> proportionnels.
+        </p>
+        <div class="text-xs font-mono text-emerald-800 bg-emerald-50 p-3 rounded-xl border border-emerald-200">
+          ✅ Règle : Vérifiez toujours si doubler la première grandeur exige de doubler exactement la seconde !
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 7: FINAL MISSION & COMPLETION -->
+    <section id="step7" class="smarter-card-glow p-6 sm:p-8 text-center space-y-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 font-mono text-xs">
+        🏆 Mission Ultime : Le Chef Proportionnel
+      </div>
+
+      <h2 class="text-2xl font-space font-extrabold text-slate-900">Le Défi des Pourcentages</h2>
+      <p class="text-slate-600 max-w-xl mx-auto text-sm">
+        Un vêtement coûtant <strong>80 €</strong> bénéficie d'une remise de <strong>25%</strong>. Quel est le montant de la réduction en euros ?
+      </p>
+
+      <div id="finalChallengeBox" class="bg-slate-50 p-6 rounded-2xl border border-slate-200 max-w-lg mx-auto space-y-4 text-left">
+        <div class="space-y-2 font-mono text-xs sm:text-sm">
+          <label class="flex items-center gap-3 p-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 cursor-pointer">
+            <input type="radio" name="finalOption" value="10" class="accent-blue-600">
+            <span>10 €</span>
+          </label>
+
+          <label class="flex items-center gap-3 p-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 cursor-pointer">
+            <input type="radio" name="finalOption" value="20" class="accent-blue-600">
+            <span>20 €</span>
+          </label>
+
+          <label class="flex items-center gap-3 p-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 cursor-pointer">
+            <input type="radio" name="finalOption" value="40" class="accent-blue-600">
+            <span>40 €</span>
+          </label>
+        </div>
+
+        <button onclick="submitFinalChallenge()" class="w-full btn-gradient py-3 rounded-xl font-bold text-white shadow-md text-sm">
+          Valider ma réponse !
+        </button>
+
+        <div id="finalFeedback" class="hidden p-3 rounded-xl text-xs font-mono"></div>
+      </div>
+
+      <!-- Completion Screen with 5 Stars -->
+      <div id="celebrationCard" class="hidden bg-emerald-50 p-8 rounded-3xl border border-emerald-200 max-w-lg mx-auto space-y-4 text-center">
+        <div class="text-amber-400 text-3xl tracking-widest font-bold">★★★★★</div>
+        <h3 class="text-2xl font-space font-bold text-emerald-900">Leçon Complétée !</h3>
+        <p class="text-sm text-emerald-800">
+          Félicitations ! Vous avez gagné <span class="font-bold font-mono">+150 XP</span> et validé la leçon sur la proportionnalité.
+        </p>
+        <div class="inline-block px-4 py-2 rounded-2xl bg-emerald-100 text-emerald-800 font-mono text-xs border border-emerald-300 font-bold">
+          Badge Gagné : 📊 Maître des Proportions
+        </div>
+      </div>
+    </section>
+
+    <!-- LESSON SUMMARY -->
+    <section class="smarter-card p-6 sm:p-8 space-y-4">
+      <h2 class="text-lg font-space font-bold text-slate-900 flex items-center gap-2">
+        <span class="text-blue-600">📌</span> Aujourd'hui, vous avez appris :
+      </h2>
+
+      <ul class="space-y-2 text-sm text-slate-700">
+        <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Deux grandeurs sont proportionnelles si l'on passe de l'une à l'autre en multipliant par un même nombre \(k\).</li>
+        <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> La méthode du passage par l'unité consiste à calculer d'abord la valeur pour 1.</li>
+        <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✓</span> Calculer \(50\%\) revient à diviser par 2, et \(25\%\) à diviser par 4.</li>
+      </ul>
+    </section>
+
+    <!-- NEXT LESSON -->
+    <section class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 sm:p-8 rounded-3xl border border-blue-200 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="space-y-2 text-center md:text-left">
+        <div class="text-xs font-mono text-blue-600 uppercase font-bold">Leçon Suivante (Module 1 - 6ème)</div>
+        <h3 class="text-xl font-space font-bold text-slate-900">Géométrie du Plan</h3>
+        <p class="text-xs text-slate-600">Découvrez les droites perpendiculaires, parallèles et les notations géométriques.</p>
+      </div>
+
+      <a href="../geometrie-base/index.html" class="btn-gradient px-6 py-3 rounded-xl font-semibold text-white text-sm whitespace-nowrap flex items-center gap-2">
+        Continuer
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 mt-12">
+    <div class="max-w-7xl mx-auto px-4 space-y-2">
+      <p>© 2026 Abdennour BOUHOUNALI — Professeur de Mathématiques. Tous droits réservés.</p>
+      <p class="font-mono text-[10px] text-slate-400">Plateforme d'apprentissage interactive et autonome</p>
+    </div>
+  </footer>
+
+  <!-- KaTeX JS -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <!-- LESSON INTERACTION SCRIPT -->
+  <script>
+    function testRecipeHook(choice) {
+      playTone(400, 'sine', 0.1);
+      const fb = document.getElementById('recipeHookFeedback');
+      fb.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800');
+      fb.classList.add('bg-rose-50', 'border', 'border-rose-200', 'text-rose-800');
+      fb.innerHTML = `❌ <strong>Pas tout à fait :</strong> Pour passer de 4 à 8 personnes, on multiplie par 2 ! Donc 200 g doit aussi être multiplié par 2.`;
+      renderMathInElement(fb);
+    }
+
+    function solveRecipeHook() {
+      playSuccessSound();
+      addXP(50);
+      const fb = document.getElementById('recipeHookFeedback');
+      fb.classList.remove('hidden', 'bg-rose-50', 'text-rose-800');
+      fb.classList.add('bg-emerald-50', 'border', 'border-emerald-200', 'text-emerald-800');
+      fb.innerHTML = `✨ <strong>Bravo !</strong> On a 2 fois plus d'invités (\( 4 \times 2 = 8 \)), il faut donc 2 fois plus de farine (\( 200 \times 2 = 400 \text{ g} \)) ! (+50 XP)`;
+      renderMathInElement(fb);
+    }
+
+    // Recipe Scaler
+    const guestSlider = document.getElementById('guestSlider');
+    guestSlider.addEventListener('input', (e) => {
+      const g = parseInt(e.target.value);
+      document.getElementById('guestsDisplay').textContent = `${g} personne${g > 1 ? 's' : ''}`;
+      
+      document.getElementById('farineVal').textContent = `${g * 50} g`;
+      document.getElementById('laitVal').textContent = `${(g * 12.5).toFixed(1)} cL`;
+      document.getElementById('oeufsVal').textContent = `${g} œuf${g > 1 ? 's' : ''}`;
+      document.getElementById('beurreVal').textContent = `${(g * 12.5).toFixed(1)} g`;
+
+      const exp = document.getElementById('recipeExplanation');
+      exp.innerHTML = `Pour ${g} personnes : tous les ingrédients de base sont multipliés par ${g} !`;
+    });
+
+    // Quiz Data
+    const quizData = [
+      {
+        question: "Si 5 carnets coûtent 10 €, combien coûte **1 seul carnet** ?",
+        options: ["1 €", "2 €", "3 €", "5 €"],
+        correct: 1,
+        hint: "\\( 10 \\div 5 = 2 \\text{ €} \\)."
+      },
+      {
+        question: "Que représente un rabais de **50%** sur un article à 40 € ?",
+        options: ["Une réduction de 10 €", "Une réduction de 20 €", "Une réduction de 30 €", "Une réduction de 5 €"],
+        correct: 1,
+        hint: "50% équivaut à diviser par 2 : \\( 40 \\div 2 = 20 \\text{ €} \\)."
+      },
+      {
+        question: "Dans un tableau de proportionnalité, si 2 kilos d'pommes coûtent 4 €, combien coûtent 6 kilos ?",
+        options: ["8 €", "10 €", "12 €", "14 €"],
+        correct: 2,
+        hint: "6 kilos c'est 3 fois plus que 2 kilos : \\( 4 \\times 3 = 12 \\text{ €} \\)."
+      }
+    ];
+
+    let currentQuizIndex = 0;
+    function renderQuiz() {
+      const q = quizData[currentQuizIndex];
+      document.getElementById('quizStepText').textContent = `Question ${currentQuizIndex + 1} / ${quizData.length}`;
+      document.getElementById('quizQuestion').innerHTML = q.question;
+      const optContainer = document.getElementById('quizOptions');
+      optContainer.innerHTML = '';
+      document.getElementById('hintText').textContent = q.hint;
+      document.getElementById('quizHint').classList.add('hidden');
+      document.getElementById('quizFeedback').classList.add('hidden');
+      document.getElementById('nextQuizBtn').classList.add('hidden');
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'p-3 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs sm:text-sm font-mono text-left transition-all';
+        btn.innerHTML = opt;
+        btn.onclick = () => checkQuizAnswer(idx);
+        optContainer.appendChild(btn);
+      });
+      renderMathInElement(document.getElementById('quizContainer'));
+    }
+
+    function checkQuizAnswer(selectedIdx) {
+      const q = quizData[currentQuizIndex];
+      const fb = document.getElementById('quizFeedback');
+      fb.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'bg-rose-50', 'text-rose-800');
+
+      if (selectedIdx === q.correct) {
+        playSuccessSound();
+        addXP(50);
+        fb.classList.add('bg-emerald-50', 'border', 'border-emerald-200', 'text-emerald-800');
+        fb.innerHTML = `🎉 <strong>Excellente réponse !</strong> +50 XP gagnés.`;
+        document.getElementById('nextQuizBtn').classList.remove('hidden');
+      } else {
+        playErrorSound();
+        fb.classList.add('bg-rose-50', 'border', 'border-rose-200', 'text-rose-800');
+        fb.innerHTML = `❌ <strong>Pas tout à fait.</strong> Réessayez ou lisez l'indice !`;
+      }
+      renderMathInElement(fb);
+    }
+
+    function toggleHint() {
+      playTone(450, 'sine', 0.08);
+      document.getElementById('quizHint').classList.toggle('hidden');
+      renderMathInElement(document.getElementById('quizHint'));
+    }
+
+    function nextQuizQuestion() {
+      currentQuizIndex = (currentQuizIndex + 1) % quizData.length;
+      renderQuiz();
+    }
+
+    function submitFinalChallenge() {
+      const selected = document.querySelector('input[name="finalOption"]:checked');
+      const fb = document.getElementById('finalFeedback');
+      fb.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'bg-rose-50', 'text-rose-800');
+
+      if (!selected) {
+        fb.classList.add('bg-amber-50', 'text-amber-800');
+        fb.textContent = "Veuillez sélectionner une option.";
+        return;
+      }
+
+      if (selected.value === "20") {
+        playSuccessSound();
+        addXP(150);
+        triggerConfetti();
+        markLessonCompleted('COL-6E-003');
+        document.getElementById('finalChallengeBox').classList.add('hidden');
+        document.getElementById('celebrationCard').classList.remove('hidden');
+      } else {
+        playErrorSound();
+        fb.classList.add('bg-rose-50', 'border', 'border-rose-200', 'text-rose-800');
+        fb.innerHTML = `❌ <strong>Erreur :</strong> 25% de 80 € revient à diviser par 4 : \\( 80 \\div 4 = 20 \\text{ €} \\).`;
+        renderMathInElement(fb);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderQuiz();
+    });
+  </script>
+</body>
+</html>

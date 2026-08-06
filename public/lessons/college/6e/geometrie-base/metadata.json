@@ -1,0 +1,31 @@
+{
+  "id": "COL-6E-004",
+  "title": "Géométrie du Plan : Droites, Segments et Angle Droit",
+  "order": 4,
+  "cycle": "Cycle 3",
+  "grade": "6e",
+  "chapter": "Espace et géométrie",
+  "subchapter": "Figures du plan et propriétés",
+  "difficulty": 2,
+  "estimated_duration": 25,
+  "estimated_points": 160,
+  "exercise_count": 6,
+  "interaction_count": 7,
+  "animation_count": 5,
+  "prerequisites": [
+    "Utilisation d'une règle graduée et d'un crayon",
+    "Notion intuitive d'alignement de points",
+    "Reconnaissance visuelle d'un angle droit"
+  ],
+  "learning_objectives": [
+    "Distinguer et utiliser la notation exacte d'une droite (AB), d'un segment [AB] et d'une demi-droite [AB)",
+    "Utiliser les symboles d'appartenance (∈ et ∉)",
+    "Reconnaître, vérifier et tracer des droites perpendiculaires (⊥) et parallèles (∥) avec une équerre",
+    "Appliquer le théorème fondamental des droites perpendiculaires à une même troisième"
+  ],
+  "previous": ["proportionnalite-6e"],
+  "next": ["aires-perimetres"],
+  "tags": ["géométrie", "droite", "segment", "demi-droite", "perpendiculaires", "parallèles", "appartenance", "6ème", "cycle 3"],
+  "thumbnail": "thumbnail.webp",
+  "version": "1.0"
+}

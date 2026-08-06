@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04. Aire du Triangle Rectangle | Smarter</title>
+  <meta name="description" content="Micro-leçon 4 du module Aires et Périmètres : Calculer la moitié d'un rectangle.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <link rel="stylesheet" href="/smarter-ui/lesson.css">
+  <script src="/smarter-ui/lesson.js" defer></script>
+</head>
+<body class="min-h-screen flex flex-col justify-between pt-16 bg-slate-50">
+
+  <!-- NAVBAR HEADER -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="../../index.html" class="flex items-center gap-2 text-xs font-mono text-slate-600 hover:text-blue-600 font-bold">
+          ← Vue du Module
+        </a>
+
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-mono text-cyan-600 font-bold">Leçon 4 / 6</span>
+          <div class="w-24 h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div class="h-full bg-cyan-500 w-4/6"></div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 font-mono text-xs font-bold">
+          <span id="xpCount">0</span> XP
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-3xl mx-auto px-4 py-8 flex-1 w-full space-y-8">
+
+    <!-- HERO TITLE -->
+    <section class="space-y-2 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50 text-cyan-700 font-mono text-xs font-semibold">
+        ⏱️ 6 min • Micro-Leçon 4
+      </div>
+      <h1 class="text-3xl font-space font-extrabold text-slate-900">
+        Aire du Triangle Rectangle
+      </h1>
+    </section>
+
+    <!-- 1. VISUAL INTUITION -->
+    <section class="smarter-card p-6 space-y-4">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-cyan-100 text-cyan-700 font-mono text-sm font-bold flex items-center justify-center">1</span>
+        <h2 class="text-xl font-space font-bold text-slate-900">La Moitié d'un Rectangle</h2>
+      </div>
+
+      <p class="text-slate-600 text-sm leading-relaxed">
+        Si l'on coupe un rectangle en deux selon sa diagonale, on obtient deux <strong>triangles rectangles identiques</strong> ! L'aire d'un triangle rectangle est donc égale à la moitié de l'aire du rectangle correspondant.
+      </p>
+
+      <div class="bg-cyan-50 p-6 rounded-2xl border border-cyan-200 text-center font-mono space-y-2">
+        <div class="text-sm font-bold text-cyan-900">
+          \[ A_{\text{triangle}} = \frac{a \times b}{2} \]
+        </div>
+        <p class="text-xs text-slate-600 font-sans">où \(a\) et \(b\) sont les longueurs des deux côtés de l'angle droit.</p>
+      </div>
+    </section>
+
+    <!-- 2. PRACTICE QUIZ -->
+    <section class="smarter-card p-6 space-y-4">
+      <div class="flex items-center gap-3">
+        <span class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 font-mono text-sm font-bold flex items-center justify-center">2</span>
+        <h2 class="text-xl font-space font-bold text-slate-900">Test de Calcul</h2>
+      </div>
+
+      <p class="text-sm text-slate-700">Quelle est l'aire d'un triangle rectangle dont les côtés de l'angle droit mesurent <strong>\(6\text{ cm}\)</strong> et <strong>\(4\text{ cm}\)</strong> ?</p>
+
+      <div class="grid sm:grid-cols-3 gap-3">
+        <button onclick="checkMicroT(1)" class="p-3 rounded-xl border border-slate-200 hover:bg-slate-100 font-mono text-xs">24 cm²</button>
+        <button onclick="checkMicroT(2)" class="p-3 rounded-xl border border-slate-200 hover:bg-slate-100 font-mono text-xs">12 cm² (24 / 2)</button>
+        <button onclick="checkMicroT(3)" class="p-3 rounded-xl border border-slate-200 hover:bg-slate-100 font-mono text-xs">10 cm</button>
+      </div>
+
+      <div id="microFeedbackT" class="hidden p-3 rounded-xl text-xs font-mono"></div>
+    </section>
+
+    <!-- NAVIGATION BAR AT BOTTOM -->
+    <div class="flex justify-between items-center pt-4">
+      <a href="../03-carre-et-rectangle/index.html" class="px-4 py-2 rounded-xl bg-slate-200 text-slate-700 font-mono text-xs font-bold">
+        ← Leçon 3
+      </a>
+
+      <a href="../05-piege-unites/index.html" onclick="markLessonCompleted('MOD-6E-005-L4')" class="btn-gradient px-6 py-2.5 rounded-xl text-white font-mono text-xs font-bold shadow-md">
+        Leçon 5 : Unités ➔
+      </a>
+    </div>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+  <script>
+    function checkMicroT(ans) {
+      const fb = document.getElementById('microFeedbackT');
+      fb.classList.remove('hidden', 'bg-emerald-50', 'text-emerald-800', 'bg-rose-50', 'text-rose-800');
+      if(ans === 2) {
+        playSuccessSound();
+        addXP(60);
+        fb.classList.add('bg-emerald-50', 'border', 'border-emerald-200', 'text-emerald-800');
+        fb.innerHTML = `🎉 <strong>Exact !</strong> \\( A = \\frac{6 \\times 4}{2} = \\frac{24}{2} = 12 \\text{ cm}^2 \\) ! (+60 XP)`;
+      } else {
+        playErrorSound();
+        fb.classList.add('bg-rose-50', 'border', 'border-rose-200', 'text-rose-800');
+        fb.innerHTML = `❌ <strong>Attention :</strong> N'oubliez pas de diviser par 2 car c'est un triangle !`;
+      }
+      renderMathInElement(fb);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderMathInElement(document.body);
+    });
+  </script>
+</body>
+</html>
