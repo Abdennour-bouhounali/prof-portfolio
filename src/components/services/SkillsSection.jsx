@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { skills } from '../data/skills';
+import { skills } from '../../data/skills';
 
 const containerVariants = {
   hidden: {},
@@ -12,7 +12,7 @@ const itemVariants = {
   visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }
 };
 
-export default function Skills() {
+export default function SkillsSection() {
   const [activeCategory, setActiveCategory] = useState('All');
   const categories = ['All', ...skills.map((s) => s.category)];
 

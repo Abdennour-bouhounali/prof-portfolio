@@ -71,7 +71,7 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
 };
 
-export default function About() {
+export default function AboutSection() {
   const ref = useRef(null);
   const statsRef = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
@@ -144,8 +144,8 @@ export default function About() {
                 </div>
                 <div className="flex items-center gap-2 text-slate-500 text-sm">
                   <Phone size={14} className="text-blue-500" />
-                  <a href="tel:+33670445721" className="hover:text-blue-600 transition-colors font-medium">
-                    +33 6 70 44 57 21
+                  <a href="tel:+33758103086" className="hover:text-blue-600 transition-colors font-medium">
+                    +33 7 58 10 30 86
                   </a>
                 </div>
               </div>

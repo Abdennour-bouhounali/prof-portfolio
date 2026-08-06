@@ -54,7 +54,7 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
 };
 
-export default function Process() {
+export default function ProcessSection() {
   return (
     <section id="process" className="section-wrapper bg-slate-50/50">
       <div className="max-w-7xl mx-auto">

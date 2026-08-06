@@ -44,7 +44,7 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.45, ease: 'easeOut' } }
 };
 
-export default function Testimonials() {
+export default function TestimonialsSection() {
   return (
     <section id="testimonials" className="section-wrapper bg-slate-50/50">
       <div className="max-w-7xl mx-auto">
@@ -57,7 +57,7 @@ export default function Testimonials() {
           className="text-center mb-16"
         >
           <p className="font-mono-jetbrains text-blue-500 text-sm font-semibold tracking-widest uppercase mb-3">
-            07. Témoignages
+            Témoignages
           </p>
           <h2 className="section-title">Avis des élèves & Parents</h2>
           <p className="section-subtitle">

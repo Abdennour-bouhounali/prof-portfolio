@@ -1,16 +1,18 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ArrowUp, ArrowDown, CornerDownLeft, X, Download, Calendar, BookOpen, Briefcase, HelpCircle, Mail, Phone } from 'lucide-react';
+import { Search, ArrowUp, ArrowDown, CornerDownLeft, X, Download, Calendar, BookOpen, Briefcase, HelpCircle, Mail, Phone, FileText } from 'lucide-react';
 
 const commands = [
-  { id: 'book', label: 'Réserver un cours d\'essai', section: '#contact', icon: Calendar, group: 'Actions Principales' },
-  { id: 'skills', label: 'Voir les niveaux (Ce que j\'enseigne)', section: '#skills', icon: BookOpen, group: 'Navigation' },
-  { id: 'projects', label: 'Voir mes accompagnements', section: '#projects', icon: Briefcase, group: 'Navigation' },
-  { id: 'process', label: 'Comment se déroule un cours ?', section: '#process', icon: BookOpen, group: 'Navigation' },
-  { id: 'faq', label: 'Foire Aux Questions (FAQ)', section: '#faq', icon: HelpCircle, group: 'Navigation' },
+  { id: 'contact', label: 'Réserver un cours d\'essai', path: '/contact', icon: Calendar, group: 'Actions Principales' },
+  { id: 'home', label: 'Accueil', path: '/', icon: BookOpen, group: 'Navigation' },
+  { id: 'about', label: 'Présentation & Parcours', path: '/about', icon: BookOpen, group: 'Navigation' },
+  { id: 'courses', label: 'Cours de Maths', path: '/courses', icon: Briefcase, group: 'Navigation' },
+  { id: 'resources', label: 'Ressources Gratuites', path: '/resources', icon: FileText, group: 'Navigation' },
+  { id: 'faq', label: 'Foire Aux Questions (FAQ)', path: '/faq', icon: HelpCircle, group: 'Navigation' },
   { id: 'download-cv', label: 'Télécharger le CV Enseignant (PDF)', href: '/CV.pdf', download: true, icon: Download, group: 'Actions Principales' },
   { id: 'email', label: 'Envoyer un Email', href: 'mailto:abdennour.bouhounali@gmail.com', external: true, icon: Mail, group: 'Contact Direct' },
-  { id: 'phone', label: 'Appeler (+33 6 70 44 57 21)', href: 'tel:+33670445721', external: true, icon: Phone, group: 'Contact Direct' },
+  { id: 'phone', label: 'Appeler (+33 7 58 10 30 86)', href: 'tel:+33758103086', external: true, icon: Phone, group: 'Contact Direct' },
 ];
 
 export default function CommandPalette() {
@@ -18,6 +20,7 @@ export default function CommandPalette() {
   const [query, setQuery] = useState('');
   const [selected, setSelected] = useState(0);
   const inputRef = useRef(null);
+  const navigate = useNavigate();
 
   // Filter commands by query
   const filtered = query.trim()
@@ -57,9 +60,8 @@ export default function CommandPalette() {
     setOpen(false);
     setQuery('');
 
-    if (cmd.section) {
-      const el = document.querySelector(cmd.section);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (cmd.path) {
+      navigate(cmd.path);
     } else if (cmd.download) {
       const a = document.createElement('a');
       a.href = cmd.href;
@@ -68,7 +70,7 @@ export default function CommandPalette() {
     } else if (cmd.external) {
       window.open(cmd.href, cmd.href.startsWith('mailto:') || cmd.href.startsWith('tel:') ? '_self' : '_blank');
     }
-  }, []);
+  }, [navigate]);
 
   const handleKeyNavigation = (e) => {
     if (e.key === 'ArrowDown') {

@@ -1,23 +1,17 @@
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin } from 'lucide-react';
 
 const navLinks = [
-  { label: 'Présentation', href: '#about' },
-  { label: 'Ce que j\'enseigne', href: '#skills' },
-  { label: 'Mes accompagnements', href: '#projects' },
-  { label: 'Déroulement du cours', href: '#process' },
-  { label: 'Mon parcours', href: '#experience' },
-  { label: 'Ressources gratuites', href: '#blog' },
-  { label: 'FAQ', href: '#faq' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Accueil', path: '/' },
+  { label: 'Présentation', path: '/about' },
+  { label: 'Cours de maths', path: '/courses' },
+  { label: 'Ressources', path: '/resources' },
+  { label: 'FAQ', path: '/faq' },
+  { label: 'Contact', path: '/contact' },
 ];
 
 export default function Footer() {
-  const scrollTo = (href) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <footer className="relative z-10 bg-slate-900 text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,7 +47,7 @@ export default function Footer() {
               </p>
               <p className="flex items-center gap-2">
                 <Phone size={13} className="text-blue-400" />
-                <a href="tel:+33670445721" className="hover:text-white transition-colors">+33 6 70 44 57 21</a>
+                <a href="tel:+33758103086" className="hover:text-white transition-colors">+33 7 58 10 30 86</a>
               </p>
               <p className="flex items-center gap-2">
                 <Mail size={13} className="text-blue-400" />
@@ -72,13 +66,13 @@ export default function Footer() {
             <h4 className="font-space font-bold text-slate-300 text-sm mb-4 uppercase tracking-widest">Navigation</h4>
             <ul className="space-y-2">
               {navLinks.map((link) => (
-                <li key={link.href}>
-                  <button
-                    onClick={() => scrollTo(link.href)}
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
                     className="font-inter text-slate-400 hover:text-white text-sm transition-colors duration-200"
                   >
                     {link.label}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>

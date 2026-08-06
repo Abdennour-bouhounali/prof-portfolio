@@ -1,47 +1,26 @@
-import BackgroundLayer from './components/BackgroundLayer';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Process from './components/Process';
-import Experience from './components/Experience';
-import Education from './components/Education';
-import Blog from './components/Blog';
-import Testimonials from './components/Testimonials';
-import FAQ from './components/FAQ';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import CommandPalette from './components/CommandPalette';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MainLayout from './components/layout/MainLayout';
+import Home from './pages/Home';
+import About from './pages/About';
+import Courses from './pages/Courses';
+import Resources from './pages/Resources';
+import FAQ from './pages/FAQ';
+import Contact from './pages/Contact';
 
 export default function App() {
   return (
-    <div className="relative min-h-screen bg-[#FAFAFA]">
-      {/* Fixed background layer — z-0 */}
-      <BackgroundLayer />
-
-      {/* Navigation — z-50 */}
-      <Navbar />
-
-      {/* Command Palette — z-50 */}
-      <CommandPalette />
-
-      {/* Page content — z-10 */}
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Process />
-        <Experience />
-        <Education />
-        <Blog />
-        <Testimonials />
-        <FAQ />
-        <Contact />
-      </main>
-
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Home />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }

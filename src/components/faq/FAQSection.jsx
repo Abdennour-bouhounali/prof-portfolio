@@ -6,7 +6,7 @@ const faqs = [
   {
     id: 'process',
     question: "Comment se déroule un cours ?",
-    answer: "Un cours s'articule en 5 étapes clés : diagnostic rapide des difficultés, explications claires des notions mal comprises avec des méthodes visuelles, exercices d'application guidés, mise en autonomie sur des sujets d'examen, et bilan final avec exercices à faire pour la séance suivante."
+    answer: "Un cours s'articules en 5 étapes clés : diagnostic rapide des difficultés, explications claires des notions mal comprises avec des méthodes visuelles, exercices d'application guidés, mise en autonomie sur des sujets d'examen, et bilan final avec exercices à faire pour la séance suivante."
   },
   {
     id: 'online',
@@ -31,12 +31,12 @@ const faqs = [
   {
     id: 'pricing',
     question: "Quels sont les tarifs et modalités ?",
-    answer: "Les tarifs sont adaptés au niveau de l'élève (Collège, Lycée, Supérieur) et au format choisi (à domicile ou en ligne). N'hésitez pas à me contacter par téléphone ou via le formulaire pour obtenir un tarif exact et échanger sur les besoins de votre enfant."
+    answer: "Les tarifs sont adaptés au niveau de l'élève (Collège, Lycée, Supérieur) et au format choisi (à domicile ou en ligne). N'hésite pas à me contacter par téléphone ou via le formulaire pour obtenir un tarif exact et échanger sur les besoins de votre enfant."
   }
 ];
 
-export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(0); // First question open by default
+export default function FAQSection() {
+  const [openIndex, setOpenIndex] = useState(0);
 
   const toggle = (i) => {
     setOpenIndex(openIndex === i ? null : i);
@@ -54,7 +54,7 @@ export default function FAQ() {
           className="text-center mb-16"
         >
           <p className="font-mono-jetbrains text-blue-500 text-sm font-semibold tracking-widest uppercase mb-3">
-            08. Questions fréquentes
+            Questions fréquentes
           </p>
           <h2 className="section-title">Foire Aux Questions (FAQ)</h2>
           <p className="section-subtitle">

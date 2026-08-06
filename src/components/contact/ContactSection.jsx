@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle, Calendar, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, MessageCircle } from 'lucide-react';
 
 const contactInfo = [
   {
     icon: Phone,
     label: 'Téléphone / WhatsApp',
-    value: '+33 6 70 44 57 21',
-    href: 'tel:+33670445721',
+    value: '+33 7 58 10 30 86',
+    href: 'tel:+33758103086',
     color: 'from-emerald-400 to-teal-500',
     bg: 'bg-emerald-50'
   },
@@ -37,7 +37,7 @@ const contactInfo = [
   }
 ];
 
-export default function Contact() {
+export default function ContactSection() {
   const [form, setForm] = useState({
     name: '',
     classe: 'Terminale Spé Maths',
@@ -85,7 +85,7 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <p className="font-mono-jetbrains text-blue-500 text-sm font-semibold tracking-widest uppercase mb-3">
-            09. Contact & Réservation
+            Contact & Réservation
           </p>
           <h2 className="section-title">Réserver un cours d'essai</h2>
           <p className="section-subtitle">
@@ -280,7 +280,7 @@ export default function Contact() {
                           required
                           value={form.phone}
                           onChange={handleChange}
-                          placeholder="06 12 34 56 78"
+                          placeholder="07 58 10 30 86"
                           className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white/80 font-inter text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 transition-all"
                         />
                       </div>

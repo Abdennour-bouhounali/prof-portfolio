@@ -1,5 +1,6 @@
-import { ArrowDown, Calendar, Download, CheckCircle2 } from 'lucide-react';
-import profileImg from '../assets/myimage.png';
+import { Link } from 'react-router-dom';
+import { ArrowDown, Calendar, Download } from 'lucide-react';
+import profileImg from '../../assets/myimage.png';
 
 const quickBadges = [
   '✓ Collège (6e - 3e)',
@@ -11,12 +12,8 @@ const quickBadges = [
 ];
 
 export default function Hero() {
-  const scrollToContact = () => {
-    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const scrollToAbout = () => {
-    document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToNext = () => {
+    window.scrollTo({ top: window.innerHeight * 0.8, behavior: 'smooth' });
   };
 
   return (
@@ -66,14 +63,14 @@ export default function Hero() {
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-              <button
-                onClick={scrollToContact}
+              <Link
+                to="/contact"
                 className="btn-primary text-sm"
                 id="hero-book-lesson"
               >
                 <Calendar size={16} />
                 Réserver un cours d'essai
-              </button>
+              </Link>
 
               <a
                 href="/CV.pdf"
@@ -131,7 +128,7 @@ export default function Hero() {
 
       {/* Scroll down hint */}
       <button
-        onClick={scrollToAbout}
+        onClick={scrollToNext}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 hover:text-slate-600 transition-colors"
       >
         <span className="text-xs font-mono-jetbrains">découvrir ma méthode</span>

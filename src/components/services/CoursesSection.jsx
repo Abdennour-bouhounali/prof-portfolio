@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight, ArrowRight, BookOpen } from 'lucide-react';
-import { projects, domainGradients, domainIcons, domainColors } from '../data/projects';
+import { projects, domainGradients, domainIcons, domainColors } from '../../data/projects';
 
 const domains = ['All', 'Collège', 'Lycée', 'Préparation Bac', 'Remise à niveau'];
 
@@ -15,13 +16,11 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.45, ease: 'easeOut' } }
 };
 
-// ─── Course image carousel / placeholder ─────────────────────────────────────
 function CourseImage({ domain, images }) {
   const [idx, setIdx] = useState(0);
   const hasImages = images && images.length > 0;
 
   if (!hasImages) {
-    // Gradient placeholder
     const gradient = domainGradients[domain] || 'from-blue-600 to-indigo-500';
     const icon = domainIcons[domain] || '📚';
     return (
@@ -85,16 +84,12 @@ function CourseImage({ domain, images }) {
   );
 }
 
-export default function Projects() {
+export default function CoursesSection() {
   const [activeDomain, setActiveDomain] = useState('All');
 
   const filtered = activeDomain === 'All'
     ? projects
     : projects.filter((p) => p.domain === activeDomain);
-
-  const scrollToContact = () => {
-    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <section id="projects" className="section-wrapper">
@@ -219,14 +214,14 @@ export default function Projects() {
 
                   {/* CTA button: Découvrir */}
                   <div className="pt-4 border-t border-slate-100">
-                    <button
-                      onClick={scrollToContact}
+                    <Link
+                      to="/contact"
                       className="w-full btn-primary text-xs flex items-center justify-center gap-2 py-2.5"
                     >
                       <BookOpen size={14} />
                       Découvrir ce cours
                       <ArrowRight size={14} />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </motion.div>
