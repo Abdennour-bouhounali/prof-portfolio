@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Si le fichier demandé existe (ex: /modules/..., image, css) on le sert directement
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  
+  # Sinon, on redirige tout vers l'index.html de React pour gérer les routes (/courses, /about, etc.)
+  RewriteRule ^ index.html [QSA,L]
+</IfModule>
