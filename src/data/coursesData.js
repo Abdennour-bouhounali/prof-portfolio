@@ -79,21 +79,93 @@ export const courseLevels = [
         id: '5e',
         name: '5ème',
         lessons: [
-          { id: 'nombres-relatifs-5e', title: 'Nombres relatifs', description: 'Addition et soustraction des nombres positifs et négatifs.', duration: '25 min', difficulty: 'Moyen', status: 'coming_soon', icon: '➕' },
-          { id: 'calcul-litteral-5e', title: 'Calcul littéral', description: 'Développer et réduire des expressions simples.', duration: '25 min', difficulty: 'Moyen', status: 'coming_soon', icon: '🔤' },
-          { id: 'angles-triangles', title: 'Angles et Triangles', description: 'Somme des angles d\'un triangle et angles particuliers.', duration: '20 min', difficulty: 'Facile', status: 'coming_soon', icon: '📐' },
-          { id: 'statistiques-5e', title: 'Statistiques', description: 'Effectifs, fréquences et représentations graphiques.', duration: '20 min', difficulty: 'Facile', status: 'coming_soon', icon: '📈' },
-          { id: 'probabilites-5e', title: 'Probabilités', description: 'Notion de chance, événements et expériences aléatoires.', duration: '20 min', difficulty: 'Facile', status: 'coming_soon', icon: '🎲' },
-          { id: 'proportionnalite-5e', title: 'Proportionnalité & Échelles', description: 'Vitesse moyenne, échelles et ratios.', duration: '25 min', difficulty: 'Moyen', status: 'coming_soon', icon: '🏎️' }
+          { 
+            id: 'nombres-relatifs-5e', 
+            title: 'Nombres relatifs (Module)', 
+            description: 'Module complet en 6 micro-leçons : repérage, opposés, comparaison, addition et soustraction.', 
+            duration: '35 min total', 
+            difficulty: 'Moyen', 
+            status: 'available', 
+            path: '/modules/college/5e/nombres-relatifs/index.html',
+            icon: '➕' 
+          },
+          { 
+            id: 'calcul-litteral-5e', 
+            title: 'Calcul littéral (Module)', 
+            description: 'Module complet en 6 micro-leçons : variables, simplifications, calculs et distributivité.', 
+            duration: '35 min total', 
+            difficulty: 'Moyen', 
+            status: 'available', 
+            path: '/modules/college/5e/calcul-litteral/index.html',
+            icon: '🔤' 
+          },
+          { 
+            id: 'angles-triangles', 
+            title: 'Angles et Triangles (Module)', 
+            description: 'Module complet en 6 micro-leçons : somme des 180°, droites parallèles et inégalité triangulaire.', 
+            duration: '35 min total', 
+            difficulty: 'Facile', 
+            status: 'available', 
+            path: '/modules/college/5e/angles-triangles/index.html',
+            icon: '📐' 
+          },
+          { 
+            id: 'statistiques-5e', 
+            title: 'Statistiques (Module)', 
+            description: 'Module complet en 6 micro-leçons : effectifs, fréquences, moyennes simples et moyennes pondérées.', 
+            duration: '35 min total', 
+            difficulty: 'Facile', 
+            status: 'available', 
+            path: '/modules/college/5e/statistiques/index.html',
+            icon: '📈' 
+          },
+          { 
+            id: 'probabilites-5e', 
+            title: 'Probabilités (Module)', 
+            description: 'Module complet en 6 micro-leçons : échelle de certitude, roue aléatoire, cas favorables et arbres.', 
+            duration: '35 min total', 
+            difficulty: 'Facile', 
+            status: 'available', 
+            path: '/modules/college/5e/probabilites/index.html',
+            icon: '🎲' 
+          },
+          { 
+            id: 'proportionnalite-5e', 
+            title: 'Proportionnalité & Échelles (Module)', 
+            description: 'Module complet en 6 micro-leçons : coefficient k, produit en croix, pourcentages, échelles et vitesse.', 
+            duration: '35 min total', 
+            difficulty: 'Moyen', 
+            status: 'available', 
+            path: '/modules/college/5e/proportionnalite/index.html',
+            icon: '🏎️' 
+          }
         ]
       },
       {
         id: '4e',
         name: '4ème',
         lessons: [
-          { id: 'puissances-4e', title: 'Puissances', description: 'Puissances de 10 et notation scientifique.', duration: '25 min', difficulty: 'Moyen', status: 'coming_soon', icon: '⚡' },
+          { 
+            id: 'puissances-4e', 
+            title: 'Puissances (Module)', 
+            description: 'Module complet en 6 micro-leçons : puissances de 10 et notation scientifique.', 
+            duration: '35 min total', 
+            difficulty: 'Moyen', 
+            status: 'available', 
+            path: '/modules/college/4e/puissances/index.html',
+            icon: '⚡' 
+          },
           { id: 'equations-4e', title: 'Équations', description: 'Résolution d\'équations du premier degré.', duration: '30 min', difficulty: 'Moyen', status: 'coming_soon', icon: '⚖️' },
-          { id: 'pythagore-4e', title: 'Théorème de Pythagore', description: 'Calculer une longueur et démontrer qu\'un triangle est rectangle.', duration: '30 min', difficulty: 'Moyen', status: 'coming_soon', icon: '📐' },
+          { 
+            id: 'pythagore-4e', 
+            title: 'Théorème de Pythagore (Module)', 
+            description: 'Module complet en 6 micro-leçons : calculer une longueur et démontrer l\'angle droit.', 
+            duration: '35 min total', 
+            difficulty: 'Moyen', 
+            status: 'available', 
+            path: '/modules/college/4e/pythagore/index.html',
+            icon: '📐' 
+          },
           { id: 'calcul-litteral-4e', title: 'Calcul littéral & Double distributivité', description: 'Développement avancé et premières factorisations.', duration: '25 min', difficulty: 'Moyen', status: 'coming_soon', icon: '🔤' },
           { id: 'fonctions-intro', title: 'Notion de fonction', description: 'Image, antécédent et représentation graphique.', duration: '25 min', difficulty: 'Avancé', status: 'coming_soon', icon: '📈' },
           { id: 'statistiques-4e', title: 'Statistiques & Moyenne pondérée', description: 'Calculs de moyennes et interprétation de données.', duration: '20 min', difficulty: 'Facile', status: 'coming_soon', icon: '📊' }
