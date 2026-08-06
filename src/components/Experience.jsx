@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, MapPin, Calendar, ChevronRight } from 'lucide-react';
+import { MapPin, Calendar, ChevronRight } from 'lucide-react';
 import { experience } from '../data/experience';
 
 const sectionVariants = {
@@ -20,11 +20,11 @@ export default function Experience() {
           className="text-center mb-16"
         >
           <p className="font-mono-jetbrains text-blue-500 text-sm font-semibold tracking-widest uppercase mb-3">
-            03. Experience
+            05. Parcours & Expériences
           </p>
-          <h2 className="section-title">Work History</h2>
+          <h2 className="section-title">Expérience Pédagogique</h2>
           <p className="section-subtitle">
-            Real-world engineering experience from AI vision labs to IoT field deployments.
+            Plus de 5 ans d'enseignement des mathématiques au lycée et en cours particuliers.
           </p>
         </motion.div>
 
@@ -85,8 +85,8 @@ export default function Experience() {
                   {/* Description bullets */}
                   <ul className="space-y-2 mb-5">
                     {exp.description.map((item, j) => (
-                      <li key={j} className="flex items-start gap-2 font-inter text-slate-600 text-sm">
-                        <ChevronRight size={14} className="text-blue-400 flex-shrink-0 mt-0.5" />
+                      <li key={j} className="flex items-start gap-2 font-inter text-slate-600 text-sm leading-relaxed">
+                        <ChevronRight size={14} className="text-blue-400 flex-shrink-0 mt-1" />
                         {item}
                       </li>
                     ))}
@@ -97,7 +97,7 @@ export default function Experience() {
                     {exp.tech.map((t) => (
                       <span
                         key={t}
-                        className="font-mono-jetbrains text-xs px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200"
+                        className="font-inter text-xs px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 border border-slate-200"
                       >
                         {t}
                       </span>
@@ -109,16 +109,6 @@ export default function Experience() {
                     style={{ background: 'rgba(59,130,246,0.06)' }}>
                     <span className="text-sm">🏆</span>
                     <span className="font-inter text-sm font-semibold text-slate-700">{exp.highlight}</span>
-                    {exp.link && (
-                      <a
-                        href={exp.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="ml-auto text-blue-500 hover:text-blue-700 transition-colors"
-                      >
-                        <ExternalLink size={14} />
-                      </a>
-                    )}
                   </div>
                 </motion.div>
               </motion.div>

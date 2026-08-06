@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Star, ChevronLeft, ChevronRight, ImageOff } from 'lucide-react';
+import { Star, Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
 import { projects, domainGradients, domainIcons, domainColors } from '../data/projects';
 
-const domains = ['All', 'Computer Vision', 'Artificial Intelligence', 'Embedded Systems', 'IoT', 'Web Development', 'Desktop Apps'];
+const domains = ['All', 'Soutien Hebdo', 'Prépa Examens', 'Stages Vacances', 'Cours en Ligne', 'Remise à Niveau'];
 
 const containerVariants = {
   hidden: {},
@@ -15,96 +15,31 @@ const cardVariants = {
   visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.45, ease: 'easeOut' } }
 };
 
-// ─── Project image carousel ─────────────────────────────────────────────────
-function ProjectImage({ domain, images }) {
-  const [idx, setIdx] = useState(0);
-  const hasImages = images && images.length > 0;
-
-  if (!hasImages) {
-    // Gradient placeholder
-    const gradient = domainGradients[domain] || 'from-slate-500 to-gray-500';
-    const icon = domainIcons[domain] || '💻';
-    return (
-      <div className={`w-full h-44 bg-gradient-to-br ${gradient} flex flex-col items-center justify-center relative overflow-hidden`}>
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '20px 20px' }}
-        />
-        <div className="absolute -bottom-8 -right-8 w-32 h-32 rounded-full bg-white/10" />
-        <div className="absolute -top-4 -left-4 w-20 h-20 rounded-full bg-white/10" />
-        <span className="text-5xl mb-2 relative z-10">{icon}</span>
-        <span className="font-mono-jetbrains text-white/80 text-xs font-medium relative z-10">{domain}</span>
-      </div>
-    );
-  }
-
-  const prev = (e) => { e.stopPropagation(); setIdx((i) => (i - 1 + images.length) % images.length); };
-  const next = (e) => { e.stopPropagation(); setIdx((i) => (i + 1) % images.length); };
-
+function ServiceHeader({ domain }) {
+  const gradient = domainGradients[domain] || 'from-blue-600 to-indigo-500';
+  const icon = domainIcons[domain] || '📘';
   return (
-    <div className="relative w-full h-44 overflow-hidden bg-slate-900 group">
-      {/* Image */}
-      <img
-        key={idx}
-        src={images[idx]}
-        alt={`Screenshot ${idx + 1}`}
-        className="w-full h-full object-cover transition-opacity duration-300"
-        onError={(e) => { e.target.style.display = 'none'; }}
+    <div className={`w-full h-36 bg-gradient-to-br ${gradient} flex flex-col items-center justify-center relative overflow-hidden`}>
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{ backgroundImage: 'radial-gradient(white 1px, transparent 1px)', backgroundSize: '20px 20px' }}
       />
-
-      {/* Prev / Next arrows — visible on hover when more than 1 image */}
-      {images.length > 1 && (
-        <>
-          <button
-            onClick={prev}
-            className="absolute left-1.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/50 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/70"
-            aria-label="Previous image"
-          >
-            <ChevronLeft size={15} />
-          </button>
-          <button
-            onClick={next}
-            className="absolute right-1.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-black/50 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/70"
-            aria-label="Next image"
-          >
-            <ChevronRight size={15} />
-          </button>
-        </>
-      )}
-
-      {/* Dot indicators */}
-      {images.length > 1 && (
-        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
-          {images.map((_, i) => (
-            <button
-              key={i}
-              onClick={(e) => { e.stopPropagation(); setIdx(i); }}
-              className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${i === idx ? 'bg-white w-3' : 'bg-white/50'}`}
-            />
-          ))}
-        </div>
-      )}
-
-      {/* Image counter badge */}
-      {images.length > 1 && (
-        <div className="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-black/50 text-white text-xs font-mono-jetbrains">
-          {idx + 1}/{images.length}
-        </div>
-      )}
+      <span className="text-5xl mb-2 relative z-10">{icon}</span>
+      <span className="font-mono-jetbrains text-white/90 text-xs font-semibold tracking-wider uppercase relative z-10">{domain}</span>
     </div>
   );
 }
-// ─────────────────────────────────────────────────────────────────────────────
 
 export default function Projects() {
   const [activeDomain, setActiveDomain] = useState('All');
-  const [showAll, setShowAll] = useState(false);
 
   const filtered = activeDomain === 'All'
     ? projects
     : projects.filter((p) => p.domain === activeDomain);
 
-  const displayed = showAll ? filtered : filtered.slice(0, 6);
+  const scrollToContact = () => {
+    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section id="projects" className="section-wrapper">
@@ -118,11 +53,11 @@ export default function Projects() {
           className="text-center mb-12"
         >
           <p className="font-mono-jetbrains text-blue-500 text-sm font-semibold tracking-widest uppercase mb-3">
-            05. Projects
+            03. Offres & Accompagnements
           </p>
-          <h2 className="section-title">Featured Work</h2>
+          <h2 className="section-title">Mes accompagnements</h2>
           <p className="section-subtitle">
-            From AI vision systems to IoT deployments and full-stack platforms — engineering that ships.
+            Des formules adaptées aux besoins de votre enfant : suivi hebdomadaire, préparation aux examens ou stages de vacances.
           </p>
         </motion.div>
 
@@ -137,7 +72,7 @@ export default function Projects() {
           {domains.map((domain) => (
             <button
               key={domain}
-              onClick={() => { setActiveDomain(domain); setShowAll(false); }}
+              onClick={() => setActiveDomain(domain)}
               className={`px-4 py-2 rounded-full font-inter text-sm font-medium transition-all duration-300 ${
                 activeDomain === domain
                   ? 'text-white shadow-lg'
@@ -148,12 +83,12 @@ export default function Projects() {
                 boxShadow: '0 4px 14px rgba(59,130,246,0.3)'
               } : {}}
             >
-              {domain === 'All' ? '✦ All' : (domainIcons[domain] + ' ' + domain)}
+              {domain === 'All' ? '✦ Tous les accompagnements' : ((domainIcons[domain] || '📘') + ' ' + domain)}
             </button>
           ))}
         </motion.div>
 
-        {/* Projects grid */}
+        {/* Services grid */}
         <AnimatePresence mode="wait">
           <motion.div
             key={activeDomain}
@@ -163,46 +98,46 @@ export default function Projects() {
             exit={{ opacity: 0, y: 10, transition: { duration: 0.2 } }}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {displayed.map((project) => (
+            {filtered.map((service) => (
               <motion.div
-                key={project.id}
+                key={service.id}
                 variants={cardVariants}
                 whileHover={{ scale: 1.03, y: -6 }}
                 transition={{ type: 'spring', stiffness: 300 }}
                 className="glass-card overflow-hidden flex flex-col"
               >
-                {/* Card image / carousel */}
-                <ProjectImage domain={project.domain} images={project.images} />
+                {/* Header gradient banner */}
+                <ServiceHeader domain={service.domain} />
 
                 {/* Card content */}
-                <div className="flex-1 p-5 flex flex-col">
-                  {/* Domain + Featured + Award badges */}
+                <div className="flex-1 p-6 flex flex-col">
+                  {/* Category badge */}
                   <div className="flex items-center gap-2 mb-3 flex-wrap">
-                    <span className={`font-inter text-xs font-semibold px-2.5 py-1 rounded-full ${domainColors[project.domain]}`}>
-                      {project.domain}
+                    <span className={`font-inter text-xs font-semibold px-2.5 py-1 rounded-full ${domainColors[service.domain]}`}>
+                      {service.domain}
                     </span>
-                    {project.featured && (
+                    {service.featured && (
                       <span className="flex items-center gap-1 font-inter text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-50 text-amber-600 border border-amber-100">
                         <Star size={10} fill="currentColor" />
-                        Featured
+                        Recommandé
                       </span>
                     )}
                   </div>
 
-                  <h3 className="font-space font-bold text-slate-900 text-base mb-2 leading-tight">
-                    {project.name}
+                  <h3 className="font-space font-bold text-slate-900 text-lg mb-2 leading-snug">
+                    {service.name}
                   </h3>
 
-                  <p className="font-inter text-slate-500 text-sm leading-relaxed flex-1 mb-4">
-                    {project.description}
+                  <p className="font-inter text-slate-600 text-sm leading-relaxed flex-1 mb-4">
+                    {service.description}
                   </p>
 
-                  {/* Tech chips */}
+                  {/* Tech chips / Key tags */}
                   <div className="flex flex-wrap gap-1.5 mb-4">
-                    {project.tech.map((t) => (
+                    {service.tech.map((t) => (
                       <span
                         key={t}
-                        className="font-mono-jetbrains text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-600"
+                        className="font-inter text-xs px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 font-medium"
                       >
                         {t}
                       </span>
@@ -210,61 +145,28 @@ export default function Projects() {
                   </div>
 
                   {/* Award badge */}
-                  {project.award && (
+                  {service.award && (
                     <div className="mb-4 flex items-center gap-2 px-3 py-2 rounded-xl bg-amber-50 border border-amber-100">
                       <span className="text-sm">🏆</span>
-                      <span className="font-inter text-xs font-semibold text-amber-700">{project.award}</span>
+                      <span className="font-inter text-xs font-semibold text-amber-700">{service.award}</span>
                     </div>
                   )}
 
-                  {/* Links */}
-                  {(project.github || project.demo) && (
-                    <div className="flex items-center gap-3 pt-3 border-t border-slate-100">
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 text-slate-600 hover:text-slate-900 text-xs font-medium transition-colors"
-                        >
-                          <Github size={14} />
-                          GitHub
-                        </a>
-                      )}
-                      {project.demo && (
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 text-blue-500 hover:text-blue-700 text-xs font-medium transition-colors"
-                        >
-                          <ExternalLink size={14} />
-                          View Publication
-                        </a>
-                      )}
-                    </div>
-                  )}
+                  {/* Action button */}
+                  <div className="pt-4 border-t border-slate-100">
+                    <button
+                      onClick={scrollToContact}
+                      className="w-full btn-secondary text-xs flex items-center justify-center gap-2 py-2.5"
+                    >
+                      <Calendar size={14} className="text-blue-500" />
+                      Demander des informations / Réverser
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </motion.div>
         </AnimatePresence>
-
-        {/* Show more */}
-        {!showAll && filtered.length > 6 && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center mt-10"
-          >
-            <button
-              onClick={() => setShowAll(true)}
-              className="btn-secondary"
-            >
-              Show All Projects ({filtered.length - 6} more)
-            </button>
-          </motion.div>
-        )}
       </div>
     </section>
   );

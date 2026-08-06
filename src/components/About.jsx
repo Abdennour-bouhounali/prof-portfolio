@@ -1,19 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Brain, Code2, Cpu, Eye, MapPin, Mail, BookOpen } from 'lucide-react';
+import { Target, Lightbulb, Trophy, Award, MapPin, Mail, Phone, BookOpen } from 'lucide-react';
 
 const whatIDo = [
-  { icon: Brain, label: 'Artificial Intelligence', desc: 'Deep learning models, computer vision pipelines, SLAM algorithms' },
-  { icon: Cpu, label: 'Embedded Systems', desc: 'ESP32, STM32, RISC-V, RTOS, Embedded Linux, ROS2' },
-  { icon: Eye, label: 'Computer Vision', desc: '3D perception, point cloud fusion, sensor fusion, stereo vision' },
-  { icon: Code2, label: 'Software Engineering', desc: 'React, Laravel, REST APIs, CI/CD, agile development' },
+  { icon: Target, label: 'Diagnostic & Sur-Mesure', desc: 'Identification rapide des lacunes précises et élaboration d\'un plan de travail adapté.' },
+  { icon: Lightbulb, label: 'Déclic & Autonomie', desc: 'Explications claires, schémas intuitifs et méthode progressive pour rendre le cours évident.' },
+  { icon: Trophy, label: 'Préparation aux Examens', desc: 'Entraînement intensif sur annales du Brevet et du Bac avec gestion du temps et du stress.' },
+  { icon: Award, label: 'Rigueur & Suivi Parents', desc: 'Enseignement de la rédaction d\'examen et bilan synthétique transmis après chaque cours.' },
 ];
 
 const stats = [
-  { value: 1, suffix: '+', label: 'Years Experience' },
-  { value: 10, suffix: '+', label: 'Projects Completed' },
-  { value: 15, suffix: '+', label: 'Technologies' },
-  { value: 1, suffix: '', label: 'IEEE Publication' },
+  { value: 5, suffix: '+', label: "Ans d'Expérience" },
+  { value: 150, suffix: '+', label: 'Élèves Accompagnés' },
+  { value: 98, suffix: '%', label: 'Réussite Brevet / Bac' },
+  { value: 4, suffix: ' pts', label: 'Progression Moyenne' },
 ];
 
 function CountUp({ target, suffix, inView }) {
@@ -74,11 +74,11 @@ export default function About() {
           className="text-center mb-16"
         >
           <p className="font-mono-jetbrains text-blue-500 text-sm font-semibold tracking-widest uppercase mb-3">
-            01. About
+            01. Pourquoi me choisir ?
           </p>
-          <h2 className="section-title">Who I Am</h2>
+          <h2 className="section-title">Pourquoi mes élèves progressent ?</h2>
           <p className="section-subtitle">
-            A software engineer at the intersection of AI, embedded hardware, and intelligent vision systems.
+            Une approche pédagogique humaine et exigeante qui transforme l'anxiété des maths en déclic et en réussite.
           </p>
         </motion.div>
 
@@ -90,28 +90,35 @@ export default function About() {
           viewport={{ once: true, margin: '-80px' }}
           className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16"
         >
-          {/* Left — Bio + What I do */}
+          {/* Left — Bio + Pillars */}
           <motion.div variants={itemVariants} className="space-y-6">
             <div className="glass-card p-8">
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg"
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-lg text-white"
                   style={{ background: 'linear-gradient(135deg, #3B82F6, #8B5CF6)' }}>
-                  👋
+                  👨‍🏫
                 </div>
-                <h3 className="font-space text-xl font-bold text-slate-800">About Me</h3>
+                <h3 className="font-space text-xl font-bold text-slate-800">Ma Philosophie Pédagogique</h3>
               </div>
 
               <p className="font-inter text-slate-600 leading-relaxed mb-4">
-                I'm a Software Engineer passionate about building intelligent, scalable, and high-performance software solutions. My expertise spans <strong className="text-slate-800">Artificial Intelligence</strong>, <strong className="text-slate-800">Computer Vision</strong>, <strong className="text-slate-800">Embedded Systems</strong>, and <strong className="text-slate-800">IoT</strong>, with hands-on experience developing industrial applications from embedded devices to AI-powered vision systems.
+                Pédagogue passionné avec plus de 5 ans d'expérience dans l'enseignement des mathématiques en lycée et en cours particuliers, je suis convaincu que <strong className="text-slate-800">chaque élève peut réussir en mathématiques</strong> dès lors qu'on adapte l'explication à son fonctionnement.
               </p>
               <p className="font-inter text-slate-600 leading-relaxed">
-                I enjoy solving complex engineering challenges by combining modern software engineering with cutting-edge technologies to create impactful, real-world solutions.
+                Mon objectif ne se limite pas à faire faire des exercices : je construis une relation de confiance, j'enseigne des réflexes de rigueur et je prépare méthodiquement aux épreuves du Brevet et du Baccalauréat.
               </p>
+
+              {/* Differentiator banner */}
+              <div className="mt-6 p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-150">
+                <p className="font-inter text-xs text-slate-700 font-medium leading-relaxed">
+                  💡 <strong className="text-blue-600">Mon atout unique :</strong> Mon parcours d'ingénieur et mon Master de l'Université de Toulouse me permettent d'apporter une approche rigoureuse, logique et concrète des mathématiques.
+                </p>
+              </div>
 
               <div className="flex flex-col gap-2 mt-5 pt-5 border-t border-slate-100">
                 <div className="flex items-center gap-2 text-slate-500 text-sm">
                   <MapPin size={14} className="text-blue-500" />
-                  <span>Toulouse, France</span>
+                  <span>Toulouse, Paris & Toute la France (En ligne)</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-500 text-sm">
                   <Mail size={14} className="text-blue-500" />
@@ -120,15 +127,15 @@ export default function About() {
                   </a>
                 </div>
                 <div className="flex items-center gap-2 text-slate-500 text-sm">
-                  <BookOpen size={14} className="text-blue-500" />
-                  <a href="https://ieeexplore.ieee.org/document/10783387" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
-                    IEEE EDiS 2024 Publication
+                  <Phone size={14} className="text-blue-500" />
+                  <a href="tel:+33670445721" className="hover:text-blue-600 transition-colors font-medium">
+                    +33 6 70 44 57 21
                   </a>
                 </div>
               </div>
             </div>
 
-            {/* What I do */}
+            {/* 4 Pillars */}
             <div className="space-y-3">
               {whatIDo.map((item, i) => (
                 <motion.div
@@ -162,14 +169,14 @@ export default function About() {
                 style={{ backgroundImage: 'radial-gradient(#3B82F6 1px, transparent 1px)', backgroundSize: '20px 20px' }}
               />
               <h3 className="font-space font-bold text-slate-800 text-lg mb-6 relative z-10">
-                Building intelligent systems by combining:
+                Un accompagnement complet axé sur :
               </h3>
               <div className="grid grid-cols-2 gap-4 relative z-10">
                 {[
-                  { emoji: '🤖', label: 'AI', sublabel: 'Machine Learning' },
-                  { emoji: '💻', label: 'Software Eng', sublabel: 'Architecture' },
-                  { emoji: '⚙️', label: 'Embedded HW', sublabel: 'Systems' },
-                  { emoji: '👁️', label: 'Computer Vision', sublabel: '3D Perception' },
+                  { emoji: '🎯', label: 'Compréhension', sublabel: 'Reprise des bases' },
+                  { emoji: '📝', label: 'Rigueur', sublabel: 'Rédaction parfaite' },
+                  { emoji: '⏱️', label: 'Gestion', sublabel: 'Gestion du temps' },
+                  { emoji: '🚀', label: 'Confiance', sublabel: 'Déclic positif' },
                 ].map((item, i) => (
                   <motion.div
                     key={item.label}
@@ -183,9 +190,9 @@ export default function About() {
                 ))}
               </div>
               <div className="mt-6 p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 relative z-10">
-                <p className="font-mono-jetbrains text-xs text-slate-500 leading-relaxed">
-                  <span className="text-blue-500">$ </span>
-                  AI + Embedded + Vision = Autonomous Intelligent Systems
+                <p className="font-mono-jetbrains text-xs text-slate-600 leading-relaxed">
+                  <span className="text-blue-500 font-bold">Méthode = </span>
+                  Compréhension + Rigueur de calcul + Entraînement régulier = Succès
                 </p>
               </div>
             </div>
@@ -202,10 +209,10 @@ export default function About() {
                   whileHover={{ scale: 1.05, y: -3 }}
                   className="glass-card p-5 text-center"
                 >
-                  <div className="font-space font-bold text-4xl gradient-text-blue-purple mb-1">
+                  <div className="font-space font-bold text-3xl sm:text-4xl gradient-text-blue-purple mb-1">
                     <CountUp target={stat.value} suffix={stat.suffix} inView={statsInView} />
                   </div>
-                  <p className="font-inter text-slate-500 text-xs">{stat.label}</p>
+                  <p className="font-inter text-slate-500 text-xs font-medium">{stat.label}</p>
                 </motion.div>
               ))}
             </div>

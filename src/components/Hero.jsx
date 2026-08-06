@@ -1,18 +1,18 @@
-import { ArrowDown, Download, ExternalLink } from 'lucide-react';
+import { ArrowDown, Calendar, Download, CheckCircle2 } from 'lucide-react';
 import profileImg from '../assets/myimage.png';
 
-const techBadges = [
-  'Artificial Intelligence',
-  'Computer Vision',
-  'Embedded Systems',
-  'IoT & LoRa',
-  'SLAM & 3D Vision',
-  'Deep Learning',
+const quickBadges = [
+  '✓ Collège (6e - 3e)',
+  '✓ Lycée (2nde - Terminale)',
+  '✓ Prépa Brevet (DNB)',
+  '✓ Prépa Bac (Spé / Expertes)',
+  '✓ À domicile (Toulouse & Paris)',
+  '✓ En Ligne (Toute la France)',
 ];
 
 export default function Hero() {
-  const scrollToProjects = () => {
-    document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToContact = () => {
+    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const scrollToAbout = () => {
@@ -32,8 +32,8 @@ export default function Hero() {
 
             {/* Status badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 text-green-700 text-sm font-medium mb-6">
-              <span className="w-2 h-2 rounded-full bg-green-500" />
-              Available for opportunities
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              Disponible pour cours particuliers (Toulouse, Paris & En Ligne)
             </div>
 
             {/* Name */}
@@ -43,25 +43,21 @@ export default function Hero() {
             </h1>
 
             {/* Title */}
-            <p className="font-space text-xl sm:text-2xl font-semibold text-slate-500 mb-2">
-              Software Engineer
+            <p className="font-space text-xl sm:text-2xl font-semibold text-slate-500 mb-4">
+              Professeur de Mathématiques
             </p>
 
-            <p className="font-mono-jetbrains text-sm sm:text-base text-blue-500 font-medium mb-6">
-              AI • Embedded Systems • Computer Vision
+            {/* Core Promise Headline */}
+            <p className="font-inter text-slate-700 text-base sm:text-lg lg:text-xl font-medium max-w-2xl leading-relaxed mb-6">
+              Des cours de mathématiques clairs, personnalisés et efficaces pour aider chaque élève à reprendre confiance et réussir le Brevet ou le Bac.
             </p>
 
-            {/* Tagline */}
-            <p className="font-inter text-slate-600 text-base sm:text-lg max-w-xl leading-relaxed mb-8">
-              Engineering intelligent software for the next generation of connected and autonomous systems.
-            </p>
-
-            {/* Tech badges */}
-            <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-10">
-              {techBadges.map((label) => (
+            {/* Decision Quick Badges */}
+            <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-8">
+              {quickBadges.map((label) => (
                 <span
                   key={label}
-                  className="inline-flex items-center px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-600 text-xs font-mono-jetbrains font-medium shadow-sm hover:shadow-md hover:border-blue-200 hover:text-blue-600 transition-all duration-300"
+                  className="inline-flex items-center px-3 py-1.5 rounded-full bg-white border border-slate-200 text-slate-700 text-xs font-inter font-semibold shadow-sm hover:shadow-md hover:border-blue-200 hover:text-blue-600 transition-all duration-300"
                 >
                   {label}
                 </span>
@@ -71,12 +67,12 @@ export default function Hero() {
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
               <button
-                onClick={scrollToProjects}
+                onClick={scrollToContact}
                 className="btn-primary text-sm"
-                id="hero-view-projects"
+                id="hero-book-lesson"
               >
-                View Projects
-                <ExternalLink size={15} />
+                <Calendar size={16} />
+                Réserver un cours d'essai
               </button>
 
               <a
@@ -86,7 +82,7 @@ export default function Hero() {
                 id="hero-download-cv"
               >
                 <Download size={15} />
-                Download CV
+                Télécharger le CV Enseignant
               </a>
             </div>
           </div>
@@ -106,27 +102,26 @@ export default function Hero() {
               <div className="absolute inset-[4px] rounded-full overflow-hidden">
                 <img
                   src={profileImg}
-                  alt="Abdennour BOUHOUNALI"
+                  alt="Abdennour BOUHOUNALI — Professeur de Mathématiques"
                   className="w-full h-full object-cover"
                 />
               </div>
 
               {/* Static badge — top right */}
-              <div className="absolute -top-3 -right-3 bg-white rounded-2xl px-3 py-2 shadow-lg border border-slate-100 flex items-center gap-2">
-                <span className="text-lg">🤖</span>
-                <span className="font-mono-jetbrains text-xs font-semibold text-slate-700">AI Engineer</span>
+              <div className="absolute -top-3 -right-3 bg-white rounded-2xl px-3.5 py-2 shadow-lg border border-slate-100 flex items-center gap-2">
+                <span className="text-lg">📐</span>
+                <span className="font-space text-xs font-bold text-slate-800">5+ Ans Exp.</span>
               </div>
 
               {/* Static badge — bottom left */}
-              <div className="absolute -bottom-3 -left-3 bg-white rounded-2xl px-3 py-2 shadow-lg border border-slate-100 flex items-center gap-2">
-                <span className="text-lg">📡</span>
-                <span className="font-mono-jetbrains text-xs font-semibold text-slate-700">IoT & LoRa</span>
+              <div className="absolute -bottom-3 -left-3 bg-white rounded-2xl px-3.5 py-2 shadow-lg border border-slate-100 flex items-center gap-2">
+                <span className="text-lg">🏆</span>
+                <span className="font-space text-xs font-bold text-slate-800">Bac 17/20</span>
               </div>
 
-              {/* IEEE badge */}
-              <div className="absolute -bottom-3 -right-3 bg-blue-600 rounded-2xl px-3 py-2 shadow-lg flex items-center gap-1">
-                <span className="text-white text-xs font-bold">IEEE</span>
-                <span className="text-blue-200 text-xs">Published</span>
+              {/* IEEE/Degree badge */}
+              <div className="absolute -bottom-3 -right-3 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl px-3.5 py-2 shadow-lg flex items-center gap-1">
+                <span className="text-white text-xs font-bold">Ingénieur & M2</span>
               </div>
             </div>
           </div>
@@ -139,7 +134,7 @@ export default function Hero() {
         onClick={scrollToAbout}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 hover:text-slate-600 transition-colors"
       >
-        <span className="text-xs font-mono-jetbrains">scroll down</span>
+        <span className="text-xs font-mono-jetbrains">découvrir ma méthode</span>
         <ArrowDown size={16} />
       </button>
     </section>

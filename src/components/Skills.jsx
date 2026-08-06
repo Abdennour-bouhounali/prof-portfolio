@@ -32,11 +32,11 @@ export default function Skills() {
           className="text-center mb-12"
         >
           <p className="font-mono-jetbrains text-blue-500 text-sm font-semibold tracking-widest uppercase mb-3">
-            02. Skills
+            02. Niveaux & Programme
           </p>
-          <h2 className="section-title">Technical Expertise</h2>
+          <h2 className="section-title">Ce que j'enseigne</h2>
           <p className="section-subtitle">
-            A full-stack technical skill set across AI, embedded hardware, and modern software engineering.
+            Un enseignement rigoureux et adapté du Collège aux spécialités scientifiques du Lycée et du Supérieur.
           </p>
         </motion.div>
 
@@ -62,7 +62,7 @@ export default function Skills() {
                 boxShadow: '0 4px 14px rgba(59,130,246,0.3)'
               } : {}}
             >
-              {cat === 'All' ? '✦ All' : skills.find(s => s.category === cat)?.icon + ' ' + cat}
+              {cat === 'All' ? '✦ Tous les niveaux' : skills.find(s => s.category === cat)?.icon + ' ' + cat}
             </button>
           ))}
         </motion.div>
@@ -75,9 +75,9 @@ export default function Skills() {
             initial="hidden"
             animate="visible"
             exit={{ opacity: 0, y: 10, transition: { duration: 0.2 } }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6"
           >
-            {filteredSkills.map((skillCat, idx) => (
+            {filteredSkills.map((skillCat) => (
               <motion.div
                 key={skillCat.category}
                 variants={itemVariants}
@@ -96,13 +96,13 @@ export default function Skills() {
 
                 {/* Category header */}
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="text-2xl">{skillCat.icon}</span>
+                  <span className="text-3xl">{skillCat.icon}</span>
                   <div>
-                    <h3 className="font-space font-bold text-slate-800 text-sm leading-tight">
+                    <h3 className="font-space font-bold text-slate-800 text-base leading-tight">
                       {skillCat.category}
                     </h3>
                     <p className="font-mono-jetbrains text-xs text-slate-400">
-                      {skillCat.items.length} technologies
+                      {skillCat.items.length} notions & formats
                     </p>
                   </div>
                 </div>
@@ -112,8 +112,8 @@ export default function Skills() {
                   {skillCat.items.map((skill) => (
                     <motion.span
                       key={skill}
-                      whileHover={{ scale: 1.08 }}
-                      className={`tech-chip bg-gradient-to-r ${skillCat.color} text-white px-3 py-1 text-xs shadow-sm`}
+                      whileHover={{ scale: 1.05 }}
+                      className={`tech-chip bg-gradient-to-r ${skillCat.color} text-white px-3 py-1.5 text-xs shadow-sm font-inter`}
                     >
                       {skill}
                     </motion.span>

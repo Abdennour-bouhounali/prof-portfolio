@@ -3,10 +3,13 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Process from './components/Process';
 import Experience from './components/Experience';
 import Education from './components/Education';
-import Projects from './components/Projects';
 import Blog from './components/Blog';
+import Testimonials from './components/Testimonials';
+import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CommandPalette from './components/CommandPalette';
@@ -28,10 +31,13 @@ export default function App() {
         <Hero />
         <About />
         <Skills />
+        <Projects />
+        <Process />
         <Experience />
         <Education />
-        <Projects />
         <Blog />
+        <Testimonials />
+        <FAQ />
         <Contact />
       </main>
 

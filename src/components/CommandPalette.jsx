@@ -1,16 +1,16 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ArrowUp, ArrowDown, CornerDownLeft, X, Download, User, Zap, Briefcase, FolderOpen, Mail, Github, Linkedin } from 'lucide-react';
+import { Search, ArrowUp, ArrowDown, CornerDownLeft, X, Download, Calendar, BookOpen, Briefcase, HelpCircle, Mail, Phone } from 'lucide-react';
 
 const commands = [
-  { id: 'about', label: 'Go to About', section: '#about', icon: User, group: 'Navigation' },
-  { id: 'skills', label: 'Go to Skills', section: '#skills', icon: Zap, group: 'Navigation' },
-  { id: 'experience', label: 'Go to Experience', section: '#experience', icon: Briefcase, group: 'Navigation' },
-  { id: 'projects', label: 'Go to Projects', section: '#projects', icon: FolderOpen, group: 'Navigation' },
-  { id: 'contact', label: 'Go to Contact', section: '#contact', icon: Mail, group: 'Navigation' },
-  { id: 'download-cv', label: 'Download CV', href: '/CV.pdf', download: true, icon: Download, group: 'Actions' },
-  { id: 'github', label: 'Open GitHub', href: 'https://github.com/Abdennour-bouhounali', external: true, icon: Github, group: 'Actions' },
-  { id: 'linkedin', label: 'Open LinkedIn', href: 'https://www.linkedin.com/in/abdennour-bouhounali-09002b236/', external: true, icon: Linkedin, group: 'Actions' },
+  { id: 'book', label: 'Réserver un cours d\'essai', section: '#contact', icon: Calendar, group: 'Actions Principales' },
+  { id: 'skills', label: 'Voir les niveaux (Ce que j\'enseigne)', section: '#skills', icon: BookOpen, group: 'Navigation' },
+  { id: 'projects', label: 'Voir mes accompagnements', section: '#projects', icon: Briefcase, group: 'Navigation' },
+  { id: 'process', label: 'Comment se déroule un cours ?', section: '#process', icon: BookOpen, group: 'Navigation' },
+  { id: 'faq', label: 'Foire Aux Questions (FAQ)', section: '#faq', icon: HelpCircle, group: 'Navigation' },
+  { id: 'download-cv', label: 'Télécharger le CV Enseignant (PDF)', href: '/CV.pdf', download: true, icon: Download, group: 'Actions Principales' },
+  { id: 'email', label: 'Envoyer un Email', href: 'mailto:abdennour.bouhounali@gmail.com', external: true, icon: Mail, group: 'Contact Direct' },
+  { id: 'phone', label: 'Appeler (+33 6 70 44 57 21)', href: 'tel:+33670445721', external: true, icon: Phone, group: 'Contact Direct' },
 ];
 
 export default function CommandPalette() {
@@ -63,10 +63,10 @@ export default function CommandPalette() {
     } else if (cmd.download) {
       const a = document.createElement('a');
       a.href = cmd.href;
-      a.download = 'CV_Abdennour_BOUHOUNALI.pdf';
+      a.download = 'CV_Abdennour_BOUHOUNALI_Prof_Maths.pdf';
       a.click();
     } else if (cmd.external) {
-      window.open(cmd.href, '_blank', 'noopener,noreferrer');
+      window.open(cmd.href, cmd.href.startsWith('mailto:') || cmd.href.startsWith('tel:') ? '_self' : '_blank');
     }
   }, []);
 
@@ -128,7 +128,7 @@ export default function CommandPalette() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: -20 }}
               transition={{ duration: 0.2, ease: 'easeOut' }}
-              className="fixed top-[15%] left-1/2 -translate-x-1/2 z-50 w-full max-w-lg"
+              className="fixed top-[15%] left-1/2 -translate-x-1/2 z-50 w-full max-w-lg px-4"
             >
               <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden">
                 {/* Search input */}
@@ -140,7 +140,7 @@ export default function CommandPalette() {
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                     onKeyDown={handleKeyNavigation}
-                    placeholder="Type a command or search..."
+                    placeholder="Rechercher une section ou une action..."
                     className="flex-1 bg-transparent font-inter text-sm text-slate-800 placeholder-slate-400 outline-none"
                     id="command-palette-input"
                   />
@@ -156,7 +156,7 @@ export default function CommandPalette() {
                 <div className="max-h-80 overflow-y-auto py-2">
                   {filtered.length === 0 ? (
                     <div className="py-10 text-center text-slate-400 font-inter text-sm">
-                      No commands found
+                      Aucun résultat trouvé
                     </div>
                   ) : (
                     Object.entries(groups).map(([group, cmds]) => (
@@ -200,15 +200,15 @@ export default function CommandPalette() {
                   <span className="flex items-center gap-1.5">
                     <ArrowUp size={11} />
                     <ArrowDown size={11} />
-                    Navigate
+                    Naviguer
                   </span>
                   <span className="flex items-center gap-1.5">
                     <CornerDownLeft size={11} />
-                    Select
+                    Sélectionner
                   </span>
                   <span className="flex items-center gap-1.5">
                     <span className="font-semibold">Esc</span>
-                    Close
+                    Fermer
                   </span>
                 </div>
               </div>

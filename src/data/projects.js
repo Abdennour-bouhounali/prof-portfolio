@@ -1,180 +1,93 @@
 export const domainGradients = {
-  "Computer Vision": "from-purple-600 via-blue-500 to-cyan-400",
-  "Artificial Intelligence": "from-blue-600 via-indigo-500 to-violet-400",
-  "Embedded Systems": "from-orange-500 via-red-500 to-pink-400",
-  "IoT": "from-green-500 via-teal-500 to-emerald-400",
-  "Web Development": "from-slate-600 via-gray-500 to-zinc-400",
-  "Desktop Apps": "from-rose-500 via-fuchsia-500 to-purple-500",
+  "Soutien Hebdo": "from-blue-600 via-indigo-500 to-cyan-400",
+  "Prépa Examens": "from-purple-600 via-pink-500 to-rose-400",
+  "Stages Vacances": "from-orange-500 via-amber-500 to-yellow-400",
+  "Cours en Ligne": "from-emerald-500 via-teal-500 to-cyan-400",
+  "Remise à Niveau": "from-slate-600 via-gray-500 to-zinc-400",
 };
 
 export const domainIcons = {
-  "Computer Vision": "👁️",
-  "Artificial Intelligence": "🤖",
-  "Embedded Systems": "⚙️",
-  "IoT": "📡",
-  "Web Development": "💻",
-  "Desktop Apps": "🖥️",
+  "Soutien Hebdo": "📘",
+  "Prépa Examens": "🏆",
+  "Stages Vacances": "🚀",
+  "Cours en Ligne": "💻",
+  "Remise à Niveau": "📚",
 };
 
 export const domainColors = {
-  "Computer Vision": "bg-purple-100 text-purple-700",
-  "Artificial Intelligence": "bg-blue-100 text-blue-700",
-  "Embedded Systems": "bg-orange-100 text-orange-700",
-  "IoT": "bg-green-100 text-green-700",
-  "Web Development": "bg-slate-100 text-slate-700",
-  "Desktop Apps": "bg-fuchsia-100 text-fuchsia-700",
+  "Soutien Hebdo": "bg-blue-100 text-blue-700",
+  "Prépa Examens": "bg-purple-100 text-purple-700",
+  "Stages Vacances": "bg-orange-100 text-orange-700",
+  "Cours en Ligne": "bg-emerald-100 text-emerald-700",
+  "Remise à Niveau": "bg-slate-100 text-slate-700",
 };
 
 export const projects = [
   {
     id: 1,
-    domain: "Computer Vision",
-    name: "3D Agricultural Perception System",
-    description: "Multi-camera + IMU synchronized system for 3D tomato plant perception, point cloud fusion pipeline, and YOLOv8 cutting-point detection. Deployed prototype at Aisprid.",
-    tech: ["Python", "OpenCV", "Open3D", "YOLOv8", "IMU", "Linux"],
-    images: [
-      '/projects/1/1.webp',
-      '/projects/1/2.webp',
-      '/projects/1/3.webp',
-    ],
+    domain: "Soutien Hebdo",
+    name: "Soutien Hebdomadaire & Suivi Continu",
+    description: "Un accompagnement régulier de 1h à 2h par semaine pour consolider le cours vu en classe, clarifier les zones d'ombre, préparer les devoirs surveillés et installer une routine de travail efficace.",
+    tech: ["Collège", "Lycée", "Toulouse", "Paris", "En Ligne"],
+    images: null,
     github: null,
     demo: null,
     featured: true
   },
   {
     id: 2,
-    domain: "Computer Vision",
-    name: "3D Localization via Multi-Source Data Fusion",
-    description: "Custom 3D localization algorithm built from scratch using fusion of heterogeneous 3D data sources — stereo cameras, point clouds, and IMU measurements. The approach estimates accurate 6-DoF pose by registering and fusing multi-modal 3D observations without relying on traditional SLAM frameworks.",
-    tech: ["Python", "C++", "Open3D", "Point Cloud Fusion", "IMU Fusion", "OpenCV", "Stereo Vision"],
-    images: [
-      '/projects/2/1.webp',
-      '/projects/2/2.webp',
-      '/projects/2/3.webp',
-    ],
+    domain: "Prépa Examens",
+    name: "Préparation au Baccalauréat (Spé & Expertes)",
+    description: "Programme intensif axé sur le programme de Terminale Spécialité et Maths Expertes. Entraînement sur sujets d'annales corrigés, maîtrise des méthodes types Bac et optimisation de la rédaction.",
+    tech: ["Terminale Spé Maths", "Maths Expertes", "Annales Bac", "Rédaction Types"],
+    images: null,
+    github: null,
+    demo: null,
+    featured: true,
+    award: "🏆 98% Taux de Réussite"
+  },
+  {
+    id: 3,
+    domain: "Prépa Examens",
+    name: "Stage Commando Brevet des Collèges (DNB)",
+    description: "Préparation ciblée pour les élèves de 3ème : révisions programmées en calcul, géométrie, probabilités et algorithmique. Entraînement en conditions réelles d'examen.",
+    tech: ["Troisième (3ème)", "DNB Brevet", "Annales", "Gestion du Temps"],
+    images: null,
     github: null,
     demo: null,
     featured: true
   },
   {
-    id: 3,
-    domain: "Computer Vision",
-    name: "3D Sensor Benchmark Suite",
-    description: "Experimental benchmark comparing stereo cameras, Time-of-Flight sensors, and OAK-D for embedded 3D perception — accuracy, latency, and power efficiency.",
-    tech: ["Python", "Open3D", "OAK-D", "ToF", "Stereo Vision"],
-    images: [
-      '/projects/3/1.webp',
-      '/projects/3/2.webp'
-    ],
-    github: null,
-    demo: null,
-    featured: false
-  },
-  {
     id: 4,
-    domain: "Artificial Intelligence",
-    name: "YOLOv8 Cutting-Point Detector",
-    description: "Custom-trained YOLOv8 model for 2D/3D detection of cutting points on tomato plants, enabling robotic harvesting automation.",
-    tech: ["Python", "YOLOv8", "PyTorch", "OpenCV", "Deep Learning"],
-    images: [
-      '/projects/4/1.webp'
-
-    ],
+    domain: "Stages Vacances",
+    name: "Stages Intensifs pendant les Vacances",
+    description: "Des stages de 5 à 10 heures réparties sur la semaine (Toussaint, Février, Pâques, Été) pour combler rapidement les lacunes accumulate et prendre de l'avance sur le trimestre suivant.",
+    tech: ["Toussaint", "Février", "Pâques", "Stage d'Été", "Petits Groupes ou Individuel"],
+    images: null,
     github: null,
     demo: null,
     featured: true
   },
   {
     id: 5,
-    domain: "Artificial Intelligence",
-    name: "Signal Processing & FFT Analysis Tool",
-    description: "Industrial signal analysis with FFT, Kalman filtering, and sensor data fusion for embedded instrumentation systems.",
-    tech: ["Python", "MATLAB", "Kalman Filter", "FFT", "Signal Processing"],
+    domain: "Cours en Ligne",
+    name: "Cours en Ligne Interactive (Visio HD)",
+    description: "Séances à distance sur tableau blanc virtuel partagé (GeoGebra, PDF annotés en direct). Les notes et exercices sont envoyés en PDF à la fin de chaque cours pour une révision optimale.",
+    tech: ["Tableau Interactif", "Visio HD", "Toute la France", "Support PDF d'après-cours"],
     images: null,
     github: null,
     demo: null,
     featured: false
   },
   {
-    id: 7,
-    domain: "Embedded Systems",
-    name: "6502 Breadboard Microcontroller",
-    description: "Complete hardware design of a 6502-based microcontroller on breadboard: address/data bus, RAM, ROM, LCD display. Programmed in 6502 assembly.",
-    tech: ["6502 Assembly", "Hardware Design", "LCD", "Bus Architecture"],
-    images: [
-      '/projects/7/1.webp',
-    ],
-    github: null,
-    demo: null,
-    featured: true
-  },
-  {
-    id: 8,
-    domain: "Embedded Systems",
-    name: "Embedded Instrumentation Software",
-    description: "C++/Qt real-time control and visualization software for embedded instrumentation with graphical data display and acquisition.",
-    tech: ["C++", "Qt/QML", "Linux", "Signal Processing"],
+    id: 6,
+    domain: "Remise à Niveau",
+    name: "Remise à Niveau & Déclic Mathématique",
+    description: "Conçu pour les élèves en grande difficulté ou anxieux face aux maths. Déconstruction des blocages, reprise des fondamentaux et redonner confiance par des réussites progressives.",
+    tech: ["Confiance en soi", "Méthodologie", "Diagnostic initial", "Pédagogie bienveillante"],
     images: null,
     github: null,
     demo: null,
     featured: false
-  },
-  {
-    id: 9,
-    domain: "IoT",
-    name: "LoRa IoT Agricultural Monitor",
-    description: "Full IoT precision-agriculture system: ESP32 sensor nodes, LoRa long-range communication, bidirectional WiFi control, multi-sensor PCB, and real-time cloud dashboard. Published IEEE EDiS 2024.",
-    tech: ["ESP32", "C++", "LoRa", "I2C", "SPI", "PCB Design", "Laravel"],
-    images: [
-      '/projects/9/1.webp',
-    ],
-    github: null,
-    demo: "https://ieeexplore.ieee.org/document/10783387",
-    featured: true
-  },
-  {
-    id: 10,
-    domain: "Web Development",
-    name: "Medical Campaign Platform — TAGEMI Foundation",
-    description: "Full-stack platform for managing medical campaigns: multi-role users, real-time data, CI/CD deployment pipeline, and secure sensitive data management.",
-    tech: ["ReactJS", "Laravel", "TailwindCSS", "MySQL", "CI/CD", "PHP"],
-    images: [
-      '/projects/10/1.webp',
-    ],
-    github: null,
-    demo: null,
-    featured: true
-  },
-  {
-    id: 11,
-    domain: "Web Development",
-    name: "IoT Real-Time Data Dashboard",
-    description: "Laravel/PHP web dashboard for visualizing and managing live sensor data from the LoRa agricultural monitoring network.",
-    tech: ["Laravel", "PHP", "MySQL", "JavaScript", "REST API"],
-    images: [
-      '/projects/11/1.webp',
-      '/projects/11/2.webp',
-      '/projects/11/3.webp'
-    ],
-    github: null,
-    demo: null,
-    featured: false
-  },
-  {
-    id: 12,
-    domain: "Desktop Apps",
-    name: "Image Library Management System",
-    description: "C++ and Qt-based desktop application for organizing, filtering, and managing collections of images within customizable libraries. Features code-based authentication, library/image CRUD, metadata display, search & sorting, and an integrated image processing window with Grayscale, Gaussian Blur, and SIFT filters. Awarded 2nd place among all university software projects in our cohort.",
-    tech: ["C++", "Qt Widgets", "OpenCV", "Qt Signals/Slots", "CMake", "Git"],
-    images: [
-      '/projects/12/1.webp',
-      '/projects/12/2.webp',
-      '/projects/12/3.webp',
-    ],
-    github: null,
-    demo: null,
-    featured: true,
-    award: "🏆 2nd Place — University Software Projects",
-    contributors: ["Abdennour Bouhounali", "Youcef Brahimi", "Mohammed Bouziane Belbekri", "Roua Cherni", "Hadj Habib Rouabah"]
   }
 ];

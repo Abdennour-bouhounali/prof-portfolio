@@ -1,72 +1,65 @@
 export const experience = [
   {
-    company: "Essalam Sport Club",
-    location: "Freelance",
-    role: "Full Stack Developer",
-    date: "January 2026 – Present",
+    company: "Cours Particuliers & Coaching Indépendant",
+    location: "Toulouse, Paris & En Ligne",
+    role: "Professeur Particulier de Mathématiques",
+    date: "2024 – Présent",
     description: [
-      "Designed and developed a complete sports club management platform including an admin dashboard and a mobile app.",
-      "Architected the system and PostgreSQL database, modeling complex business processes.",
-      "Built a secure REST API with Node.js, including a comprehensive authentication and role-based access control system.",
-      "Developed the admin dashboard using React.js and TailwindCSS.",
-      "Built the cross-platform mobile application using Flutter.",
-      "Implemented modules: members, teams, seasons, payments, QR code attendance, evaluations, notifications, and messaging.",
-      "Integrated real-time features (WebSocket) and collaborated on UI/UX design."
+      "Accompagnement personnalisé d'élèves de la 6ème à la Terminale (Spécialité Maths & Maths Expertes).",
+      "Conception de programmes sur-mesure pour la préparation au Brevet des Collèges et au Baccalauréat.",
+      "Animation de cours en visio interactive avec tableau blanc numérique et fiches récapitulatives PDF.",
+      "Suivi régulier avec les parents et transmission de bilans d'avancement après chaque séance.",
+      "Taux de réussite de 98% aux examens avec une progression moyenne de +4 points."
     ],
-    tech: ["Node.js", "React.js", "Flutter", "PostgreSQL", "TailwindCSS", "WebSocket", "REST API"],
-    highlight: "Complete Club Management Platform (Web + Mobile)",
-    link: null,
-    color: "from-orange-500 to-red-500"
-  },
-  {
-    company: "Aisprid",
-    location: "Saint-Malo, France",
-    role: "Computer Vision & AI Engineer — Internship",
-    date: "March 2025 – September 2025",
-    description: [
-      "Benchmarked 3D sensors (stereo cameras, ToF, OAK-D) for agricultural robotics.",
-      "Designed a synchronized multi-camera + IMU system for 3D tomato plant perception.",
-      "Built 3D point cloud preprocessing, registration, and fusion pipelines (Python, Open3D).",
-      "Implemented 2D/3D cutting-point detection using YOLOv8; delivered a functional prototype.",
-      "Developed SLAM algorithms combining cameras and IMU for 3D localization.",
-      "Integrated embedded vision drivers under Linux."
-    ],
-    tech: ["Python", "OpenCV", "Open3D", "YOLOv8", "SLAM", "Linux", "C++", "IMU Fusion"],
-    highlight: "Prototype delivered → industrial 3D perception module",
+    tech: ["Lycée Spé Maths", "Collège", "Visio Interactive", "Prépa Bac", "Prépa Brevet", "Toulouse", "Paris"],
+    highlight: "Accompagnement sur-mesure — Progression garantie",
     link: null,
     color: "from-blue-500 to-cyan-500"
   },
   {
-    company: "CDER-URAER",
-    location: "Ghardaïa, Algeria",
-    role: "Embedded Systems Engineer — Internship",
-    date: "December 2023 – July 2024",
+    company: "Écoles & Établissements Partenaires",
+    location: "Algérie & France",
+    role: "Enseignant de Mathématiques et Physique",
+    date: "2024",
     description: [
-      "Designed a LoRa IoT system for agricultural environment monitoring and control.",
-      "Programmed ESP32 in C++ with I2C/SPI sensor integration.",
-      "Built a Laravel/PHP web platform for real-time data visualization.",
-      "Implemented bidirectional LoRa–WiFi communication for remote control.",
-      "Designed a multi-sensor PCB and validated on the field.",
-      "Results published at IEEE EDiS 2024."
+      "Enseignement des mathématiques et de la physique pour les classes terminales.",
+      "Animation de séances d'entraînement intensif aux examens et devoirs synthétiques.",
+      "Encadrement individuel des élèves en difficulté et mise en place de stratégies de soutien ciblé."
     ],
-    tech: ["C++", "ESP32", "LoRa", "I2C", "SPI", "Laravel", "PHP", "MySQL", "PCB Design"],
-    highlight: "IEEE EDiS 2024 Publication",
-    link: "https://ieeexplore.ieee.org/document/10783387",
+    tech: ["Mathématiques", "Physique", "Terminales", "Entraînement Examens"],
+    highlight: "Préparation intensive aux épreuves officielles",
+    link: null,
     color: "from-purple-500 to-indigo-500"
   },
   {
-    company: "Fondation TAGEMI",
-    location: "Remote — Freelance",
-    role: "Full Stack Developer",
+    company: "Lycée AMMI SAID",
+    location: "Ghardaïa",
+    role: "Enseignant de Mathématiques — Lycée (2nde, 1ère, Terminale)",
+    date: "2019 – 2024",
+    description: [
+      "5 ans d'expérience dans l'enseignement des mathématiques en lycée.",
+      "Élaboration et animation de cours conformes aux programmes officiels.",
+      "Organisation de stages de révision intensifs pendant les vacances scolaires.",
+      "Création de fiches pédagogiques, d'exercices d'application et de devoirs corrigés.",
+      "Accompagnement personnalisé et préparation aux épreuves du Baccalauréat."
+    ],
+    tech: ["Seconde", "Première", "Terminale", "Stages Vacances", "Pédagogie", "Suivi Élèves"],
+    highlight: "5 ans d'enseignement continu en lycée",
+    link: null,
+    color: "from-orange-500 to-red-500"
+  },
+  {
+    company: "Fondation TAGEMI & NAPTAKIR",
+    location: "Remote / En ligne",
+    role: "Formateur STEM & Animateur Pédagogique",
     date: "2023 – 2024",
     description: [
-      "Built a full-stack web platform for medical campaigns (frontend + backend).",
-      "Implemented multi-role user system and real-time data management.",
-      "Set up CI/CD pipelines for automated deployment.",
-      "Stack: PHP Laravel, ReactJS, TailwindCSS, MySQL."
+      "Organisation et animation d'ateliers de soutien scolaire en mathématiques et sciences.",
+      "Formateur en éducation numérique et logique de programmation pour les jeunes.",
+      "Engagement actif dans des initiatives éducatives locales d'aide à la réussite scolaire."
     ],
-    tech: ["ReactJS", "Laravel", "TailwindCSS", "MySQL", "CI/CD", "Git"],
-    highlight: "Full CI/CD pipeline, multi-role medical platform",
+    tech: ["Pédagogie Numerique", "Soutien Scolaire", "Ateliers Sciences", "Logique & Méthode"],
+    highlight: "Ateliers ludiques & logique scientifique",
     link: null,
     color: "from-emerald-500 to-teal-500"
   }

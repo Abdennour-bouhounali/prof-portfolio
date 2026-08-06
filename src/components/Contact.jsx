@@ -1,52 +1,53 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Github, Linkedin, MapPin, Send, CheckCircle, Phone } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, Calendar, MessageCircle } from 'lucide-react';
 
 const contactInfo = [
   {
+    icon: Phone,
+    label: 'Téléphone / WhatsApp',
+    value: '+33 6 70 44 57 21',
+    href: 'tel:+33670445721',
+    color: 'from-emerald-400 to-teal-500',
+    bg: 'bg-emerald-50'
+  },
+  {
     icon: Mail,
-    label: 'Email',
+    label: 'Email direct',
     value: 'abdennour.bouhounali@gmail.com',
     href: 'mailto:abdennour.bouhounali@gmail.com',
     color: 'from-blue-500 to-cyan-500',
     bg: 'bg-blue-50'
   },
   {
-    icon: Github,
-    label: 'GitHub',
-    value: 'github.com/Abdennour-bouhounali',
-    href: 'https://github.com/Abdennour-bouhounali',
-    color: 'from-slate-600 to-slate-800',
-    bg: 'bg-slate-50'
-  },
-  {
-    icon: Linkedin,
-    label: 'LinkedIn',
-    value: 'linkedin.com/in/abdennour-bouhounali',
-    href: 'https://www.linkedin.com/in/abdennour-bouhounali-09002b236/',
-    color: 'from-blue-600 to-blue-800',
-    bg: 'bg-blue-50'
-  },
-  {
     icon: MapPin,
-    label: 'Location',
-    value: 'Toulouse, France',
+    label: 'Lieux d\'intervention',
+    value: 'Toulouse, Paris & En Ligne (France)',
     href: null,
     color: 'from-red-400 to-pink-500',
     bg: 'bg-red-50'
   },
   {
-    icon: Phone,
-    label: 'Phone',
-    value: '+33 7 58 10 30 86',
-    href: 'tel:+33758103086',
-    color: 'from-emerald-400 to-teal-500',
-    bg: 'bg-emerald-500'
-  },
+    icon: MessageCircle,
+    label: 'Réponse rapide',
+    value: 'Sous 24h ouvrées',
+    href: null,
+    color: 'from-purple-500 to-indigo-500',
+    bg: 'bg-purple-50'
+  }
 ];
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({
+    name: '',
+    classe: 'Terminale Spé Maths',
+    ville: 'Toulouse (À domicile)',
+    objectif: 'Préparation Bac / Brevet',
+    phone: '',
+    email: '',
+    message: ''
+  });
+
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
@@ -57,11 +58,18 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitting(true);
-    // Simulate a short delay before showing success
     setTimeout(() => {
       setSubmitting(false);
       setSubmitted(true);
-      setForm({ name: '', email: '', message: '' });
+      setForm({
+        name: '',
+        classe: 'Terminale Spé Maths',
+        ville: 'Toulouse (À domicile)',
+        objectif: 'Préparation Bac / Brevet',
+        phone: '',
+        email: '',
+        message: ''
+      });
     }, 1000);
   };
 
@@ -77,11 +85,11 @@ export default function Contact() {
           className="text-center mb-16"
         >
           <p className="font-mono-jetbrains text-blue-500 text-sm font-semibold tracking-widest uppercase mb-3">
-            07. Contact
+            09. Contact & Réservation
           </p>
-          <h2 className="section-title">Get In Touch</h2>
+          <h2 className="section-title">Réserver un cours d'essai</h2>
           <p className="section-subtitle">
-            Open to exciting opportunities, collaborations, and conversations about AI and embedded systems.
+            Remplissez ce formulaire pour échanger sur le niveau de votre enfant, ses besoins et planifier une première séance.
           </p>
         </motion.div>
 
@@ -94,7 +102,7 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="space-y-4"
           >
-            <h3 className="font-space font-bold text-xl text-slate-800 mb-6">Let's Connect</h3>
+            <h3 className="font-space font-bold text-xl text-slate-800 mb-6">Contactez-moi directement</h3>
 
             {contactInfo.map((item, i) => (
               <motion.div
@@ -114,9 +122,7 @@ export default function Contact() {
                   {item.href ? (
                     <a
                       href={item.href}
-                      target={item.href.startsWith('http') ? '_blank' : '_self'}
-                      rel="noopener noreferrer"
-                      className="font-inter text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors truncate block"
+                      className="font-inter text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors truncate block font-space font-semibold"
                     >
                       {item.value}
                     </a>
@@ -138,15 +144,15 @@ export default function Contact() {
             >
               <div className="flex items-center gap-2 mb-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse" />
-                <span className="font-space font-bold text-slate-800 text-sm">Available for opportunities</span>
+                <span className="font-space font-bold text-slate-800 text-sm">Disponibilité pour le semestre</span>
               </div>
-              <p className="font-inter text-slate-500 text-xs leading-relaxed">
-                I'm currently open to full-time roles, research collaborations, and interesting freelance projects in AI, embedded systems, and computer vision.
+              <p className="font-inter text-slate-600 text-xs leading-relaxed">
+                Des créneaux sont actuellement ouverts pour du suivi hebdomadaire et des cours particuliers à Toulouse, Paris et en visioconférence.
               </p>
             </motion.div>
           </motion.div>
 
-          {/* Right — Contact form */}
+          {/* Right — Lead Contact form */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -154,7 +160,7 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <div className="glass-card p-6 sm:p-8">
-              <h3 className="font-space font-bold text-xl text-slate-800 mb-6">Send a Message</h3>
+              <h3 className="font-space font-bold text-xl text-slate-800 mb-6">Formulaire de demande de cours</h3>
 
               <AnimatePresence mode="wait">
                 {submitted ? (
@@ -171,15 +177,15 @@ export default function Contact() {
                     >
                       <CheckCircle size={56} className="text-green-500 mb-4" />
                     </motion.div>
-                    <h4 className="font-space font-bold text-slate-800 text-lg mb-2">Message Sent!</h4>
-                    <p className="font-inter text-slate-500 text-sm mb-6">
-                      Thanks for reaching out. I'll get back to you soon!
+                    <h4 className="font-space font-bold text-slate-800 text-lg mb-2">Demande bien reçue !</h4>
+                    <p className="font-inter text-slate-600 text-sm mb-6">
+                      Merci pour votre message. Je vous recontacterai sous 24 heures pour échanger et convenir d'un premier rendez-vous.
                     </p>
                     <button
                       onClick={() => setSubmitted(false)}
                       className="btn-secondary text-sm"
                     >
-                      Send another message
+                      Envoyer une autre demande
                     </button>
                   </motion.div>
                 ) : (
@@ -191,8 +197,8 @@ export default function Contact() {
                     className="space-y-4"
                   >
                     <div>
-                      <label htmlFor="contact-name" className="block font-inter text-sm font-medium text-slate-700 mb-1.5">
-                        Name
+                      <label htmlFor="contact-name" className="block font-inter text-sm font-medium text-slate-700 mb-1">
+                        Nom & Prénom (Parent / Élève) *
                       </label>
                       <input
                         id="contact-name"
@@ -201,40 +207,98 @@ export default function Contact() {
                         required
                         value={form.name}
                         onChange={handleChange}
-                        placeholder="Your full name"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white/80 font-inter text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 transition-all"
+                        placeholder="Ex: Marie Dupont"
+                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white/80 font-inter text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 transition-all"
                       />
                     </div>
 
-                    <div>
-                      <label htmlFor="contact-email" className="block font-inter text-sm font-medium text-slate-700 mb-1.5">
-                        Email
-                      </label>
-                      <input
-                        id="contact-email"
-                        name="email"
-                        type="email"
-                        required
-                        value={form.email}
-                        onChange={handleChange}
-                        placeholder="your@email.com"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white/80 font-inter text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 transition-all"
-                      />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="contact-classe" className="block font-inter text-sm font-medium text-slate-700 mb-1">
+                          Classe de l'élève *
+                        </label>
+                        <select
+                          id="contact-classe"
+                          name="classe"
+                          value={form.classe}
+                          onChange={handleChange}
+                          className="w-full px-3 py-2.5 rounded-xl border border-slate-200 bg-white font-inter text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 transition-all"
+                        >
+                          <option value="Collège (6e - 4e)">Collège (6ème - 4ème)</option>
+                          <option value="3ème (Brevet DNB)">Troisième (3ème - Brevet)</option>
+                          <option value="Seconde (2nde)">Seconde (2nde)</option>
+                          <option value="1ère Spé Maths">Première Spécialité Maths</option>
+                          <option value="Terminale Spé Maths">Terminale Spécialité Maths</option>
+                          <option value="Terminale Maths Expertes">Terminale Maths Expertes</option>
+                          <option value="Supérieur / Autre">Supérieur / Autre</option>
+                        </select>
+                      </div>
+
+                      <div>
+                        <label htmlFor="contact-ville" className="block font-inter text-sm font-medium text-slate-700 mb-1">
+                          Lieu / Format souhaité *
+                        </label>
+                        <select
+                          id="contact-ville"
+                          name="ville"
+                          value={form.ville}
+                          onChange={handleChange}
+                          className="w-full px-3 py-2.5 rounded-xl border border-slate-200 bg-white font-inter text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 transition-all"
+                        >
+                          <option value="Toulouse (À domicile)">Toulouse (À domicile)</option>
+                          <option value="Paris (À domicile)">Paris (À domicile)</option>
+                          <option value="En Ligne (Visioconférence)">En Ligne (Visioconférence HD)</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor="contact-email" className="block font-inter text-sm font-medium text-slate-700 mb-1">
+                          Email *
+                        </label>
+                        <input
+                          id="contact-email"
+                          name="email"
+                          type="email"
+                          required
+                          value={form.email}
+                          onChange={handleChange}
+                          placeholder="votre@email.com"
+                          className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white/80 font-inter text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 transition-all"
+                        />
+                      </div>
+
+                      <div>
+                        <label htmlFor="contact-phone" className="block font-inter text-sm font-medium text-slate-700 mb-1">
+                          Téléphone *
+                        </label>
+                        <input
+                          id="contact-phone"
+                          name="phone"
+                          type="tel"
+                          required
+                          value={form.phone}
+                          onChange={handleChange}
+                          placeholder="06 12 34 56 78"
+                          className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white/80 font-inter text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 transition-all"
+                        />
+                      </div>
                     </div>
 
                     <div>
-                      <label htmlFor="contact-message" className="block font-inter text-sm font-medium text-slate-700 mb-1.5">
-                        Message
+                      <label htmlFor="contact-message" className="block font-inter text-sm font-medium text-slate-700 mb-1">
+                        Objectifs & Précisions *
                       </label>
                       <textarea
                         id="contact-message"
                         name="message"
                         required
-                        rows={5}
+                        rows={4}
                         value={form.message}
                         onChange={handleChange}
-                        placeholder="Tell me about your project, opportunity, or just say hi..."
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white/80 font-inter text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 transition-all resize-none"
+                        placeholder="Décrivez les objectifs (remise à niveau, prépa Bac, révision d'un chapitre particulier...)"
+                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 bg-white/80 font-inter text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 transition-all resize-none"
                       />
                     </div>
 
@@ -249,12 +313,12 @@ export default function Contact() {
                       {submitting ? (
                         <>
                           <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                          Sending...
+                          Envoi de la demande...
                         </>
                       ) : (
                         <>
                           <Send size={15} />
-                          Send Message
+                          Envoyer ma demande de cours ➔
                         </>
                       )}
                     </motion.button>

@@ -1,50 +1,50 @@
 import { motion } from 'framer-motion';
-import { Calendar, Clock } from 'lucide-react';
+import { Download, FileText, Sparkles, CheckCircle } from 'lucide-react';
 
 const posts = [
   {
-    title: "Building AI Vision Systems for Agricultural Robotics",
-    date: "June 2025",
-    readTime: "8 min read",
-    summary: "How we designed a multi-camera + IMU perception pipeline for 3D plant scanning, from sensor benchmarking to prototype delivery.",
-    tag: "Computer Vision",
-    gradient: "from-purple-600 via-blue-500 to-cyan-400",
-    icon: "👁️"
+    title: "Les 10 formules indispensables du Bac Spécialité Maths",
+    category: "Fiches PDF",
+    readTime: "Fiche PDF",
+    summary: "Un résumé ultra-synthétique des formules d'analyse, de géométrie vectorielle et de probabilités à maîtriser sur le bout des doigts pour le Bac.",
+    tag: "Bac Spé Maths",
+    gradient: "from-blue-600 via-indigo-500 to-cyan-400",
+    icon: "📄"
   },
   {
-    title: "From Sensors to Intelligent Applications: LoRa IoT in Precision Agriculture",
-    date: "October 2024",
-    readTime: "10 min read",
-    summary: "A deep dive into a complete LoRa IoT system — ESP32 firmware, PCB design, real-time dashboard, and IEEE publication.",
-    tag: "Embedded Systems",
-    gradient: "from-orange-500 via-red-500 to-pink-400",
-    icon: "📡"
+    title: "Sujets types Brevet corrigés pas à pas",
+    category: "Exercices Corrigés",
+    readTime: "Exercices PDF",
+    summary: "Sélection d'exercices d'annales du DNB avec rédactions détaillées et conseils pour ne perdre aucun point le jour J.",
+    tag: "Brevet 3ème",
+    gradient: "from-purple-600 via-pink-500 to-rose-400",
+    icon: "✍️"
   },
   {
-    title: "Edge AI: Deploying Deep Learning on Embedded Platforms",
-    date: "March 2025",
-    readTime: "7 min read",
-    summary: "Challenges and solutions running YOLOv8 on NVIDIA Jetson with real-time constraints and power budget optimizations.",
-    tag: "AI",
-    gradient: "from-blue-600 via-indigo-500 to-violet-400",
-    icon: "🤖"
+    title: "Comment réviser efficacement les maths au Lycée ?",
+    category: "Conseils de Révision",
+    readTime: "Guide Pédagogique",
+    summary: "Méthodes de travail personnel, gestion du temps de révision, création de fiches actives et élimination des fautes d'inattention.",
+    tag: "Méthodologie",
+    gradient: "from-orange-500 via-amber-500 to-yellow-400",
+    icon: "💡"
   },
   {
-    title: "SLAM for Robotics: Combining Cameras and IMU",
-    date: "May 2025",
-    readTime: "12 min read",
-    summary: "Introduction to SLAM, sensor fusion strategies, and practical implementation notes from agricultural robotics projects.",
-    tag: "Robotics",
-    gradient: "from-green-500 via-teal-500 to-emerald-400",
-    icon: "🗺️"
+    title: "Astuces Calculatrice & Scripting Python pour le Bac",
+    category: "Astuces Bac",
+    readTime: "Guide Pratique",
+    summary: "Les fonctionnalités clés de la calculatrice TI / Casio / NumWorks et les algorithmes Python incontournables au programme de Terminale.",
+    tag: "Outils & Python",
+    gradient: "from-emerald-500 via-teal-500 to-cyan-400",
+    icon: "🚀"
   }
 ];
 
 const tagColors = {
-  "Computer Vision": "bg-purple-100 text-purple-700",
-  "Embedded Systems": "bg-orange-100 text-orange-700",
-  "AI": "bg-blue-100 text-blue-700",
-  "Robotics": "bg-green-100 text-green-700",
+  "Bac Spé Maths": "bg-blue-100 text-blue-700",
+  "Brevet 3ème": "bg-purple-100 text-purple-700",
+  "Méthodologie": "bg-amber-100 text-amber-700",
+  "Outils & Python": "bg-emerald-100 text-emerald-700",
 };
 
 const containerVariants = {
@@ -58,6 +58,10 @@ const cardVariants = {
 };
 
 export default function Blog() {
+  const scrollToContact = () => {
+    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section id="blog" className="section-wrapper bg-slate-50/50">
       <div className="max-w-7xl mx-auto">
@@ -70,21 +74,21 @@ export default function Blog() {
           className="text-center mb-16"
         >
           <p className="font-mono-jetbrains text-blue-500 text-sm font-semibold tracking-widest uppercase mb-3">
-            06. Blog
+            06. Support & Téléchargements
           </p>
-          <h2 className="section-title">Technical Writing</h2>
+          <h2 className="section-title">Ressources gratuites</h2>
           <p className="section-subtitle">
-            Sharing knowledge about AI, embedded systems, and engineering challenges.
+            Des fiches méthodologiques, exercices corrigés et guides pratiques offerts pour accompagner le travail des élèves.
           </p>
 
-          {/* Coming soon banner */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-sm font-medium mt-2">
-            <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-            Articles coming soon — stay tuned!
+          {/* Banner */}
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm font-medium mt-2">
+            <Sparkles size={16} className="text-emerald-500" />
+            Accès libre et téléchargement gratuit
           </div>
         </motion.div>
 
-        {/* Blog card grid */}
+        {/* Resource card grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -92,7 +96,7 @@ export default function Blog() {
           viewport={{ once: true, margin: '-60px' }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          {posts.map((post, i) => (
+          {posts.map((post) => (
             <motion.div
               key={post.title}
               variants={cardVariants}
@@ -100,10 +104,10 @@ export default function Blog() {
               transition={{ type: 'spring', stiffness: 300 }}
               className="glass-card overflow-hidden flex flex-col cursor-default relative"
             >
-              {/* Coming soon overlay badge */}
+              {/* Free badge */}
               <div className="absolute top-3 right-3 z-10">
-                <span className="px-2 py-1 rounded-full bg-slate-900/80 text-white text-xs font-mono-jetbrains font-medium backdrop-blur-sm">
-                  Soon
+                <span className="px-2.5 py-1 rounded-full bg-slate-900/80 text-white text-xs font-inter font-semibold backdrop-blur-sm">
+                  Gratuit
                 </span>
               </div>
 
@@ -131,15 +135,14 @@ export default function Blog() {
                   {post.summary}
                 </p>
 
-                <div className="flex items-center gap-3 text-slate-400 text-xs pt-3 border-t border-slate-100">
-                  <div className="flex items-center gap-1">
-                    <Calendar size={11} />
-                    <span>{post.date}</span>
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock size={11} />
-                    <span>{post.readTime}</span>
-                  </div>
+                <div className="pt-3 border-t border-slate-100">
+                  <button
+                    onClick={scrollToContact}
+                    className="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-blue-600 text-xs font-semibold transition-colors"
+                  >
+                    <Download size={13} />
+                    Demander cette fiche
+                  </button>
                 </div>
               </div>
             </motion.div>

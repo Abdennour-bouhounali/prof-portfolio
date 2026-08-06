@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { MapPin, Calendar } from 'lucide-react';
+import { MapPin, Calendar, Award } from 'lucide-react';
 import { education } from '../data/education';
 
 export default function Education() {
@@ -15,11 +15,11 @@ export default function Education() {
           className="text-center mb-16"
         >
           <p className="font-mono-jetbrains text-blue-500 text-sm font-semibold tracking-widest uppercase mb-3">
-            04. Education
+            05. Formation Académique
           </p>
-          <h2 className="section-title">Academic Background</h2>
+          <h2 className="section-title">Diplômes & Qualifications</h2>
           <p className="section-subtitle">
-            Combining French engineering excellence with deep technical specialization in AI and embedded systems.
+            Une solide formation scientifique supérieure (Ingénieur & Master 2) garantissant une parfaite maîtrise disciplinaire.
           </p>
         </motion.div>
 
@@ -44,7 +44,7 @@ export default function Education() {
                   <div
                     className={`w-16 h-16 rounded-2xl flex items-center justify-center text-white font-space font-black text-lg shadow-lg bg-gradient-to-br ${edu.color}`}
                   >
-                    {edu.shortName.slice(0, 3)}
+                    {edu.shortName}
                   </div>
                 </div>
 
@@ -64,7 +64,7 @@ export default function Education() {
                     </div>
                   </div>
 
-                  <p className={`font-space font-semibold text-sm mb-4 bg-gradient-to-r ${edu.color} bg-clip-text text-transparent`}>
+                  <p className={`font-space font-semibold text-base mb-4 bg-gradient-to-r ${edu.color} bg-clip-text text-transparent`}>
                     {edu.degree}
                   </p>
 
@@ -82,7 +82,7 @@ export default function Education() {
           ))}
         </div>
 
-        {/* Certifications placeholder */}
+        {/* Honor Distinction Banner */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -90,19 +90,19 @@ export default function Education() {
           transition={{ delay: 0.4 }}
           className="mt-8 glass-card p-6 text-center"
         >
-          <div className="text-2xl mb-3">📜</div>
-          <h4 className="font-space font-bold text-slate-700 mb-2">IEEE Publication</h4>
-          <p className="font-inter text-slate-500 text-sm mb-4">
-            "LoRa-Based IoT System for Smart Agricultural Monitoring" — IEEE EDiS 2024
+          <div className="text-3xl mb-3">🎓</div>
+          <h4 className="font-space font-bold text-slate-800 text-lg mb-2">Rigueur & Démarche Scientifique</h4>
+          <p className="font-inter text-slate-600 text-sm max-w-xl mx-auto mb-4 leading-relaxed">
+            "Mon double cursus d'ingénieur et de chercheur me permet de transmettre aux élèves non seulement les règles de calcul, mais surtout le raisonnement logique et la méthode scientifique indispensables pour réussir."
           </p>
           <a
-            href="https://ieeexplore.ieee.org/document/10783387"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl font-semibold text-white text-sm transition-all hover:-translate-y-0.5"
+            href="/CV.pdf"
+            download
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-white text-sm transition-all hover:-translate-y-0.5"
             style={{ background: 'linear-gradient(135deg, #3B82F6, #8B5CF6)', boxShadow: '0 4px 14px rgba(59,130,246,0.3)' }}
           >
-            View on IEEE Xplore ↗
+            <Award size={16} />
+            Télécharger le CV Complet en PDF
           </a>
         </motion.div>
       </div>
