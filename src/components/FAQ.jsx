@@ -1,36 +1,42 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, HelpCircle } from 'lucide-react';
+import { ChevronDown, HelpCircle, CheckCircle2 } from 'lucide-react';
 
 const faqs = [
   {
-    question: "Où se déroulent les cours à domicile ?",
-    answer: "Les cours à domicile ont lieu à Toulouse et dans son agglomération proche. Je me déplace également à Paris pour des stages intensifs pendant les vacances scolaires."
+    id: 'process',
+    question: "Comment se déroule un cours ?",
+    answer: "Un cours s'articule en 5 étapes clés : diagnostic rapide des difficultés, explications claires des notions mal comprises avec des méthodes visuelles, exercices d'application guidés, mise en autonomie sur des sujets d'examen, et bilan final avec exercices à faire pour la séance suivante."
   },
   {
-    question: "Comment fonctionnent les cours en ligne ?",
-    answer: "Les cours en ligne s'effectuent via visioconférence HD avec un tableau blanc interactif virtuel. L'élève voit l'écriture des équations en temps réel. À la fin de chaque séance, le support complet (notes de cours, schémas GeoGebra et exercices résolus) est envoyé au format PDF."
+    id: 'online',
+    question: "Proposez-vous des cours en ligne ?",
+    answer: "Oui, absolument ! Les cours en ligne se déroulent en visioconférence HD avec un tableau blanc interactif virtuel partagé en temps réel (GeoGebra, écriture d'équations). À la fin de chaque séance, l'élève reçoit le support complet de cours annoté au format PDF."
   },
   {
-    question: "Quels niveaux enseignez-vous ?",
-    answer: "J'enseigne du Collège (6ème à 3ème / préparation au Brevet des collèges) au Lycée (Seconde, Première Spé Maths, Terminale Spécialité & Maths Expertes pour le Bac). J'accompagne également des étudiants du supérieur sur les bases d'analyse et d'algèbre."
+    id: 'bac-brevet',
+    question: "Préparez-vous au Brevet et au Baccalauréat ?",
+    answer: "Oui, la préparation aux examens officiels est l'une de mes spécialités principales. J'accompagne les élèves de 3ème pour le Brevet (DNB) ainsi que les lycéens de Première et Terminale (Spécialité Maths & Maths Expertes) pour le Baccalauréat avec des sujets d'annales corrigés et une méthode de rédaction rigoureuse."
   },
   {
-    question: "Proposez-vous un premier cours d'évaluation ?",
-    answer: "Oui ! La première séance permet de réaliser un diagnostic complet des compétences, d'évaluer les lacunes éventuelles et de fixer une feuille de route claire avec l'élève et ses parents."
+    id: 'travel',
+    question: "Vous déplacez-vous à domicile ?",
+    answer: "Oui, je me déplace à domicile à Toulouse et dans son agglomération proche tout au long de l'année. Je me déplace également à Paris pour des stages intensifs de révision pendant les vacances scolaires."
   },
   {
-    question: "Comment les parents sont-ils informés de la progression ?",
-    answer: "Un bilan synthétique est transmis aux parents après chaque séance (notions travaillées, comportement de l'élève, points forts et axes d'amélioration). Les parents peuvent me contacter à tout moment pour échanger."
+    id: 'duration',
+    question: "Quelle est la durée d'un cours ?",
+    answer: "La durée recommandée est de 1h30 par séance pour les collégiens et de 1h30 à 2h00 pour les lycéens. Cette durée permet de revoir la théorie sans précipitation, de réaliser des exercices d'application et de valider les acquis."
   },
   {
-    question: "Quels sont les tarifs et modalités de paiement ?",
-    answer: "Les tarifs varient selon le niveau de l'élève (Collège, Lycée, Supérieur) et la formule choisie (à domicile ou en ligne). Vous pouvez me contacter directement pour obtenir un devis rapide et personnalisé."
+    id: 'pricing',
+    question: "Quels sont les tarifs et modalités ?",
+    answer: "Les tarifs sont adaptés au niveau de l'élève (Collège, Lycée, Supérieur) et au format choisi (à domicile ou en ligne). N'hésitez pas à me contacter par téléphone ou via le formulaire pour obtenir un tarif exact et échanger sur les besoins de votre enfant."
   }
 ];
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState(0); // First question open by default
 
   const toggle = (i) => {
     setOpenIndex(openIndex === i ? null : i);
@@ -52,7 +58,7 @@ export default function FAQ() {
           </p>
           <h2 className="section-title">Foire Aux Questions (FAQ)</h2>
           <p className="section-subtitle">
-            Toutes les réponses aux questions que vous vous posez sur les cours, les tarifs et les modalités.
+            Toutes les réponses aux questions que vous vous posez sur l'organisation des cours, les déplacements et la préparation aux examens.
           </p>
         </motion.div>
 
@@ -60,19 +66,19 @@ export default function FAQ() {
         <div className="space-y-4">
           {faqs.map((faq, i) => (
             <motion.div
-              key={i}
+              key={faq.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="glass-card overflow-hidden"
+              className="glass-card overflow-hidden transition-all duration-200"
             >
               <button
                 onClick={() => toggle(i)}
                 className="w-full p-6 text-left flex items-center justify-between gap-4 font-space font-bold text-slate-800 text-base sm:text-lg hover:text-blue-600 transition-colors"
               >
                 <span className="flex items-center gap-3">
-                  <HelpCircle size={20} className="text-blue-500 flex-shrink-0" />
+                  <HelpCircle size={20} className={`flex-shrink-0 transition-colors ${openIndex === i ? 'text-blue-600' : 'text-blue-500'}`} />
                   {faq.question}
                 </span>
                 <ChevronDown
@@ -89,11 +95,12 @@ export default function FAQ() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
                     className="overflow-hidden"
                   >
-                    <div className="px-6 pb-6 pt-1 font-inter text-slate-600 text-sm leading-relaxed border-t border-slate-100/60">
-                      {faq.answer}
+                    <div className="px-6 pb-6 pt-2 font-inter text-slate-600 text-sm leading-relaxed border-t border-slate-100/80 flex items-start gap-3">
+                      <CheckCircle2 size={16} className="text-emerald-500 flex-shrink-0 mt-1" />
+                      <div>{faq.answer}</div>
                     </div>
                   </motion.div>
                 )}
