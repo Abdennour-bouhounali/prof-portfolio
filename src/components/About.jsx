@@ -1,19 +1,35 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Target, Lightbulb, Trophy, Award, MapPin, Mail, Phone, BookOpen } from 'lucide-react';
+import { Lightbulb, Sliders, LineChart, Target, MapPin, Mail, Phone } from 'lucide-react';
 
 const whatIDo = [
-  { icon: Target, label: 'Diagnostic & Sur-Mesure', desc: 'Identification rapide des lacunes précises et élaboration d\'un plan de travail adapté.' },
-  { icon: Lightbulb, label: 'Déclic & Autonomie', desc: 'Explications claires, schémas intuitifs et méthode progressive pour rendre le cours évident.' },
-  { icon: Trophy, label: 'Préparation aux Examens', desc: 'Entraînement intensif sur annales du Brevet et du Bac avec gestion du temps et du stress.' },
-  { icon: Award, label: 'Rigueur & Suivi Parents', desc: 'Enseignement de la rédaction d\'examen et bilan synthétique transmis après chaque cours.' },
+  {
+    icon: Lightbulb,
+    label: 'Explications simples',
+    desc: 'Démystifier les notions complexes avec une pédagogie claire, illustrée et accessible à chaque élève.'
+  },
+  {
+    icon: Sliders,
+    label: 'Méthode personnalisée',
+    desc: 'Un accompagnement sur-mesure adapté au rythme, au niveau et au mode d\'apprentissage de votre enfant.'
+  },
+  {
+    icon: LineChart,
+    label: 'Suivi régulier',
+    desc: 'Un bilan d\'avancement systématique après chaque séance pour mesurer les progrès et informer les parents.'
+  },
+  {
+    icon: Target,
+    label: 'Objectif réussite',
+    desc: 'Préparation ciblée aux devoirs surveillés, contrôles et examens officiels (Brevet DNB et Baccalauréat).'
+  },
 ];
 
 const stats = [
-  { value: 5, suffix: '+', label: "Ans d'Expérience" },
-  { value: 150, suffix: '+', label: 'Élèves Accompagnés' },
-  { value: 98, suffix: '%', label: 'Réussite Brevet / Bac' },
-  { value: 4, suffix: ' pts', label: 'Progression Moyenne' },
+  { value: 5, suffix: '+ ans', label: "D'expérience" },
+  { value: 150, suffix: '+', label: 'Élèves accompagnés' },
+  { value: 7, suffix: ' niveaux', label: 'Du Collège au Lycée' },
+  { value: 100, suffix: '%', label: 'En ligne & À domicile' },
 ];
 
 function CountUp({ target, suffix, inView }) {
@@ -74,11 +90,11 @@ export default function About() {
           className="text-center mb-16"
         >
           <p className="font-mono-jetbrains text-blue-500 text-sm font-semibold tracking-widest uppercase mb-3">
-            01. Pourquoi me choisir ?
+            01. Présentation
           </p>
-          <h2 className="section-title">Pourquoi mes élèves progressent ?</h2>
+          <h2 className="section-title">Pourquoi me choisir ?</h2>
           <p className="section-subtitle">
-            Une approche pédagogique humaine et exigeante qui transforme l'anxiété des maths en déclic et en réussite.
+            Une approche pédagogique personnalisée et rigoureuse pour aider chaque élève à progresser et réussir.
           </p>
         </motion.div>
 
@@ -98,27 +114,27 @@ export default function About() {
                   style={{ background: 'linear-gradient(135deg, #3B82F6, #8B5CF6)' }}>
                   👨‍🏫
                 </div>
-                <h3 className="font-space text-xl font-bold text-slate-800">Ma Philosophie Pédagogique</h3>
+                <h3 className="font-space text-xl font-bold text-slate-800">À propos de mon enseignement</h3>
               </div>
 
               <p className="font-inter text-slate-600 leading-relaxed mb-4">
-                Pédagogue passionné avec plus de 5 ans d'expérience dans l'enseignement des mathématiques en lycée et en cours particuliers, je suis convaincu que <strong className="text-slate-800">chaque élève peut réussir en mathématiques</strong> dès lors qu'on adapte l'explication à son fonctionnement.
+                Professeur de mathématiques diplômé d'un Master 2 de l'Université de Toulouse III et d'un diplôme d'Ingénieur, j'accompagne les élèves du Collège au Lycée pour leur transmettre la méthode, la rigueur et la confiance nécessaires pour réussir.
               </p>
               <p className="font-inter text-slate-600 leading-relaxed">
-                Mon objectif ne se limite pas à faire faire des exercices : je construis une relation de confiance, j'enseigne des réflexes de rigueur et je prépare méthodiquement aux épreuves du Brevet et du Baccalauréat.
+                Fort de plus de 5 ans d'expérience en lycée et en cours particuliers, j'adapte chaque séance au profil de l'élève pour débloquer les difficultés et viser l'excellence.
               </p>
 
               {/* Differentiator banner */}
               <div className="mt-6 p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-150">
                 <p className="font-inter text-xs text-slate-700 font-medium leading-relaxed">
-                  💡 <strong className="text-blue-600">Mon atout unique :</strong> Mon parcours d'ingénieur et mon Master de l'Université de Toulouse me permettent d'apporter une approche rigoureuse, logique et concrète des mathématiques.
+                  💡 <strong className="text-blue-600">Mon atout :</strong> Mon double parcours scientifique me permet d'apporter une vision concrète, structurée et logique de chaque concept mathématique.
                 </p>
               </div>
 
               <div className="flex flex-col gap-2 mt-5 pt-5 border-t border-slate-100">
                 <div className="flex items-center gap-2 text-slate-500 text-sm">
                   <MapPin size={14} className="text-blue-500" />
-                  <span>Toulouse, Paris & Toute la France (En ligne)</span>
+                  <span>Toulouse, Paris & En ligne (France)</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-500 text-sm">
                   <Mail size={14} className="text-blue-500" />
@@ -169,14 +185,14 @@ export default function About() {
                 style={{ backgroundImage: 'radial-gradient(#3B82F6 1px, transparent 1px)', backgroundSize: '20px 20px' }}
               />
               <h3 className="font-space font-bold text-slate-800 text-lg mb-6 relative z-10">
-                Un accompagnement complet axé sur :
+                Un accompagnement axé sur :
               </h3>
               <div className="grid grid-cols-2 gap-4 relative z-10">
                 {[
-                  { emoji: '🎯', label: 'Compréhension', sublabel: 'Reprise des bases' },
-                  { emoji: '📝', label: 'Rigueur', sublabel: 'Rédaction parfaite' },
-                  { emoji: '⏱️', label: 'Gestion', sublabel: 'Gestion du temps' },
-                  { emoji: '🚀', label: 'Confiance', sublabel: 'Déclic positif' },
+                  { emoji: '🎯', label: 'Explications', sublabel: 'Simples & Claires' },
+                  { emoji: '📝', label: 'Méthode', sublabel: 'Sur-mesure' },
+                  { emoji: '📊', label: 'Suivi', sublabel: 'Régulier' },
+                  { emoji: '🚀', label: 'Objectif', sublabel: 'Réussite' },
                 ].map((item, i) => (
                   <motion.div
                     key={item.label}
@@ -192,7 +208,7 @@ export default function About() {
               <div className="mt-6 p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 relative z-10">
                 <p className="font-mono-jetbrains text-xs text-slate-600 leading-relaxed">
                   <span className="text-blue-500 font-bold">Méthode = </span>
-                  Compréhension + Rigueur de calcul + Entraînement régulier = Succès
+                  Explications simples + Suivi régulier + Entraînement = Réussite
                 </p>
               </div>
             </div>
