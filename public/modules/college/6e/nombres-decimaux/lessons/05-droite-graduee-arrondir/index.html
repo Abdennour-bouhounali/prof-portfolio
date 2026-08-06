@@ -15,33 +15,43 @@
   
   <link rel="stylesheet" href="/smarter-ui/lesson.css">
   <script src="/smarter-ui/lesson.js" defer></script>
+  <script src="/smarter-ui/global-nav.js" defer></script>
 </head>
 <body class="min-h-screen flex flex-col justify-between pt-16 bg-slate-50">
 
-  <!-- NAVBAR HEADER -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="../../index.html" class="flex items-center gap-2 text-xs font-mono text-slate-600 hover:text-blue-600 font-bold">
-          ← Vue du Module
-        </a>
+  
 
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-3xl mx-auto px-4 py-8 flex-1 w-full space-y-8">
+
+    <!-- LESSON HEADER -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+      
+      <!-- BREADCRUMB -->
+      <nav class="flex flex-wrap items-center gap-2 text-xs font-mono text-slate-500">
+        <a href="/" class="hover:text-blue-600">Accueil</a>
+        <span>/</span>
+        <a href="/courses" class="hover:text-blue-600">Collège (6ème)</a>
+        <span>/</span>
+        <a href="../../index.html" class="hover:text-blue-600">Nombres Decimaux</a>
+        <span>/</span>
+        <span class="text-slate-900 font-semibold">Droite graduée et arrondi</span>
+      </nav>
+
+      <!-- PROGRESS & XP -->
+      <div class="flex items-center gap-4 self-end sm:self-auto">
         <div class="flex items-center gap-2">
-          <span class="text-xs font-mono text-emerald-600 font-bold">Leçon 5 / 6</span>
-          <div class="w-24 h-2 bg-slate-100 rounded-full overflow-hidden">
-            <div class="h-full bg-emerald-500 w-5/6"></div>
+          <span class="text-xs font-mono text-blue-600 font-bold">Leçon 5 / 6</span>
+          <div class="w-16 sm:w-24 h-2 bg-slate-200 rounded-full overflow-hidden">
+            <div class="h-full bg-blue-500 w-5/6"></div>
           </div>
         </div>
-
-        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 font-mono text-xs font-bold">
+        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 font-mono text-xs font-bold shrink-0">
           <span id="xpCount">0</span> XP
         </div>
       </div>
     </div>
-  </nav>
 
-  <!-- MAIN CONTAINER -->
-  <main class="max-w-3xl mx-auto px-4 py-8 flex-1 w-full space-y-8">
 
     <!-- HERO TITLE -->
     <section class="space-y-2 text-center">

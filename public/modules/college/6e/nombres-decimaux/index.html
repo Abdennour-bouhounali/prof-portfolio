@@ -20,50 +20,11 @@
   <!-- Smarter Shared Framework Styles & JS -->
   <link rel="stylesheet" href="/smarter-ui/lesson.css">
   <script src="/smarter-ui/lesson.js" defer></script>
+  <script src="/smarter-ui/global-nav.js" defer></script>
 </head>
 <body class="min-h-screen flex flex-col justify-between pt-16 bg-slate-50">
 
-  <!-- NAVBAR HEADER -->
-  <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        
-        <!-- Logo -->
-        <a href="/" class="flex items-center gap-2.5 group">
-          <div class="w-9 h-9 rounded-xl flex items-center justify-center font-space font-bold text-white text-sm" style="background: linear-gradient(135deg, #3B82F6, #8B5CF6);">
-            AB
-          </div>
-          <div class="hidden sm:flex flex-col">
-            <span class="font-space font-bold text-slate-900 text-sm leading-none">
-              Abdennour BOUHOUNALI
-            </span>
-            <span class="font-mono text-[10px] text-blue-600 font-semibold mt-0.5">
-              Professeur de Mathématiques
-            </span>
-          </div>
-        </a>
-
-        <!-- Desktop Links -->
-        <div class="hidden lg:flex items-center gap-1">
-          <a href="/" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">Accueil</a>
-          <a href="/about" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">Présentation</a>
-          <a href="/courses" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-blue-600 bg-blue-50 font-semibold">Cours de maths</a>
-          <a href="/resources" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">Ressources</a>
-          <a href="/faq" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">FAQ</a>
-          <a href="/contact" class="px-3 py-1.5 rounded-lg font-sans text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50">Contact</a>
-        </div>
-
-        <!-- Gamification Widgets -->
-        <div class="flex items-center gap-3">
-          <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 font-mono text-xs font-bold">
-            <svg class="w-4 h-4 text-amber-500 fill-amber-500" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-            <span id="xpCount">0</span> XP
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </nav>
+  
 
   <!-- MAIN CONTAINER -->
   <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full space-y-8">

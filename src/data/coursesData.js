@@ -13,65 +13,65 @@ export const courseLevels = [
         id: '6e',
         name: '6ème',
         lessons: [
-          { 
-            id: 'nombres-decimaux', 
-            title: 'Nombres Décimaux (Module)', 
-            description: 'Module complet en 6 micro-leçons : numération, comparaison, droite graduée.', 
-            duration: '35 min total', 
-            difficulty: 'Facile', 
-            status: 'available', 
+          {
+            id: 'nombres-decimaux',
+            title: 'Nombres Décimaux (Module)',
+            description: 'Module complet en 6 micro-leçons : numération, comparaison, droite graduée.',
+            duration: '35 min total',
+            difficulty: 'Facile',
+            status: 'available',
             path: '/modules/college/6e/nombres-decimaux/index.html',
-            icon: '🔢' 
+            icon: '🔢'
           },
-          { 
-            id: 'fractions-intro', 
-            title: 'Fractions (Module)', 
-            description: 'Module complet en 6 micro-leçons : numérateur, dénominateur, mur des fractions, simplification.', 
-            duration: '35 min total', 
-            difficulty: 'Facile', 
-            status: 'available', 
+          {
+            id: 'fractions-intro',
+            title: 'Fractions (Module)',
+            description: 'Module complet en 6 micro-leçons : numérateur, dénominateur, mur des fractions, simplification.',
+            duration: '35 min total',
+            difficulty: 'Facile',
+            status: 'available',
             path: '/modules/college/6e/fractions/index.html',
-            icon: '🍕' 
+            icon: '🍕'
           },
-          { 
-            id: 'proportionnalite-6e', 
-            title: 'Proportionnalité (Module)', 
-            description: 'Module complet en 6 micro-leçons : tableaux, coefficient et calculs de pourcentages.', 
-            duration: '35 min total', 
-            difficulty: 'Moyen', 
-            status: 'available', 
+          {
+            id: 'proportionnalite-6e',
+            title: 'Proportionnalité (Module)',
+            description: 'Module complet en 6 micro-leçons : tableaux, coefficient et calculs de pourcentages.',
+            duration: '35 min total',
+            difficulty: 'Moyen',
+            status: 'available',
             path: '/modules/college/6e/proportionnalite/index.html',
-            icon: '📊' 
+            icon: '📊'
           },
-          { 
-            id: 'geometrie-base', 
-            title: 'Géométrie du plan (Module)', 
-            description: 'Module complet en 6 micro-leçons : droites perpendiculaires, parallèles, notations et équerre.', 
-            duration: '35 min total', 
-            difficulty: 'Facile', 
-            status: 'available', 
+          {
+            id: 'geometrie-base',
+            title: 'Géométrie du plan (Module)',
+            description: 'Module complet en 6 micro-leçons : droites perpendiculaires, parallèles, notations et équerre.',
+            duration: '35 min total',
+            difficulty: 'Facile',
+            status: 'available',
             path: '/modules/college/6e/geometrie-base/index.html',
-            icon: '📐' 
+            icon: '📐'
           },
-          { 
-            id: 'aires-perimetres', 
-            title: 'Aires et Périmètres (Module)', 
-            description: 'Module complet en 6 micro-leçons : contour, surface, formules et tableau d\'unités.', 
-            duration: '35 min total', 
-            difficulty: 'Moyen', 
-            status: 'available', 
+          {
+            id: 'aires-perimetres',
+            title: 'Aires et Périmètres (Module)',
+            description: 'Module complet en 6 micro-leçons : contour, surface, formules et tableau d\'unités.',
+            duration: '35 min total',
+            difficulty: 'Moyen',
+            status: 'available',
             path: '/modules/college/6e/aires-perimetres/index.html',
-            icon: '📏' 
+            icon: '📏'
           },
-          { 
-            id: 'symetrie-axiale', 
-            title: 'Symétrie axiale (Module)', 
-            description: 'Module complet en 6 micro-leçons : axes, propriétés, pliage, quadrillage et compas.', 
-            duration: '35 min total', 
-            difficulty: 'Facile', 
-            status: 'available', 
+          {
+            id: 'symetrie-axiale',
+            title: 'Symétrie axiale (Module)',
+            description: 'Module complet en 6 micro-leçons : axes, propriétés, pliage, quadrillage et compas.',
+            duration: '35 min total',
+            difficulty: 'Facile',
+            status: 'available',
             path: '/modules/college/6e/symetrie-axiale/index.html',
-            icon: '🪞' 
+            icon: '🪞'
           }
         ]
       },
@@ -79,65 +79,65 @@ export const courseLevels = [
         id: '5e',
         name: '5ème',
         lessons: [
-          { 
-            id: 'nombres-relatifs-5e', 
-            title: 'Nombres relatifs (Module)', 
-            description: 'Module complet en 6 micro-leçons : repérage, opposés, comparaison, addition et soustraction.', 
-            duration: '35 min total', 
-            difficulty: 'Moyen', 
-            status: 'available', 
+          {
+            id: 'nombres-relatifs-5e',
+            title: 'Nombres relatifs (Module)',
+            description: 'Module complet en 6 micro-leçons : repérage, opposés, comparaison, addition et soustraction.',
+            duration: '35 min total',
+            difficulty: 'Moyen',
+            status: 'available',
             path: '/modules/college/5e/nombres-relatifs/index.html',
-            icon: '➕' 
+            icon: '➕'
           },
-          { 
-            id: 'calcul-litteral-5e', 
-            title: 'Calcul littéral (Module)', 
-            description: 'Module complet en 6 micro-leçons : variables, simplifications, calculs et distributivité.', 
-            duration: '35 min total', 
-            difficulty: 'Moyen', 
-            status: 'available', 
+          {
+            id: 'calcul-litteral-5e',
+            title: 'Calcul littéral (Module)',
+            description: 'Module complet en 6 micro-leçons : variables, simplifications, calculs et distributivité.',
+            duration: '35 min total',
+            difficulty: 'Moyen',
+            status: 'available',
             path: '/modules/college/5e/calcul-litteral/index.html',
-            icon: '🔤' 
+            icon: '🔤'
           },
-          { 
-            id: 'angles-triangles', 
-            title: 'Angles et Triangles (Module)', 
-            description: 'Module complet en 6 micro-leçons : somme des 180°, droites parallèles et inégalité triangulaire.', 
-            duration: '35 min total', 
-            difficulty: 'Facile', 
-            status: 'available', 
+          {
+            id: 'angles-triangles',
+            title: 'Angles et Triangles (Module)',
+            description: 'Module complet en 6 micro-leçons : somme des 180°, droites parallèles et inégalité triangulaire.',
+            duration: '35 min total',
+            difficulty: 'Facile',
+            status: 'available',
             path: '/modules/college/5e/angles-triangles/index.html',
-            icon: '📐' 
+            icon: '📐'
           },
-          { 
-            id: 'statistiques-5e', 
-            title: 'Statistiques (Module)', 
-            description: 'Module complet en 6 micro-leçons : effectifs, fréquences, moyennes simples et moyennes pondérées.', 
-            duration: '35 min total', 
-            difficulty: 'Facile', 
-            status: 'available', 
+          {
+            id: 'statistiques-5e',
+            title: 'Statistiques (Module)',
+            description: 'Module complet en 6 micro-leçons : effectifs, fréquences, moyennes simples et moyennes pondérées.',
+            duration: '35 min total',
+            difficulty: 'Facile',
+            status: 'available',
             path: '/modules/college/5e/statistiques/index.html',
-            icon: '📈' 
+            icon: '📈'
           },
-          { 
-            id: 'probabilites-5e', 
-            title: 'Probabilités (Module)', 
-            description: 'Module complet en 6 micro-leçons : échelle de certitude, roue aléatoire, cas favorables et arbres.', 
-            duration: '35 min total', 
-            difficulty: 'Facile', 
-            status: 'available', 
+          {
+            id: 'probabilites-5e',
+            title: 'Probabilités (Module)',
+            description: 'Module complet en 6 micro-leçons : échelle de certitude, roue aléatoire, cas favorables et arbres.',
+            duration: '35 min total',
+            difficulty: 'Facile',
+            status: 'available',
             path: '/modules/college/5e/probabilites/index.html',
-            icon: '🎲' 
+            icon: '🎲'
           },
-          { 
-            id: 'proportionnalite-5e', 
-            title: 'Proportionnalité & Échelles (Module)', 
-            description: 'Module complet en 6 micro-leçons : coefficient k, produit en croix, pourcentages, échelles et vitesse.', 
-            duration: '35 min total', 
-            difficulty: 'Moyen', 
-            status: 'available', 
+          {
+            id: 'proportionnalite-5e',
+            title: 'Proportionnalité & Échelles (Module)',
+            description: 'Module complet en 6 micro-leçons : coefficient k, produit en croix, pourcentages, échelles et vitesse.',
+            duration: '35 min total',
+            difficulty: 'Moyen',
+            status: 'available',
             path: '/modules/college/5e/proportionnalite/index.html',
-            icon: '🏎️' 
+            icon: '🏎️'
           }
         ]
       },
@@ -145,28 +145,46 @@ export const courseLevels = [
         id: '4e',
         name: '4ème',
         lessons: [
-          { 
-            id: 'puissances-4e', 
-            title: 'Puissances (Module)', 
-            description: 'Module complet en 6 micro-leçons : puissances de 10 et notation scientifique.', 
-            duration: '35 min total', 
-            difficulty: 'Moyen', 
-            status: 'available', 
+          {
+            id: 'puissances-4e',
+            title: 'Puissances (Module)',
+            description: 'Module complet en 6 micro-leçons : puissances de 10 et notation scientifique.',
+            duration: '35 min total',
+            difficulty: 'Moyen',
+            status: 'available',
             path: '/modules/college/4e/puissances/index.html',
-            icon: '⚡' 
+            icon: '⚡'
           },
-          { id: 'equations-4e', title: 'Équations', description: 'Résolution d\'équations du premier degré.', duration: '30 min', difficulty: 'Moyen', status: 'coming_soon', icon: '⚖️' },
-          { 
-            id: 'pythagore-4e', 
-            title: 'Théorème de Pythagore (Module)', 
-            description: 'Module complet en 6 micro-leçons : calculer une longueur et démontrer l\'angle droit.', 
-            duration: '35 min total', 
-            difficulty: 'Moyen', 
-            status: 'available', 
+          {
+            id: 'equations-4e',
+            title: 'Équations (Module)',
+            description: 'Module complet en 6 micro-leçons : opérations, équations complexes et modélisation.',
+            duration: '40 min total',
+            difficulty: 'Moyen',
+            status: 'available',
+            path: '/modules/college/4e/equations/index.html',
+            icon: '⚖️'
+          },
+          {
+            id: 'pythagore-4e',
+            title: 'Théorème de Pythagore (Module)',
+            description: 'Module complet en 6 micro-leçons : calculer une longueur et démontrer l\'angle droit.',
+            duration: '35 min total',
+            difficulty: 'Moyen',
+            status: 'available',
             path: '/modules/college/4e/pythagore/index.html',
-            icon: '📐' 
+            icon: '📐'
           },
-          { id: 'calcul-litteral-4e', title: 'Calcul littéral & Double distributivité', description: 'Développement avancé et premières factorisations.', duration: '25 min', difficulty: 'Moyen', status: 'coming_soon', icon: '🔤' },
+          {
+            id: 'calcul-litteral-4e',
+            title: 'Calcul littéral (Module)',
+            description: 'Module complet en 6 micro-leçons : distributivité simple, double, réduction et factorisation.',
+            duration: '45 min total',
+            difficulty: 'Moyen',
+            status: 'available',
+            path: '/modules/college/4e/calcul-litteral/index.html',
+            icon: '🔤'
+          },
           { id: 'fonctions-intro', title: 'Notion de fonction', description: 'Image, antécédent et représentation graphique.', duration: '25 min', difficulty: 'Avancé', status: 'coming_soon', icon: '📈' },
           { id: 'statistiques-4e', title: 'Statistiques & Moyenne pondérée', description: 'Calculs de moyennes et interprétation de données.', duration: '20 min', difficulty: 'Facile', status: 'coming_soon', icon: '📊' }
         ]
@@ -222,15 +240,15 @@ export const courseLevels = [
         id: 'terminale',
         name: 'Terminale Spé / Expertes',
         lessons: [
-          { 
-            id: 'nombres-complexes', 
-            title: 'Nombres Complexes (Module)', 
-            description: 'Module complet en 6 micro-leçons : forme algébrique, plan d\'Argand-Gauss, module et conjugué.', 
-            duration: '40 min total', 
-            difficulty: 'Difficile', 
-            status: 'available', 
+          {
+            id: 'nombres-complexes',
+            title: 'Nombres Complexes (Module)',
+            description: 'Module complet en 6 micro-leçons : forme algébrique, plan d\'Argand-Gauss, module et conjugué.',
+            duration: '40 min total',
+            difficulty: 'Difficile',
+            status: 'available',
             path: '/modules/lycee/terminale/nombres-complexes/index.html',
-            icon: '⚡' 
+            icon: '⚡'
           },
           { id: 'limites-fonctions', title: 'Limites', description: 'Limites en l\'infini, en un point et formes indéterminées.', duration: '40 min', difficulty: 'Avancé', status: 'coming_soon', icon: '♾️' },
           { id: 'derivees-continuite', title: 'Dérivées', description: 'Dérivation avancée, continuité et théorème des valeurs intermédiaires.', duration: '35 min', difficulty: 'Avancé', status: 'coming_soon', icon: '📊' },
