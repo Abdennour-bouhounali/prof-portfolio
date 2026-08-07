@@ -25,19 +25,13 @@ export default function Footer() {
             className="max-w-xs"
           >
             <div className="flex items-center gap-3 mb-4">
-              <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center font-space font-bold text-white text-sm"
-                style={{ background: 'linear-gradient(135deg, #3B82F6, #8B5CF6)' }}
-              >
-                AB
-              </div>
+              <img src="/smarter-academy-logo.webp" alt="Smarter Academy" className="h-12 w-auto rounded-lg object-contain bg-white/10" />
               <div>
-                <p className="font-space font-bold text-white">Abdennour BOUHOUNALI</p>
-                <p className="font-mono-jetbrains text-blue-400 text-xs">Professeur de Mathématiques</p>
+                <p className="font-space font-bold text-white text-lg">Smarter Academy</p>
               </div>
             </div>
             <p className="font-inter text-slate-400 text-sm leading-relaxed mb-4">
-              Cours particuliers et accompagnement personnalisé pour aider les élèves du Collège au Lycée à reprendre confiance et réussir.
+              Plateforme éducative en ligne. Cours particuliers et accompagnement personnalisé pour aider les élèves à reprendre confiance et réussir.
             </p>
 
             <div className="space-y-1.5 text-xs font-inter text-slate-400">
@@ -103,7 +97,7 @@ export default function Footer() {
         <div className="border-t border-slate-800 pt-6">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-3">
             <p className="font-inter text-slate-500 text-sm text-center">
-              © {new Date().getFullYear()} Abdennour BOUHOUNALI — Tous droits réservés
+              © {new Date().getFullYear()} Smarter Academy — Tous droits réservés
             </p>
             <div className="flex items-center gap-2">
               <span className="font-inter text-slate-500 text-xs">Cours de Mathématiques • Toulouse, Paris & En Ligne</span>

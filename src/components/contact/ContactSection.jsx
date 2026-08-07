@@ -51,15 +51,31 @@ export default function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
+  const [errorMsg, setErrorMsg] = useState('');
+
   const handleChange = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
+    setErrorMsg('');
+
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000/api/v1';
+      const response = await fetch(`${apiUrl}/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Une erreur est survenue.");
+      }
+
       setSubmitted(true);
       setForm({
         name: '',
@@ -70,7 +86,16 @@ export default function ContactSection() {
         email: '',
         message: ''
       });
-    }, 1000);
+    } catch (err) {
+      // Fallback si le backend n'est pas joignable ou renvoie une erreur
+      setErrorMsg(
+        err.message === 'Failed to fetch' 
+          ? "Impossible de joindre le serveur. Veuillez réessayer plus tard ou utiliser le numéro de téléphone." 
+          : err.message
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -196,6 +221,11 @@ export default function ContactSection() {
                     onSubmit={handleSubmit}
                     className="space-y-4"
                   >
+                    {errorMsg && (
+                      <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 font-inter text-sm mb-4">
+                        {errorMsg}
+                      </div>
+                    )}
                     <div>
                       <label htmlFor="contact-name" className="block font-inter text-sm font-medium text-slate-700 mb-1">
                         Nom & Prénom (Parent / Élève) *

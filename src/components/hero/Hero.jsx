@@ -35,13 +35,12 @@ export default function Hero() {
 
             {/* Name */}
             <h1 className="font-space font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-slate-900 mb-3 leading-tight">
-              Abdennour{' '}
-              <span className="gradient-text">BOUHOUNALI</span>
+              Smarter <span className="gradient-text">Academy</span>
             </h1>
 
             {/* Title */}
             <p className="font-space text-xl sm:text-2xl font-semibold text-slate-500 mb-4">
-              Professeur de Mathématiques
+              Plateforme éducative en ligne
             </p>
 
             {/* Core Promise Headline */}
@@ -99,7 +98,7 @@ export default function Hero() {
               <div className="absolute inset-[4px] rounded-full overflow-hidden">
                 <img
                   src={profileImg}
-                  alt="Abdennour BOUHOUNALI — Professeur de Mathématiques"
+                  alt="Smarter Academy"
                   className="w-full h-full object-cover"
                 />
               </div>

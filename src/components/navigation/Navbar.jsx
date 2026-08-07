@@ -49,16 +49,10 @@ export default function Navbar() {
               to="/"
               className="flex items-center gap-2.5 group"
             >
-              <div className="w-9 h-9 rounded-xl flex items-center justify-center font-space font-bold text-white text-sm"
-                style={{ background: 'linear-gradient(135deg, #3B82F6, #8B5CF6)' }}>
-                AB
-              </div>
+              <img src="/smarter-academy-logo.webp" alt="Smarter Academy" className="h-10 w-auto rounded-lg object-contain" />
               <div className="hidden sm:flex flex-col">
                 <span className="font-space font-bold text-slate-900 text-sm leading-none">
-                  Abdennour BOUHOUNALI
-                </span>
-                <span className="font-mono-jetbrains text-[10px] text-blue-600 font-semibold mt-0.5">
-                  Professeur de Mathématiques
+                  Smarter Academy
                 </span>
               </div>
             </Link>
