@@ -127,17 +127,17 @@ export default function ContactSection() {
                 <div className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 bg-gradient-to-br ${item.color}`}>
                   <item.icon size={18} className="text-white" />
                 </div>
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <p className="font-inter text-xs text-slate-400 mb-0.5">{item.label}</p>
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="font-inter text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors truncate block font-space font-semibold"
+                      className="font-inter text-sm font-medium text-slate-700 hover:text-blue-600 transition-colors break-words font-space font-semibold"
                     >
                       {item.value}
                     </a>
                   ) : (
-                    <p className="font-inter text-sm font-medium text-slate-700 truncate">{item.value}</p>
+                    <p className="font-inter text-sm font-medium text-slate-700 break-words">{item.value}</p>
                   )}
                 </div>
               </motion.div>

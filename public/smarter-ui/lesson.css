@@ -73,3 +73,115 @@ body {
 ::-webkit-scrollbar { width: 8px; }
 ::-webkit-scrollbar-track { background: #F1F5F9; }
 ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #3B82F6, #8B5CF6); border-radius: 4px; }
+
+/* ============================================================
+   RESPONSIVE ADDITIONS — mobile-first
+   All rules below only ADD responsiveness; they don't remove
+   any existing visual style.
+   ============================================================ */
+
+/* ── Lesson H1 typography ──────────────────────────────────
+   On 320-374px screens the 3xl (30px) heading is fine.
+   text-3xl is already used inline in the HTML — this ensures
+   it never causes horizontal scroll on the smallest phones. */
+h1 {
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* ── KaTeX math overflow ────────────────────────────────────
+   Long inline math (e.g. long equations) can cause horizontal
+   overflow on narrow screens. Allow horizontal scroll on the
+   display-mode KaTeX blocks only (not the page). */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+/* ── Smarter card mobile padding ───────────────────────────
+   Cards use p-6 inline (Tailwind) which is 24px each side.
+   On very small screens (320px) this leaves only 272px of
+   content width, which is tight. We reduce to 16px at xs. */
+@media (max-width: 479px) {
+  .smarter-card {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Lesson H1 — reduce from 30px (text-3xl) to 26px on 320px */
+  h1.text-3xl,
+  h1[class*="text-3xl"] {
+    font-size: 1.625rem;
+    line-height: 1.2;
+  }
+}
+
+/* ── Touch-friendly button tap targets ─────────────────────
+   Quiz answer buttons already use p-3, which is fine.
+   Navigation prev/next buttons are py-2 = 8px which is
+   borderline on mobile. Ensure min-height. */
+.btn-gradient,
+a.btn-gradient,
+button.btn-gradient {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Breadcrumb nav wrapping ───────────────────────────────
+   Breadcrumb already uses flex-wrap in HTML; this just
+   prevents any item from forcing horizontal overflow. */
+nav.flex {
+  max-width: 100%;
+  min-width: 0;
+}
+nav.flex a,
+nav.flex span {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ── SVG Graph / Simulator container ──────────────────────
+   The simulator SVG container uses max-w-[400px].
+   On narrow screens the controls panel beside it can still
+   force overflow if the flex-row layout kicks in too early.
+   The HTML already uses md:flex-row so this is just a safety net. */
+.aspect-square {
+  max-width: 100%;
+}
+
+/* ── Module index lesson list cards ───────────────────────
+   The flex justify-between layout with a right-side badge
+   can squeeze the lesson title on small screens.
+   Allow the badge to wrap below on very small screens. */
+@media (max-width: 479px) {
+  /* lesson list item: title + badge row */
+  a[class*="rounded-2xl"] > div.flex.items-center.justify-between {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+/* ── Progress bar label alignment ─────────────────────────
+   The lesson count "Leçon X / Y" + progress bar row uses
+   gap-4 and may be tight on 320px. No change needed — the
+   HTML already handles this with sm:self-auto. */
+
+/* ── Responsive main container vertical padding ───────────
+   main elements use py-8 (32px). On very small screens
+   reduce to py-4 (16px). */
+@media (max-width: 479px) {
+  main {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+/* ── Footer responsive ─────────────────────────────────── */
+footer {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  word-break: break-word;
+}

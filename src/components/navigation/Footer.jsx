@@ -43,9 +43,9 @@ export default function Footer() {
                 <Phone size={13} className="text-blue-400" />
                 <a href="tel:+33758103086" className="hover:text-white transition-colors">+33 7 58 10 30 86</a>
               </p>
-              <p className="flex items-center gap-2">
-                <Mail size={13} className="text-blue-400" />
-                <a href="mailto:abdennour.bouhounali@gmail.com" className="hover:text-white transition-colors">abdennour.bouhounali@gmail.com</a>
+              <p className="flex items-start gap-2">
+                <Mail size={13} className="text-blue-400 flex-shrink-0 mt-0.5" />
+                <a href="mailto:abdennour.bouhounali@gmail.com" className="hover:text-white transition-colors break-words">abdennour.bouhounali@gmail.com</a>
               </p>
             </div>
           </motion.div>

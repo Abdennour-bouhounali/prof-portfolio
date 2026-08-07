@@ -180,7 +180,7 @@ export default function AboutSection() {
           {/* Right — Glass card + Stats */}
           <motion.div variants={itemVariants} className="space-y-6">
             {/* Profile Image with badges */}
-            <div className="flex justify-center mb-10">
+            <div className="flex justify-center mb-6 md:mb-10">
               <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
                 {/* Gradient ring */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-400 to-purple-400" style={{ padding: '3px' }}>
@@ -197,20 +197,20 @@ export default function AboutSection() {
                 </div>
 
                 {/* Static badge — top right */}
-                <div className="absolute -top-3 -right-3 bg-white rounded-2xl px-3.5 py-2 shadow-lg border border-slate-100 flex items-center gap-2">
-                  <span className="text-lg">📐</span>
-                  <span className="font-space text-xs font-bold text-slate-800">5+ Ans Exp.</span>
+                <div className="absolute -top-3 -right-3 bg-white rounded-2xl px-2.5 sm:px-3.5 py-1.5 sm:py-2 shadow-lg border border-slate-100 flex items-center gap-1.5 sm:gap-2">
+                  <span className="text-base sm:text-lg">📐</span>
+                  <span className="font-space text-[10px] sm:text-xs font-bold text-slate-800">5+ Ans Exp.</span>
                 </div>
 
                 {/* Static badge — bottom left */}
-                <div className="absolute -bottom-3 -left-3 bg-white rounded-2xl px-3.5 py-2 shadow-lg border border-slate-100 flex items-center gap-2">
-                  <span className="text-lg">🏆</span>
-                  <span className="font-space text-xs font-bold text-slate-800">Bac 17/20</span>
+                <div className="absolute -bottom-3 -left-3 bg-white rounded-2xl px-2.5 sm:px-3.5 py-1.5 sm:py-2 shadow-lg border border-slate-100 flex items-center gap-1.5 sm:gap-2">
+                  <span className="text-base sm:text-lg">🏆</span>
+                  <span className="font-space text-[10px] sm:text-xs font-bold text-slate-800">Bac 17/20</span>
                 </div>
 
                 {/* IEEE/Degree badge */}
-                <div className="absolute -bottom-3 -right-3 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl px-3.5 py-2 shadow-lg flex items-center gap-1">
-                  <span className="text-white text-xs font-bold">Ingénieur & M2</span>
+                <div className="absolute -bottom-3 -right-3 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl px-2.5 sm:px-3.5 py-1.5 sm:py-2 shadow-lg flex items-center gap-1">
+                  <span className="text-white text-[10px] sm:text-xs font-bold">Ingénieur & M2</span>
                 </div>
               </div>
             </div>

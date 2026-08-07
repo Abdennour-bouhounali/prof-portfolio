@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
               Réserver un cours
             </a>
-            <button id="mobile-menu-toggle" class="lg:hidden w-9 h-9 flex items-center justify-center rounded-lg text-slate-600 hover:bg-slate-100 transition-colors">
+            <button id="mobile-menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-drawer" class="lg:hidden w-9 h-9 flex items-center justify-center rounded-lg text-slate-600 hover:bg-slate-100 transition-colors">
               <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
               <svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
@@ -59,19 +59,46 @@ document.addEventListener('DOMContentLoaded', () => {
   // Insérer la nav en haut du body
   document.body.insertAdjacentHTML('afterbegin', navHTML);
 
-  // Gestion du menu mobile
-  document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
-    const drawer = document.getElementById('mobile-drawer');
-    const iconMenu = document.getElementById('icon-menu');
-    const iconClose = document.getElementById('icon-close');
+  const drawer = document.getElementById('mobile-drawer');
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const iconMenu = document.getElementById('icon-menu');
+  const iconClose = document.getElementById('icon-close');
+
+  function openDrawer() {
+    drawer.classList.remove('hidden');
+    iconMenu.classList.add('hidden');
+    iconClose.classList.remove('hidden');
+    toggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDrawer() {
+    drawer.classList.add('hidden');
+    iconMenu.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    toggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  // Toggle on button click
+  toggle.addEventListener('click', function () {
     if (drawer.classList.contains('hidden')) {
-      drawer.classList.remove('hidden');
-      iconMenu.classList.add('hidden');
-      iconClose.classList.remove('hidden');
+      openDrawer();
     } else {
-      drawer.classList.add('hidden');
-      iconMenu.classList.remove('hidden');
-      iconClose.classList.add('hidden');
+      closeDrawer();
+    }
+  });
+
+  // Close when any link inside the drawer is clicked
+  drawer.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !drawer.classList.contains('hidden')) {
+      closeDrawer();
+      toggle.focus();
     }
   });
 
@@ -90,3 +117,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 });
+
