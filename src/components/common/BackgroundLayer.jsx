@@ -14,7 +14,8 @@ export default function BackgroundLayer() {
           opacity: 0.035,
           y: yBg,
           backgroundImage: 'radial-gradient(#94a3b8 1px, transparent 1px)',
-          backgroundSize: '40px 40px'
+          backgroundSize: '40px 40px',
+          willChange: 'transform'
         }}
       />
 
@@ -30,7 +31,7 @@ export default function BackgroundLayer() {
           height: '40vw',
           background: 'radial-gradient(circle, #3B82F6 0%, transparent 70%)',
           opacity: 0.05,
-          filter: 'blur(80px)',
+          willChange: 'transform, opacity'
         }}
       />
 
@@ -46,7 +47,7 @@ export default function BackgroundLayer() {
           height: '50vw',
           background: 'radial-gradient(circle, #8B5CF6 0%, transparent 70%)',
           opacity: 0.04,
-          filter: 'blur(100px)',
+          willChange: 'transform, opacity'
         }}
       />
 
@@ -63,7 +64,7 @@ export default function BackgroundLayer() {
           height: '30vw',
           background: 'radial-gradient(circle, #06B6D4 0%, transparent 70%)',
           opacity: 0.03,
-          filter: 'blur(60px)',
+          willChange: 'transform, opacity'
         }}
       />
     </div>

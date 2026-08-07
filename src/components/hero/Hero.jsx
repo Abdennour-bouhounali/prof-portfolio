@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowDown, Calendar, Download } from 'lucide-react';
-import profileImg from '../../assets/myimage.png';
+import profileImg from '../../assets/myimage.webp';
 
 const quickBadges = [
   '✓ Collège (6e - 3e)',
