@@ -194,7 +194,19 @@ export const courseLevels = [
         name: '3ème',
         lessons: [
           { id: 'thales-3e', title: 'Théorème de Thalès', description: 'Proportionnalité des longueurs et théorème réciproque.', duration: '30 min', difficulty: 'Moyen', status: 'coming_soon', icon: '📐' },
-          { id: 'fonctions-lineaires-affines', title: 'Fonctions linéaires et affines', description: 'Tracé de droites, coefficient directeur et ordonnée à l\'origine.', duration: '30 min', difficulty: 'Moyen', status: 'coming_soon', icon: '📈' },
+          { 
+            id: 'fonctions-lineaires-affines', 
+            title: 'Fonctions linéaires et affines', 
+            description: 'Module interactif avec simulateur. De la découverte au choix du meilleur forfait.', 
+            duration: '55 min', 
+            difficulty: 'Moyen', 
+            status: 'available', 
+            icon: '📈',
+            progress: 0,
+            totalLessons: 7,
+            path: "/modules/college/3e/fonctions-lineaires-affines/index.html",
+            isNew: true
+          },
           { id: 'equations-produit', title: 'Équations produit nul', description: 'Résoudre (ax + b)(cx + d) = 0 et factorisation.', duration: '25 min', difficulty: 'Moyen', status: 'coming_soon', icon: '⚖️' },
           { id: 'systemes-equations', title: 'Systèmes d\'équations', description: 'Résolution par substitution et par combinaison.', duration: '30 min', difficulty: 'Avancé', status: 'coming_soon', icon: '🔄' },
           { id: 'trigonometrie-3e', title: 'Trigonométrie', description: 'Cosinus, sinus et tangente dans le triangle rectangle.', duration: '35 min', difficulty: 'Avancé', status: 'coming_soon', icon: '📐' },

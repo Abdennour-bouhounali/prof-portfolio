@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Lightbulb, Sliders, LineChart, Target, MapPin, Mail, Phone } from 'lucide-react';
+import profileImg from '../../assets/myimage.webp';
 
 const whatIDo = [
   {
@@ -92,9 +93,9 @@ export default function AboutSection() {
           <p className="font-mono-jetbrains text-blue-500 text-sm font-semibold tracking-widest uppercase mb-3">
             01. Présentation
           </p>
-          <h2 className="section-title">Pourquoi me choisir ?</h2>
+          <h2 className="section-title">À propos du Fondateur</h2>
           <p className="section-subtitle">
-            Une approche pédagogique personnalisée et rigoureuse pour aider chaque élève à progresser et réussir.
+            Découvrez le parcours et la vision d'Abdennour BOUHOUNALI, créateur de Smarter Academy.
           </p>
         </motion.div>
 
@@ -114,11 +115,11 @@ export default function AboutSection() {
                   style={{ background: 'linear-gradient(135deg, #3B82F6, #8B5CF6)' }}>
                   👨‍🏫
                 </div>
-                <h3 className="font-space text-xl font-bold text-slate-800">À propos de mon enseignement</h3>
+                <h3 className="font-space text-xl font-bold text-slate-800">Abdennour BOUHOUNALI</h3>
               </div>
 
               <p className="font-inter text-slate-600 leading-relaxed mb-4">
-                Professeur de mathématiques diplômé d'un Master 2 de l'Université de Toulouse III et d'un diplôme d'Ingénieur, j'accompagne les élèves du Collège au Lycée pour leur transmettre la méthode, la rigueur et la confiance nécessaires pour réussir.
+                En tant que fondateur de Smarter Academy, diplômé d'un Master 2 de l'Université de Toulouse III et d'un diplôme d'Ingénieur, ma mission est de rendre l'excellence accessible à tous. J'ai conçu cette plateforme pour transmettre la méthode, la rigueur et la confiance nécessaires à la réussite de chaque élève.
               </p>
               <p className="font-inter text-slate-600 leading-relaxed">
                 Fort de plus de 5 ans d'expérience en lycée et en cours particuliers, j'adapte chaque séance au profil de l'élève pour débloquer les difficultés et viser l'excellence.
@@ -178,38 +179,39 @@ export default function AboutSection() {
 
           {/* Right — Glass card + Stats */}
           <motion.div variants={itemVariants} className="space-y-6">
-            {/* Glass highlight card */}
-            <div className="glass-card p-8 relative overflow-hidden">
-              <div
-                className="absolute inset-0 opacity-[0.03]"
-                style={{ backgroundImage: 'radial-gradient(#3B82F6 1px, transparent 1px)', backgroundSize: '20px 20px' }}
-              />
-              <h3 className="font-space font-bold text-slate-800 text-lg mb-6 relative z-10">
-                Un accompagnement axé sur :
-              </h3>
-              <div className="grid grid-cols-2 gap-4 relative z-10">
-                {[
-                  { emoji: '🎯', label: 'Explications', sublabel: 'Simples & Claires' },
-                  { emoji: '📝', label: 'Méthode', sublabel: 'Sur-mesure' },
-                  { emoji: '📊', label: 'Suivi', sublabel: 'Régulier' },
-                  { emoji: '🚀', label: 'Objectif', sublabel: 'Réussite' },
-                ].map((item, i) => (
-                  <motion.div
-                    key={item.label}
-                    whileHover={{ scale: 1.05, y: -3 }}
-                    className="p-4 rounded-2xl border border-slate-100 bg-white/60 text-center cursor-default"
-                  >
-                    <div className="text-3xl mb-2">{item.emoji}</div>
-                    <p className="font-space font-bold text-slate-800 text-sm">{item.label}</p>
-                    <p className="font-inter text-slate-400 text-xs mt-0.5">{item.sublabel}</p>
-                  </motion.div>
-                ))}
-              </div>
-              <div className="mt-6 p-4 rounded-2xl bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 relative z-10">
-                <p className="font-mono-jetbrains text-xs text-slate-600 leading-relaxed">
-                  <span className="text-blue-500 font-bold">Méthode = </span>
-                  Explications simples + Suivi régulier + Entraînement = Réussite
-                </p>
+            {/* Profile Image with badges */}
+            <div className="flex justify-center mb-10">
+              <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
+                {/* Gradient ring */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-400 to-purple-400" style={{ padding: '3px' }}>
+                  <div className="w-full h-full rounded-full bg-white" />
+                </div>
+
+                {/* Profile image */}
+                <div className="absolute inset-[4px] rounded-full overflow-hidden bg-slate-100">
+                  <img
+                    src={profileImg}
+                    alt="Abdennour BOUHOUNALI — Enseignant"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Static badge — top right */}
+                <div className="absolute -top-3 -right-3 bg-white rounded-2xl px-3.5 py-2 shadow-lg border border-slate-100 flex items-center gap-2">
+                  <span className="text-lg">📐</span>
+                  <span className="font-space text-xs font-bold text-slate-800">5+ Ans Exp.</span>
+                </div>
+
+                {/* Static badge — bottom left */}
+                <div className="absolute -bottom-3 -left-3 bg-white rounded-2xl px-3.5 py-2 shadow-lg border border-slate-100 flex items-center gap-2">
+                  <span className="text-lg">🏆</span>
+                  <span className="font-space text-xs font-bold text-slate-800">Bac 17/20</span>
+                </div>
+
+                {/* IEEE/Degree badge */}
+                <div className="absolute -bottom-3 -right-3 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl px-3.5 py-2 shadow-lg flex items-center gap-1">
+                  <span className="text-white text-xs font-bold">Ingénieur & M2</span>
+                </div>
               </div>
             </div>
 

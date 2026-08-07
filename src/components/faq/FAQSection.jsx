@@ -45,22 +45,7 @@ export default function FAQSection() {
   return (
     <section id="faq" className="section-wrapper">
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <p className="font-mono-jetbrains text-blue-500 text-sm font-semibold tracking-widest uppercase mb-3">
-            Questions fréquentes
-          </p>
-          <h2 className="section-title">Foire Aux Questions (FAQ)</h2>
-          <p className="section-subtitle">
-            Toutes les réponses aux questions que vous vous posez sur l'organisation des cours, les déplacements et la préparation aux examens.
-          </p>
-        </motion.div>
+
 
         {/* Accordion List */}
         <div className="space-y-4">

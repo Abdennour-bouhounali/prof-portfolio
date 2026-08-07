@@ -15,26 +15,7 @@ const languages = [
 export default function AboutPage() {
   return (
     <div className="pt-16">
-      {/* Page Header */}
-      <section className="py-16 px-4 text-center">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="font-mono-jetbrains text-blue-500 text-sm font-semibold tracking-widest uppercase mb-3">
-              Présentation & Parcours
-            </p>
-            <h1 className="font-space font-bold text-4xl sm:text-5xl text-slate-900 mb-4">
-              À propos d'Abdennour BOUHOUNALI
-            </h1>
-            <p className="font-inter text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">
-              Professeur de mathématiques passionné, diplômé en ingénierie et Master de l'Université de Toulouse, dédié à la réussite de chaque élève.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+
 
       {/* Philosophy & Pillars */}
       <AboutSection />

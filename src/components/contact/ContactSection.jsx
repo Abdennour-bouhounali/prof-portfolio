@@ -101,22 +101,7 @@ export default function ContactSection() {
   return (
     <section id="contact" className="section-wrapper">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <p className="font-mono-jetbrains text-blue-500 text-sm font-semibold tracking-widest uppercase mb-3">
-            Contact & Réservation
-          </p>
-          <h2 className="section-title">Réserver un cours d'essai</h2>
-          <p className="section-subtitle">
-            Remplissez ce formulaire pour échanger sur le niveau de votre enfant, ses besoins et planifier une première séance.
-          </p>
-        </motion.div>
+
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Left — Contact info cards */}

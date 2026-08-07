@@ -8,12 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="flex items-center justify-between h-16">
           <!-- Logo -->
           <a href="/" class="flex items-center gap-2.5 group">
-            <div class="w-9 h-9 rounded-xl flex items-center justify-center font-bold text-white text-sm" style="background: linear-gradient(135deg, #3B82F6, #8B5CF6); font-family: 'Space Grotesk', sans-serif;">
-              AB
-            </div>
+            <img src="/smarter-academy-logo.webp" alt="Smarter Academy" class="h-10 w-auto rounded-lg object-contain" />
             <div class="hidden sm:flex flex-col">
-              <span class="font-bold text-slate-900 text-sm leading-none" style="font-family: 'Space Grotesk', sans-serif;">Abdennour BOUHOUNALI</span>
-              <span class="text-[10px] text-blue-600 font-semibold mt-0.5" style="font-family: 'JetBrains Mono', monospace;">Professeur de Mathématiques</span>
+              <span class="font-bold text-slate-900 text-sm leading-none" style="font-family: 'Space Grotesk', sans-serif;">Smarter Academy</span>
             </div>
           </a>
 
